@@ -4,7 +4,7 @@ import Row from '@molecules/stories/Row';
 
 function HomeFeed() {
   const control = useSelector((state) => state.controls.feeds.home);
-  const feed = useSelector((state) => state.entities.feeds?.home);
+  const feed = useSelector((state) => state.objects.feeds.entities.home);
 
   if (control.status === 'fetching') {
     return <div>Fetching</div>;

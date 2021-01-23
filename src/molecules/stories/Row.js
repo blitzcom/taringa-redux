@@ -1,19 +1,34 @@
+import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-import RowMeta from './RowMeta';
 import RowStats from './RowStats';
 
 function Row({ id }) {
-  const story = useSelector((state) => state.entities.items[id]);
+  const story = useSelector((state) => state.objects.items.entities[id]);
+
+  const owner = useSelector(
+    (state) => state.objects.users.entities[story.owner],
+  );
+
+  const channel = useSelector(
+    (state) => state.objects.channels.entities[story.channel],
+  );
 
   return (
     <article>
-      <h2>{story.title}</h2>
+      <h2>
+        <Link href={`/+${channel.name}/${story.slug}`}>{story.title}</Link>
+      </h2>
+
       <p>{story.summary?.excerpt}</p>
 
-      <RowMeta ownerId={story.owner} channelId={story.channel}>
+      <div>
+        By <a href={`/${owner.username}`}>{owner.username}</a>
+        <span>in</span>
+        <a href={`/+${channel.name}`}>{channel.title}</a>
+        <span>•</span>
         {story.created}
-      </RowMeta>
+      </div>
 
       <RowStats id={id} />
     </article>

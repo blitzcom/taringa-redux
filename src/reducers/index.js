@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import controls from './controls';
-import entities from './entities';
+import objects from './entities';
 
-const rootReducer = combineReducers({
+const rootReducer = {
   controls,
-  entities,
-});
+  objects,
+};
 
 export default rootReducer;

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 function RowStats({ id }) {
-  const stats = useSelector((state) => state.entities.stats[id]);
+  const stats = useSelector((state) => state.objects.stats.entities[id]);
 
   return (
     <div>

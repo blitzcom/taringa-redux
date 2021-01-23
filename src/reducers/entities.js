@@ -1,19 +1,40 @@
-import merge from 'lodash.merge';
+import {
+  combineReducers,
+  createEntityAdapter,
+  createSlice,
+} from '@reduxjs/toolkit';
 
-function entities(state = {}, action) {
-  switch (action.type) {
-    default: {
-      if (
-        action.payload &&
-        action.payload.entities &&
-        action.payload.entities
-      ) {
-        return merge({}, state, action.payload.entities);
-      }
+function createEntity(name) {
+  const entityAdapter = createEntityAdapter({});
 
-      return state;
-    }
-  }
+  const slice = createSlice({
+    name,
+    initialState: entityAdapter.getInitialState({}),
+    reducers: {},
+    extraReducers: (builder) => {
+      builder.addDefaultCase((state, action) => {
+        if (action.payload?.entities?.[name]) {
+          entityAdapter.upsertMany(state, action.payload.entities[name]);
+        }
+      });
+    },
+  });
+
+  return slice;
 }
 
-export default entities;
+const channels = createEntity('channels');
+const feeds = createEntity('feeds');
+const items = createEntity('items');
+const states = createEntity('states');
+const stats = createEntity('stats');
+const users = createEntity('users');
+
+export default combineReducers({
+  channels: channels.reducer,
+  feeds: feeds.reducer,
+  items: items.reducer,
+  states: states.reducer,
+  stats: stats.reducer,
+  users: users.reducer,
+});

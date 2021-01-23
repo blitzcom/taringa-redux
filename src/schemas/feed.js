@@ -4,9 +4,8 @@ const stats = new schema.Entity(
   'stats',
   {},
   {
-    idAttribute(_, root) {
-      return root.id;
-    },
+    idAttribute: (_, parent) => parent.id,
+    processStrategy: (value, root) => ({ ...value, id: root.id }),
   },
 );
 
@@ -16,9 +15,8 @@ const state = new schema.Entity(
   'states',
   {},
   {
-    idAttribute(_, root) {
-      return root.id;
-    },
+    idAttribute: (_, parent) => parent.id,
+    processStrategy: (value, root) => ({ ...value, id: root.id }),
   },
 );
 
