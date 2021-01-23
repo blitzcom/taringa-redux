@@ -3,7 +3,7 @@ import { useSelector, connect } from 'react-redux';
 import Row from '@molecules/stories/Row';
 
 function HomeFeed() {
-  const control = useSelector((state) => state.controls.feeds.home);
+  const control = useSelector((state) => state.pages.home.feed);
   const feed = useSelector((state) => state.objects.feeds.entities.home);
 
   if (control.status === 'fetching') {

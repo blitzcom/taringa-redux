@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import controls from './controls';
 import objects from './entities';
+import pages from './pages';
 
 const rootReducer = {
-  controls,
   objects,
+  pages,
 };
 
 export default rootReducer;

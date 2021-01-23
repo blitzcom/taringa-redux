@@ -2,9 +2,11 @@ import superagent from 'superagent';
 
 import normalizeFeed from '@schemas/feed';
 
+import actions from '@reducers/pages/home/feed';
+
 function fetchFeedAsync() {
   return (dispatch) => {
-    dispatch({ type: 'control/home/FETCH' });
+    dispatch(actions.fetch());
 
     return superagent
       .get(
@@ -12,10 +14,10 @@ function fetchFeedAsync() {
       )
       .then(({ body }) => {
         const payload = normalizeFeed(body);
-        dispatch({ type: 'control/home/SUCCESS', payload });
+        dispatch(actions.success(payload));
       })
       .catch((e) => {
-        dispatch({ type: 'control/home/FAILURE', error: e.message });
+        dispatch(actions.failure(e.message));
       });
   };
 }
