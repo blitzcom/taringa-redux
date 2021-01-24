@@ -18,7 +18,9 @@ function Row({ id }) {
   return (
     <article>
       <h2>
-        <Link href={`/+${channel.name}/${story.slug}`}>{story.title}</Link>
+        <Link href={`/c/${channel.name}/${story.slug}`}>
+          <a>{story.title}</a>
+        </Link>
       </h2>
 
       <p>{story.summary?.excerpt}</p>
@@ -26,7 +28,9 @@ function Row({ id }) {
       <div>
         By <a href={`/${owner.username}`}>{owner.username}</a>
         <span>in</span>
-        <a href={`/+${channel.name}`}>{channel.title}</a>
+        <Link href={`/c/${channel.name}`}>
+          <a> {channel.title}</a>
+        </Link>
         <span>•</span>
         {story.created}
       </div>

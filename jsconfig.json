@@ -5,6 +5,7 @@
       "@/*": ["src/*"],
       "@atoms/*": ["src/atoms/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@loaders/*": ["src/loaders/*"],
       "@molecules/*": ["src/molecules/*"],
       "@organisms/*": ["src/organisms/*"],
       "@pages/*": ["src/pages/*"],
