@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 function RowStats({ id }) {
@@ -23,5 +24,9 @@ function RowStats({ id }) {
     </div>
   );
 }
+
+RowStats.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default RowStats;

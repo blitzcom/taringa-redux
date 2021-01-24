@@ -1,8 +1,9 @@
-import { useSelector, connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import Row from '@molecules/stories/Row';
 
-function HomeFeed({ scope, name }) {
+function HomeFeed({ name, scope }) {
   const control = useSelector((state) => state.pages[scope][name]);
   const feed = useSelector((state) => state.objects.feeds.entities[name]);
 
@@ -22,5 +23,10 @@ function HomeFeed({ scope, name }) {
     </div>
   );
 }
+
+HomeFeed.propTypes = {
+  name: PropTypes.string.isRequired,
+  scope: PropTypes.string.isRequired,
+};
 
 export default HomeFeed;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
@@ -34,5 +35,9 @@ function Row({ id }) {
     </article>
   );
 }
+
+Row.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default Row;
