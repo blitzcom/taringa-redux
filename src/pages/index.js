@@ -2,14 +2,17 @@ import Head from 'next/head';
 
 import styles from '@styles/Home.module.css';
 
-import fetchFeedAsync from '@thunks/feed';
-import useFeed from '@hooks/useFeed';
+import feedActions from '@reducers/pages/home/feed';
+import postsActions from '@reducers/pages/home/posts';
 
 import HomeFeed from '@organisms/feeds/HomeFeed';
+import LoaderStories from '@molecules/loaders/LoaderStories';
+
+const POSTS = 'global?count=20&filter=article&nsfw=false&period=week&sort=tops';
+const FEED =
+  'list/globalHome?count=35&filter=article&sort=bigbang1d&globalSafe=true&nsfw=false';
 
 export default function Home() {
-  useFeed(fetchFeedAsync);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +20,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeFeed />
+      <LoaderStories
+        actions={feedActions}
+        component={HomeFeed}
+        name="feed"
+        scope="home"
+        url={FEED}
+      />
+
+      <LoaderStories
+        actions={postsActions}
+        component={HomeFeed}
+        name="posts"
+        scope="home"
+        url={POSTS}
+      />
     </div>
   );
 }

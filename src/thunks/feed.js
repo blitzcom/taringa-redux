@@ -2,18 +2,14 @@ import superagent from 'superagent';
 
 import normalizeFeed from '@schemas/feed';
 
-import actions from '@reducers/pages/home/feed';
-
-function fetchFeedAsync() {
+function thunk(name, path, actions) {
   return (dispatch) => {
     dispatch(actions.fetch());
 
     return superagent
-      .get(
-        'https://api-user.taringa.net/feed/global?count=20&filter=article&nsfw=false&period=week&sort=tops',
-      )
+      .get(`https://api-user.taringa.net/feed/${path}`)
       .then(({ body }) => {
-        const payload = normalizeFeed(body);
+        const payload = normalizeFeed(body, name);
         dispatch(actions.success(payload));
       })
       .catch((e) => {
@@ -22,4 +18,4 @@ function fetchFeedAsync() {
   };
 }
 
-export default fetchFeedAsync;
+export default thunk;

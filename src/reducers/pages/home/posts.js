@@ -5,8 +5,8 @@ const initialState = {
   error: null,
 };
 
-const feed = createSlice({
-  name: 'pages/home/feed',
+const posts = createSlice({
+  name: 'pages/home/posts',
   initialState,
   reducers: {
     fetch(state) {
@@ -25,6 +25,6 @@ const feed = createSlice({
   },
 });
 
-export const reducer = feed.reducer;
+export const reducer = posts.reducer;
 
-export default feed.actions;
+export default posts.actions;

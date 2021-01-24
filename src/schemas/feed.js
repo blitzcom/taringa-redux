@@ -81,6 +81,6 @@ const feed = new schema.Entity('feeds', {
   items: [item],
 });
 
-export default function exec(data) {
-  return normalize({ ...data, id: 'home' }, feed);
+export default function exec(data, id) {
+  return normalize({ ...data, id }, feed);
 }
