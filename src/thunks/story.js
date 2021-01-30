@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-import actions from '@reducers/pages/channelStory/story';
+import actions from '@reducers/pages/channel/slug/story';
 
 import normalize from '@schemas/item';
 

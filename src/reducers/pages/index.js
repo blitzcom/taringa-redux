@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import channelStory from './channelStory';
+import channel from './channel';
 import home from './home';
 
 export default combineReducers({
-  channelStory,
+  channel,
   home,
 });

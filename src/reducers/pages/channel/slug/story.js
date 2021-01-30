@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const story = createSlice({
-  name: 'pages/channelStory/story',
+  name: 'pages/channel/slug/story',
   initialState,
   reducers: {
     fetch(state, action) {

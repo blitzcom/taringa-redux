@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Blocks from '@molecules/Blocks';
 
 function Story() {
-  const control = useSelector((state) => state.pages.channelStory.story);
+  const control = useSelector((state) => state.pages.channel.slug.story);
 
   const story = useSelector(
     (state) => state.objects.items.entities[control.storyId],
