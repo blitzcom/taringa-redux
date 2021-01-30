@@ -1,14 +1,17 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
 
 import thunk from '@thunks/comments';
 
-function LoaderComment() {
+import List from '@organisms/comments/List';
+
+function LoaderComment({ storyId }) {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const { slug = '' } = router.query;
-  const [, storyId] = slug.split('_');
+  const control = useSelector((state) => state.pages.channel.slug.comments);
+  const feed = useSelector(
+    (state) => state.streams.comments.entities[control.storyId],
+  );
 
   useEffect(() => {
     if (storyId) {
@@ -16,7 +19,15 @@ function LoaderComment() {
     }
   }, [storyId]);
 
-  return null;
+  if (control.status === 'fetching') {
+    return <p>Loading comments</p>;
+  }
+
+  return <List items={feed.items} />;
 }
+
+LoaderComment.propTypes = {
+  storyId: PropTypes.string,
+};
 
 export default LoaderComment;
