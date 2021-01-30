@@ -24,16 +24,20 @@ function createEntity(name) {
 }
 
 const channels = createEntity('channels');
+const comments = createEntity('comments');
 const feeds = createEntity('feeds');
 const items = createEntity('items');
+const replies = createEntity('replies');
 const states = createEntity('states');
 const stats = createEntity('stats');
 const users = createEntity('users');
 
 export default combineReducers({
   channels: channels.reducer,
+  comments: comments.reducer,
   feeds: feeds.reducer,
   items: items.reducer,
+  replies: replies.reducer,
   states: states.reducer,
   stats: stats.reducer,
   users: users.reducer,

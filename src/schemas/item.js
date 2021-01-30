@@ -1,6 +1,8 @@
 import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
+import { owner } from './user';
+
 const stats = new schema.Entity(
   'stats',
   {},
@@ -9,8 +11,6 @@ const stats = new schema.Entity(
     processStrategy: (value, root) => ({ ...value, id: root.id }),
   },
 );
-
-const owner = new schema.Entity('users', {});
 
 const state = new schema.Entity(
   'states',

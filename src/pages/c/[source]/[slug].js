@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import LoaderStory from '@loaders/channel/LoaderStory';
+import LoaderComments from '@loaders/comments/LoaderComments';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
 
       <LoaderStory />
+      <LoaderComments />
     </div>
   );
 }
