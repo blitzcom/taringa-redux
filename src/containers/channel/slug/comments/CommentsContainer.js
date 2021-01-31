@@ -15,7 +15,7 @@ function CommentsContainer({ storyId }) {
   useEffect(() => {
     dispatch(thunk(storyId));
     return () => dispatch(actions.clear());
-  }, [storyId]);
+  }, [dispatch, storyId]);
 
   if (control.status === 'fetching') {
     return <p>Loading...</p>;

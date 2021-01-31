@@ -10,7 +10,7 @@ function ArticlesContainer() {
 
   useEffect(() => {
     dispatch(thunk());
-  }, []);
+  }, [dispatch]);
 
   return <ArticlesList streamName="containers" entityId="articles" />;
 }
