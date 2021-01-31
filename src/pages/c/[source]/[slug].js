@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import LoaderStory from '@loaders/channel/LoaderStory';
-import LoaderComments from '@loaders/comments/LoaderComments';
+import CommentsContainer from 'containers/channel/slug/comments/CommentsContainer';
+import StoryContainer from 'containers/channel/slug/story/StoryContainer';
 
 export default function Home() {
   const router = useRouter();
@@ -16,8 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <LoaderStory storyId={storyId} />
-      <LoaderComments storyId={storyId} />
+      {storyId && <StoryContainer storyId={storyId} />}
+      {storyId && <CommentsContainer storyId={storyId} />}
     </div>
   );
 }

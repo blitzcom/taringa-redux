@@ -2,7 +2,7 @@ import { normalize, schema } from 'normalizr';
 
 import { item } from './item';
 
-const feed = new schema.Entity('feeds', {
+const feed = new schema.Entity('stream-containers', {
   items: [item],
 });
 
