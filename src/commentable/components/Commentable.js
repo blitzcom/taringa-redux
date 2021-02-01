@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
-import { getUser } from 'src/user/User.selectors';
+import User from 'src/user/components/User';
 
 function Commentable({ body, owner }) {
-  const user = useSelector(getUser(owner));
-
   return (
     <article>
       <p>
-        <b>{user.username}</b>: {body || 'Unavailable comment'}
+        <User userId={owner} />: {body || 'Unavailable comment'}
       </p>
     </article>
   );

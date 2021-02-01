@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
+import User from 'src/user/components/User';
+
 import { getArticle } from 'src/article/Article.selectors';
 import { getChannel } from 'src/channel/Channel.selectors';
-import { getUser } from 'src/user/User.selectors';
 
 function Article({ articleId }) {
   const article = useSelector(getArticle(articleId));
   const channel = useSelector(getChannel(article.channel));
-  const owner = useSelector(getUser(article.owner));
 
   return (
     <article>
@@ -26,11 +26,7 @@ function Article({ articleId }) {
         <span> • </span>
         <span>Posted by </span>
 
-        <Link href={`/u/${owner.username}`}>
-          <a>
-            <b>{owner.username}</b>
-          </a>
-        </Link>
+        <User userId={article.owner} />
       </p>
     </article>
   );
