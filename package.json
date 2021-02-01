@@ -2,6 +2,18 @@
   "name": "taringa",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Diego Lopez",
+    "email": "lgdiego@outlook.com",
+    "url": "https://github.com/blitzcom"
+  },
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/blitzcom/taringa",
+  "bugs": {
+    "email": "lgdiego@outlook.com",
+    "url": "https://github.com/blitzcom/taringa/issues"
+  },
+  "repository": "https://github.com/blitzcom/taringa",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
