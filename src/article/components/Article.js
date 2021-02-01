@@ -1,27 +1,22 @@
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
+import Channel from 'src/channel/components/Channel';
 import User from 'src/user/components/User';
+import StorySlug from 'src/story/components/StorySlug';
 
 import { getArticle } from 'src/article/Article.selectors';
-import { getChannel } from 'src/channel/Channel.selectors';
 
 function Article({ articleId }) {
   const article = useSelector(getArticle(articleId));
-  const channel = useSelector(getChannel(article.channel));
 
   return (
     <article>
       <h1>
-        <Link href={`/c/${channel.name}/${article.slug}`}>
-          <a>{article.title}</a>
-        </Link>
+        <StorySlug storyId={articleId}>{article.title}</StorySlug>
       </h1>
       <p>
-        <Link href={`/c/${channel.name}`}>
-          <a>{channel.title}</a>
-        </Link>
+        <Channel channelId={article.channel} />
 
         <span> • </span>
         <span>Posted by </span>

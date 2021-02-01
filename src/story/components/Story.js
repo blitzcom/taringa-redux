@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import Blocks from 'src/molecules/Blocks';
+import Channel from 'src/channel/components/Channel';
 
 import User from 'src/user/components/User';
 
@@ -15,6 +16,8 @@ function Story({ storyId }) {
       <h1>{story.title}</h1>
 
       <p>
+        <Channel channelId={story.channel} />
+        <span> • </span>
         Post by <User userId={story.owner} />
       </p>
 
