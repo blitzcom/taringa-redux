@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { getUser } from 'user/User.selectors';
+import { getUser } from 'src/user/User.selectors';
 
 function Commentable({ body, owner }) {
   const user = useSelector(getUser(owner));

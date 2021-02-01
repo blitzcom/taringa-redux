@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-import normalize from 'schemas/item';
+import normalize from 'src/schemas/item';
 
 import actions from './StoryContainer.reducer';
 

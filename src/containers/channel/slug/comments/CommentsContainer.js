@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Comments from 'comments/components/Comments';
+import Comments from 'src/comments/components/Comments';
 
 import actions from './CommentsContainer.reducer';
 import thunk from './CommentsContainer.thunk';

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { getStream } from 'articles/Articles.selectors';
+import { getStream } from 'src/articles/Articles.selectors';
 
-import Article from 'article/components/Article';
+import Article from 'src/article/components/Article';
 
 function ArticlesList({ streamName, entityId }) {
   const stream = useSelector(getStream(streamName, entityId));

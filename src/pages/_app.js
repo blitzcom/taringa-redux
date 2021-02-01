@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 
-import 'styles/globals.css';
+import 'src/styles/globals.css';
 
-import store from 'store';
+import store from 'src/store';
 
 function MyApp({ Component, pageProps }) {
   return (

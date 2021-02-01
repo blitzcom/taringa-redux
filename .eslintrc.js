@@ -8,8 +8,14 @@ module.exports = {
     },
   },
   settings: {
-    react: {
+    'react': {
       version: 'detect',
+    },
+    'import/resolver': {
+      alias: {
+        map: [['src', './src']],
+        extensions: ['.js', '.css'],
+      },
     },
   },
   plugins: ['jest'],
@@ -21,6 +27,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:import/errors',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',

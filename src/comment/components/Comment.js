@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Commentable from 'commentable/components/Commentable';
-import Replies from 'replies/components/Replies';
+import Commentable from 'src/commentable/components/Commentable';
+import Replies from 'src/replies/components/Replies';
 
-import { getComment } from 'comment/Comment.selectors';
+import { getComment } from 'src/comment/Comment.selectors';
 
 function Comment({ commentId }) {
   const comment = useSelector(getComment(commentId));

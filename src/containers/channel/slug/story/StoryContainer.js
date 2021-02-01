@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Story from 'story/components/Story';
+import Story from 'src/story/components/Story';
 
 import actions from './StoryContainer.reducer';
 import thunk from './StoryContainer.thunk';

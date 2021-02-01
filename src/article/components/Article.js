@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-import { getArticle } from 'article/Article.selectors';
-import { getChannel } from 'channel/Channel.selectors';
-import { getUser } from 'user/User.selectors';
+import { getArticle } from 'src/article/Article.selectors';
+import { getChannel } from 'src/channel/Channel.selectors';
+import { getUser } from 'src/user/User.selectors';
 
 function Article({ articleId }) {
   const article = useSelector(getArticle(articleId));

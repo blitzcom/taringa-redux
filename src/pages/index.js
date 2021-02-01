@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import styles from 'styles/Home.module.css';
+import styles from 'src/styles/Home.module.css';
 
-import ArticlesContainer from 'containers/home/articles/ArticlesContainer';
+import ArticlesContainer from 'src/containers/home/articles/ArticlesContainer';
 
 export default function Home() {
   return (

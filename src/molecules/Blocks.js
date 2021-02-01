@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Markdown from 'atoms/Markdown';
-import Image from 'atoms/Image';
+import Markdown from 'src/atoms/Markdown';
+import Image from 'src/atoms/Image';
 
 function Blocks({ blocks }) {
   return (

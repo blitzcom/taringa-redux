@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-import normalize from 'schemas/feed';
+import normalize from 'src/schemas/feed';
 
 import actions from './ArticlesContainer.reducer';
 

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Blocks from 'molecules/Blocks';
+import Blocks from 'src/molecules/Blocks';
 
-import { getStory } from 'story/Story.selectors';
+import { getStory } from 'src/story/Story.selectors';
 
 function Story({ storyId }) {
   const story = useSelector(getStory(storyId));

@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-import normalize from 'schemas/comment';
+import normalize from 'src/schemas/comment';
 
 import actions from './CommentsContainer.reducer';
 

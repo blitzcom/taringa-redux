@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Commentable from 'commentable/components/Commentable';
+import Commentable from 'src/commentable/components/Commentable';
 
-import { getReply } from 'reply/Reply.selectors';
+import { getReply } from 'src/reply/Reply.selectors';
 
 function Reply({ replyId }) {
   const reply = useSelector(getReply(replyId));

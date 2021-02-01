@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Comment from 'comment/components/Comment';
+import Comment from 'src/comment/components/Comment';
 
-import { getCommentStream } from 'comments/Comments.selectors';
+import { getCommentStream } from 'src/comments/Comments.selectors';
 
 function Comments({ storyId }) {
   const stream = useSelector(getCommentStream(storyId));

@@ -1,11 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import StoryPrepare from 'story/Story.prepare';
+import StoryPrepare from 'src/story/Story.prepare';
 
-import containers from 'containers/ContainersReducer';
+import containers from 'src/containers/ContainersReducer';
 
-import EntityReducerCreator from 'util/EntityReducerCreator';
-import StreamReducerCreator from 'util/StreamReducerCreator';
+import EntityReducerCreator from 'src/util/EntityReducerCreator';
+import StreamReducerCreator from 'src/util/StreamReducerCreator';
 
 const channels = EntityReducerCreator('channels');
 const comments = EntityReducerCreator('comments');

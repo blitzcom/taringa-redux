@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Reply from 'reply/components/Reply';
+import Reply from 'src/reply/components/Reply';
 
-import { getReplyStream } from 'replies/Replies.selectors';
+import { getReplyStream } from 'src/replies/Replies.selectors';
 
 function Replies({ commentId }) {
   const stream = useSelector(getReplyStream(commentId));

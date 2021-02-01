@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import CommentsContainer from 'containers/channel/slug/comments/CommentsContainer';
-import StoryContainer from 'containers/channel/slug/story/StoryContainer';
+import CommentsContainer from 'src/containers/channel/slug/comments/CommentsContainer';
+import StoryContainer from 'src/containers/channel/slug/story/StoryContainer';
 
 export default function Home() {
   const router = useRouter();
