@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import styles from 'src/styles/Home.module.css';
 
+import AboutContainer from 'src/containers/channel/name/about/AboutContainer';
+
 export default function Home({ title }) {
+  const { query } = useRouter();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +16,7 @@ export default function Home({ title }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p>Channel page</p>
+      <AboutContainer channelId={query.source} />
     </div>
   );
 }

@@ -43,6 +43,10 @@ const channel = new schema.Entity(
   },
 );
 
+export function channelNormalize(data) {
+  return normalize(data, channel);
+}
+
 export const item = new schema.Entity(
   'items',
   {
