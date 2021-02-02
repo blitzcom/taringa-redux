@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import styles from 'src/styles/Home.module.css';
 
 import AboutContainer from 'src/containers/channel/name/about/AboutContainer';
+import ArticlesContainer from 'src/containers/channel/name/articles/ArticlesContainer';
 
 export default function Home({ title }) {
   const { query } = useRouter();
@@ -17,6 +18,7 @@ export default function Home({ title }) {
       </Head>
 
       <AboutContainer channelId={query.source} />
+      <ArticlesContainer channelId={query.source} />
     </div>
   );
 }
