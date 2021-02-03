@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import styles from 'src/styles/Home.module.css';
 
 import AboutContainer from 'src/containers/user/username/about/AboutContainer';
+import AboutArticles from 'src/containers/user/username/articles/ArticlesContainer';
 
 export default function Username({ username }) {
   const { query } = useRouter();
@@ -17,6 +18,7 @@ export default function Username({ username }) {
       </Head>
 
       <AboutContainer username={query.username} />
+      <AboutArticles username={query.username} />
     </div>
   );
 }

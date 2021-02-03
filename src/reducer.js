@@ -30,11 +30,13 @@ const objects = combineReducers({
 const streamComments = StreamReducerCreator('comments');
 const streamContainers = StreamReducerCreator('containers');
 const streamReplies = StreamReducerCreator('replies');
+const streamUser = StreamReducerCreator('users');
 
 const streams = combineReducers({
   comments: streamComments.reducer,
   containers: streamContainers.reducer,
   replies: streamReplies.reducer,
+  users: streamUser.reducer,
 });
 
 const reducer = {

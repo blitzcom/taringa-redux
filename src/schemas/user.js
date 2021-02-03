@@ -9,6 +9,10 @@ export const owner = new schema.Entity(
   },
   {
     processStrategy(value) {
+      if (value.type === 'user:summary') {
+        return value;
+      }
+
       const {
         comments,
         followers,
