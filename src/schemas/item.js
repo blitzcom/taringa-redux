@@ -1,16 +1,8 @@
 import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
+import { stats } from 'src/stats/Stats.schema';
 import { owner } from './user';
-
-const stats = new schema.Entity(
-  'stats',
-  {},
-  {
-    idAttribute: (_, parent) => parent.id,
-    processStrategy: (value, root) => ({ ...value, id: root.id }),
-  },
-);
 
 const state = new schema.Entity(
   'states',
