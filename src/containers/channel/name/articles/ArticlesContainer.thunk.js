@@ -10,7 +10,7 @@ function thunk(channelId) {
 
     return superagent
       .get(
-        `https://api-user.taringa.net/c/${channelId}/feed?count=20&sort=bigbang1d`,
+        `https://api-user.taringa.net/c/${channelId}/feed?count=20&sort=bigbang1d&filter=article`,
       )
       .then(({ body }) => {
         const payload = normalize(body, 'channel-articles');
