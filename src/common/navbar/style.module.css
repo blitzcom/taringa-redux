@@ -3,6 +3,8 @@
   background-color: #005dab;
   display: flex;
   padding: 6px 16px;
+  position: sticky;
+  top: 0;
 }
 
 .logo {
