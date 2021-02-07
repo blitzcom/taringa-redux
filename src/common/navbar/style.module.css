@@ -1,0 +1,10 @@
+.nav {
+  align-items: center;
+  background-color: #005dab;
+  display: flex;
+  padding: 6px 16px;
+}
+
+.logo {
+  margin: 10px 0;
+}

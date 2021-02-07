@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ArticlesList from 'src/articles/components/ArticlesList';
+import ArticlesList from 'src/articles/components/articles-list';
 
 import { getControl } from './ArticlesContainer.selectors';
 

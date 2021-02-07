@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import ArticlesList from 'src/articles/components/ArticlesList';
+import ArticlesList from 'src/articles/components/articles-list';
 
 import thunk from './ArticlesContainer.thunk';
 

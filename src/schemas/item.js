@@ -2,7 +2,9 @@ import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
 import { stats } from 'src/stats/Stats.schema';
+
 import { owner } from './user';
+import { format } from './utils/kn3';
 
 const state = new schema.Entity(
   'states',
@@ -81,6 +83,12 @@ export const item = new schema.Entity(
           }),
         });
       }
+
+      const [thumbnail] = rest.summary.images.slice;
+
+      Object.assign(entity, {
+        thumbnail: format(thumbnail?.url, 'c', 90, 90),
+      });
 
       return entity;
     },
