@@ -5,7 +5,7 @@ import style from './style.module.css';
 function Article({ title, subtitle, meta, thumbnail }) {
   return (
     <article className={style.article}>
-      <div>
+      <div className={style.meta}>
         <small>{meta}</small>
       </div>
 
