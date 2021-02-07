@@ -19,9 +19,9 @@ export function test(url) {
  * @param {*} width
  * @param {*} height
  */
-export function format(url, mode, width, height) {
+export function format(url, mode, width, height, fallback) {
   if (!url) {
-    return;
+    return fallback;
   }
 
   if (!test(url)) {

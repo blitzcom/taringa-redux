@@ -1,0 +1,25 @@
+.section {
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+  max-width: 550px;
+  margin-top: 32px;
+  overflow: hidden;
+}
+
+.header {
+  padding: 16px;
+  background-color: #f1f3f5;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
