@@ -79,6 +79,14 @@ export const item = new schema.Entity(
               block.body = marked(block.body, { headerIds: false });
             }
 
+            if (block.type === 'image') {
+              block.widthStyle = { maxWidth: block.width };
+
+              block.paddingStyle = {
+                paddingBottom: `${(block.height / block.width) * 100}%`,
+              };
+            }
+
             return block;
           }),
         });

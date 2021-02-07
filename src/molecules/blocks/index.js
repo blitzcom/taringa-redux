@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Markdown from 'src/atoms/Markdown';
-import Image from 'src/atoms/Image';
+import Markdown from 'src/atoms/markdown';
+import Image from 'src/atoms/image';
 
 function Blocks({ blocks }) {
   return (
@@ -16,6 +16,8 @@ function Blocks({ blocks }) {
                 src={block.url}
                 width={block.width}
                 height={block.height}
+                widthStyle={block.widthStyle}
+                paddingStyle={block.paddingStyle}
               />
             );
           case 'markdown':

@@ -1,0 +1,11 @@
+.article {
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #dbdbdb;
+  max-width: 550px;
+  padding: 16px;
+}
+
+.title {
+  margin: 0 0 16px;
+}
