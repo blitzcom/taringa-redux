@@ -8,6 +8,11 @@
   z-index: 4000;
 }
 
+.anchor {
+  display: block;
+  line-height: 0;
+}
+
 .logo {
   margin: 10px 0;
 }
