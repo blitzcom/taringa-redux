@@ -1,4 +1,7 @@
-.markdown p {
+.markdown p,
+.markdown h1,
+.markdown h2,
+.markdown h3 {
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -7,4 +10,8 @@
   font-style: italic;
   border-left: 4px solid #eaeaea;
   padding-left: 8px;
+}
+
+.markdown pre {
+  overflow-x: auto;
 }
