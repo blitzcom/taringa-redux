@@ -34,6 +34,8 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'no-alert': ['error'],
+    'no-console': ['error'],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [

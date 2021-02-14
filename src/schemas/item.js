@@ -4,7 +4,7 @@ import marked from 'marked';
 import { stats } from 'src/stats/Stats.schema';
 
 import { owner } from './user';
-import { format } from './utils/kn3';
+import { formatThubmanil, formatIdentity } from './utils/knn';
 
 const state = new schema.Entity(
   'states',
@@ -80,11 +80,20 @@ export const item = new schema.Entity(
             }
 
             if (block.type === 'image') {
-              block.widthStyle = { maxWidth: block.width };
+              const { url, width, height } = block;
+              const defaultWith = width || 550;
+              const defaultHeight = height || 500;
+
+              block.url = formatIdentity(url);
+
+              block.widthStyle = { maxWidth: defaultWith };
 
               block.paddingStyle = {
-                paddingBottom: `${(block.height / block.width) * 100}%`,
+                paddingBottom: `${(defaultHeight / defaultWith) * 100}%`,
               };
+
+              block.width = defaultWith;
+              block.height = defaultHeight;
             }
 
             return block;
@@ -95,7 +104,7 @@ export const item = new schema.Entity(
       const [thumbnail] = rest.summary.images.slice;
 
       Object.assign(entity, {
-        thumbnail: format(thumbnail?.url, 'c', 90, 90),
+        thumbnail: formatThubmanil(thumbnail?.url),
       });
 
       return entity;

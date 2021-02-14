@@ -2,7 +2,7 @@ import { normalize, schema } from 'normalizr';
 
 import { stats } from 'src/stats/Stats.schema';
 
-import { format } from './utils/kn3';
+import { formatAvatar } from './utils/knn';
 
 export const owner = new schema.Entity(
   'users',
@@ -22,7 +22,7 @@ export const owner = new schema.Entity(
       } = value;
 
       const entity = Object.assign({}, rest, {
-        avatar: format(avatar, 'c', 28, 28, '/channel_avatar.svg'),
+        avatar: formatAvatar(avatar, '/channel_avatar.svg'),
       });
 
       if (value.type === 'user:summary') {
