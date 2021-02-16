@@ -2,7 +2,7 @@ import superagent from 'superagent';
 
 import { channelNormalize } from 'src/schemas/item';
 
-import actions from './AboutContainer.reducer';
+import actions from './reducer';
 
 function thunk(channelId) {
   return (dispatch) => {

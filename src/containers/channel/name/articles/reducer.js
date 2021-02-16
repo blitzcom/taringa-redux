@@ -23,10 +23,13 @@ const articles = createSlice({
       state.error = action.payload;
       state.status = 'failing';
     },
-    clear(state) {
+    clean(state) {
       state.channelId = null;
       state.error = null;
       state.status = 'fetching';
+    },
+    cancel(state) {
+      state.status = 'cancel';
     },
   },
 });

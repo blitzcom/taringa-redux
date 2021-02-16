@@ -16,17 +16,24 @@ const about = createSlice({
       state.status = 'fetching';
     },
     success(state, action) {
-      state.channelId = action.payload.result;
-      state.status = 'fetched';
+      if (state.status !== 'cancel') {
+        state.status = 'fetched';
+        state.channelId = action.payload.result;
+      }
     },
     failure(state, action) {
-      state.error = action.payload;
-      state.status = 'failing';
+      if (state.status !== 'cancel') {
+        state.error = action.payload;
+        state.status = 'failing';
+      }
     },
-    clear(state) {
+    clean(state) {
       state.channelId = null;
       state.error = null;
       state.status = 'fetching';
+    },
+    cancel(state) {
+      state.status = 'cancel';
     },
   },
 });

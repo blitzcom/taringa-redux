@@ -2,24 +2,33 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import styles from 'src/styles/Home.module.css';
+import App from 'src/common/app';
+import Content from 'src/common/content';
+import Navbar from 'src/common/navbar';
 
-import AboutContainer from 'src/containers/channel/name/about/AboutContainer';
-import ArticlesContainer from 'src/containers/channel/name/articles/ArticlesContainer';
+import AboutContainer from 'src/containers/channel/name/about';
+import ArticlesContainer from 'src/containers/channel/name/articles';
+import Loader from 'src/containers/channel/name/loader';
 
 export default function Home({ title }) {
   const { query } = useRouter();
+  const { source } = query;
 
   return (
-    <div className={styles.container}>
+    <App>
       <Head>
         <title>{title} | Taringa!</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AboutContainer channelId={query.source} />
-      <ArticlesContainer channelId={query.source} />
-    </div>
+      <Navbar />
+
+      <Content>
+        <Loader channelId={source} />
+        <AboutContainer />
+        <ArticlesContainer />
+      </Content>
+    </App>
   );
 }
 

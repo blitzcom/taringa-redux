@@ -2,7 +2,7 @@ import superagent from 'superagent';
 
 import normalize from 'src/schemas/feed';
 
-import actions from './ArticlesContainer.reducer';
+import actions from './reducer';
 
 function thunk(channelId) {
   return (dispatch) => {
