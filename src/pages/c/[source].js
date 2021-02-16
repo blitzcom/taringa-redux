@@ -25,8 +25,8 @@ export default function Home({ title }) {
 
       <Content>
         <Loader channelId={source} />
-        <AboutContainer />
-        <ArticlesContainer />
+        <AboutContainer channelId={source} />
+        <ArticlesContainer channelId={source} />
       </Content>
     </App>
   );

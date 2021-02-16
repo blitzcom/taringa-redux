@@ -6,11 +6,15 @@ import containers from 'src/containers/ContainersReducer';
 
 import EntityReducerCreator from 'src/util/EntityReducerCreator';
 import StreamReducerCreator from 'src/util/StreamReducerCreator';
+import ControlCreator from 'src/util/ControlReducerCreator';
 
-const channels = EntityReducerCreator('channels');
+const channels = EntityReducerCreator('channels', {
+  selectId: (channel) => channel.name,
+});
+
 const comments = EntityReducerCreator('comments');
 const feeds = EntityReducerCreator('feeds');
-const items = EntityReducerCreator('items', StoryPrepare);
+const items = EntityReducerCreator('items', {}, StoryPrepare);
 const replies = EntityReducerCreator('replies');
 const states = EntityReducerCreator('states');
 const stats = EntityReducerCreator('stats');
@@ -39,10 +43,19 @@ const streams = combineReducers({
   users: streamUser.reducer,
 });
 
+const controlChannelAbout = ControlCreator('control/channel/about');
+const controlChannelArticles = ControlCreator('control/channel/articles');
+
+const controls = combineReducers({
+  'channel/about': controlChannelAbout.reducer,
+  'channel/articles': controlChannelArticles.reducer,
+});
+
 const reducer = {
   containers,
   objects,
   streams,
+  controls,
 };
 
 export default reducer;

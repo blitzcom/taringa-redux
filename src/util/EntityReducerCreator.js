@@ -2,8 +2,8 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const IDENTITY_PREPARE = (state) => state;
 
-function entityReducerCreator(name, prepare = IDENTITY_PREPARE) {
-  const entityAdapter = createEntityAdapter({});
+function entityReducerCreator(name, options = {}, prepare = IDENTITY_PREPARE) {
+  const entityAdapter = createEntityAdapter(options);
 
   const slice = createSlice({
     name,

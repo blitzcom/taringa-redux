@@ -10,7 +10,7 @@ const state = new schema.Entity(
   'states',
   {},
   {
-    idAttribute: (_, parent) => parent.id,
+    idAttribute: (_, parent) => parent.name,
     processStrategy: (value, root) => ({ ...value, id: root.id }),
   },
 );
@@ -23,6 +23,7 @@ const channel = new schema.Entity(
     state: state,
   },
   {
+    idAttribute: (value) => value.name,
     processStrategy(value) {
       const { stories, subscribers, ...rest } = value;
 

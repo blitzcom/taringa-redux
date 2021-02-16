@@ -5,6 +5,12 @@ export const stats = new schema.Entity(
   {},
   {
     idAttribute: (_, parent) => parent.id,
-    processStrategy: (value, root) => ({ ...value, id: root.id }),
+    processStrategy: (value, root) => {
+      if (root.type === 'channel' || root.type === 'channel:summary') {
+        return { ...value, id: root.name };
+      }
+
+      return { ...value, id: root.id };
+    },
   },
 );
