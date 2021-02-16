@@ -8,7 +8,14 @@ const PATH =
   'list/globalHome?count=35&filter=article&sort=bigbang1d&globalSafe=true&nsfw=false';
 
 function thunk() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const state = getState();
+    const control = state.containers.home.articles;
+
+    if (control.status === 'fetched') {
+      return Promise.resolve();
+    }
+
     dispatch(actions.fetch());
 
     return superagent

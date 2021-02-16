@@ -21,6 +21,7 @@ module.exports = {
   plugins: ['jest'],
   env: {
     'browser': true,
+    'es6': true,
     'amd': true,
     'node': true,
     'jest/globals': true,
