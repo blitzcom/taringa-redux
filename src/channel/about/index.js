@@ -1,0 +1,53 @@
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
+import { getChannel } from 'src/channel/Channel.selectors';
+
+import Description from 'src/channel/description';
+import Stats from 'src/channel/stats';
+
+import style from './style.module.css';
+
+function ChannelAbout({ channelId }) {
+  const channel = useSelector(getChannel(channelId));
+
+  return (
+    <div className={style.card}>
+      <img
+        className={style.background}
+        src={channel.background}
+        alt={channel.title}
+      />
+
+      <div className={style.about}>
+        <img
+          className={style.thumbnail}
+          src={channel.thumbnail}
+          alt={channel.title}
+          width={60}
+          height={60}
+        />
+        <div className={style.meta}>
+          <div>
+            <h1 className={style.title}>{channel.title}</h1>
+            <p className={style.category}>{channel.category}</p>
+            <Stats channelId={channelId} />
+          </div>
+
+          <div className={style.actions}>
+            <button className={style.join} type="button">
+              Join
+            </button>
+          </div>
+        </div>
+        <Description value={channel.description} />
+      </div>
+    </div>
+  );
+}
+
+ChannelAbout.propTypes = {
+  channelId: PropTypes.string.isRequired,
+};
+
+export default ChannelAbout;

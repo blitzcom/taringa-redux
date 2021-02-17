@@ -1,7 +1,7 @@
 const KNN_URL = 'https://media.taringa.net/knn';
 
 function toBase64(url) {
-  return btoa(url).replace('=', '').replace('/', '_');
+  return btoa(url).replace(/=/g, '').replace(/\//g, '_');
 }
 
 function createFormat(preset) {

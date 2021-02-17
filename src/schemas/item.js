@@ -4,7 +4,7 @@ import marked from 'marked';
 import { stats } from 'src/stats/Stats.schema';
 
 import { owner } from './user';
-import { formatThubmanil, formatIdentity } from './utils/knn';
+import { formatThubmanil, formatIdentity, formatAvatar } from './utils/knn';
 
 const state = new schema.Entity(
   'states',
@@ -25,10 +25,12 @@ const channel = new schema.Entity(
   {
     idAttribute: (value) => value.name,
     processStrategy(value) {
-      const { stories, subscribers, ...rest } = value;
+      const { stories, subscribers, thumbnail, background, ...rest } = value;
 
       return {
         ...rest,
+        thumbnail: formatAvatar(thumbnail),
+        background: formatIdentity(background),
         stats: {
           stories,
           subscribers,

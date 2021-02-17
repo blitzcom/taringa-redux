@@ -1,0 +1,29 @@
+.card {
+  height: 326px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  margin-bottom: 24px;
+  width: 550px;
+}
+
+.background {
+  background: #f1f3f5;
+  height: 170px;
+}
+.about {
+  border-top: 1px solid #dee2e6;
+  position: relative;
+  padding: 16px;
+}
+
+.thumbnail {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+  position: absolute;
+  top: -40px;
+  width: 60px;
+  height: 60px;
+}

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import ChannelAbout from 'src/channel/components/ChannelAbout';
+import ChannelAbout from 'src/channel/about';
+import ChannelAboutPlaceholder from 'src/channel/about/placeholder';
 
 import selectControl from 'src/util/selectors/selectControl';
 
@@ -14,7 +15,7 @@ function AboutContainer({ channelId }) {
     return <ChannelAbout channelId={channelId} />;
   }
 
-  return <p>Loading...</p>;
+  return <ChannelAboutPlaceholder />;
 }
 
 AboutContainer.propTypes = {
