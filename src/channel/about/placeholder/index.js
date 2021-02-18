@@ -1,14 +1,21 @@
 import style from './style.module.css';
 
+import Card from 'src/common/card';
+import Paper from 'src/common/card/paper';
+
 function Placeholder() {
   return (
-    <div className={style.card}>
-      <div className={style.background} />
+    <Card>
+      <Paper>
+        <div className={style.card}>
+          <div className={style.background} />
 
-      <div className={style.about}>
-        <div className={style.thumbnail} />
-      </div>
-    </div>
+          <div className={style.about}>
+            <div className={style.thumbnail} />
+          </div>
+        </div>
+      </Paper>
+    </Card>
   );
 }
 

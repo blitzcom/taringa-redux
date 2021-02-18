@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { getChannel } from 'src/channel/Channel.selectors';
 
+import Card from 'src/common/card';
+import Paper from 'src/common/card/paper';
+
 import Description from 'src/channel/description';
 import Stats from 'src/channel/stats';
 
@@ -12,37 +15,39 @@ function ChannelAbout({ channelId }) {
   const channel = useSelector(getChannel(channelId));
 
   return (
-    <div className={style.card}>
-      <img
-        className={style.background}
-        src={channel.background}
-        alt={channel.title}
-      />
-
-      <div className={style.about}>
+    <Card>
+      <Paper>
         <img
-          className={style.thumbnail}
-          src={channel.thumbnail}
+          className={style.background}
+          src={channel.background}
           alt={channel.title}
-          width={60}
-          height={60}
         />
-        <div className={style.meta}>
-          <div>
-            <h1 className={style.title}>{channel.title}</h1>
-            <p className={style.category}>{channel.category}</p>
-            <Stats channelId={channelId} />
-          </div>
 
-          <div className={style.actions}>
-            <button className={style.join} type="button">
-              Join
-            </button>
+        <div className={style.about}>
+          <img
+            className={style.thumbnail}
+            src={channel.thumbnail}
+            alt={channel.title}
+            width={60}
+            height={60}
+          />
+          <div className={style.meta}>
+            <div>
+              <h1 className={style.title}>{channel.title}</h1>
+              <p className={style.category}>{channel.category}</p>
+              <Stats channelId={channelId} />
+            </div>
+
+            <div className={style.actions}>
+              <button className={style.join} type="button">
+                Join
+              </button>
+            </div>
           </div>
+          <Description value={channel.description} />
         </div>
-        <Description value={channel.description} />
-      </div>
-    </div>
+      </Paper>
+    </Card>
   );
 }
 

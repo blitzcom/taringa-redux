@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import ArticlesList from 'src/articles/components/articles-list';
+import Card from 'src/common/card';
+import Center from 'src/common/card/center';
+import Spinner from 'src/common/spinner';
+
+import ArticlesList from 'src/articles/list';
 
 import selectControl from 'src/util/selectors/selectControl';
 
@@ -14,7 +18,13 @@ function ArticlesContainer({ channelId }) {
     return <ArticlesList streamName="containers" entityId={channelId} />;
   }
 
-  return <p>Loading...</p>;
+  return (
+    <Card snap={false}>
+      <Center>
+        <Spinner />
+      </Center>
+    </Card>
+  );
 }
 
 ArticlesContainer.propTypes = {

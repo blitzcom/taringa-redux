@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 
-import style from './style.module.css';
+import Card from 'src/common/card';
+import Paper from 'src/common/card/paper';
 
 function ArticlesList({ items, component: Component }) {
   return (
-    <section className={style.list}>
-      {items.map((id) => (
-        <Component key={id} articleId={id} />
-      ))}
-    </section>
+    <Card snap={false}>
+      <Paper>
+        {items.map((id) => (
+          <Component key={id} articleId={id} />
+        ))}
+      </Paper>
+    </Card>
   );
 }
 
