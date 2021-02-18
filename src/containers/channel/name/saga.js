@@ -6,7 +6,6 @@ import {
   race,
   take,
   select,
-  delay,
 } from 'redux-saga/effects';
 
 import { get } from 'src/agent';
@@ -18,11 +17,14 @@ import selectControl from 'src/util/selectors/selectControl';
 
 function* getArticles(channelId) {
   try {
+    yield take([
+      'control/channel/about/success',
+      'control/channel/about/ready',
+    ]);
+
     const control = yield select(selectControl, 'channel/articles', channelId);
 
     if (control?.status === 'fetched') {
-      yield delay(250);
-      yield put({ type: 'control/channel/articles/ready', payload: channelId });
       return;
     }
 
@@ -60,15 +62,11 @@ function* getAbout(channelId) {
     const control = yield select(selectControl, 'channel/about', channelId);
 
     if (control?.status === 'fetched') {
+      yield put({ type: 'control/channel/about/ready', payload: channelId });
       return;
     }
 
     yield put({ type: 'control/channel/about/fetch', payload: channelId });
-
-    yield take([
-      'control/channel/articles/success',
-      'control/channel/articles/ready',
-    ]);
 
     const { body } = yield call(get, `c/${channelId}/about`);
 
