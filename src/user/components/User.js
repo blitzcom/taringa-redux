@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-import { getUser } from 'src/user/User.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
 function User({ userId }) {
-  const user = useSelector(getUser(userId));
+  const user = useSelector((state) => selectEntity(state, 'users', userId));
 
   return (
     <Link href={`/u/${user.username}`}>

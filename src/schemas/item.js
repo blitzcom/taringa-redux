@@ -45,7 +45,7 @@ export function channelNormalize(data) {
 }
 
 export const item = new schema.Entity(
-  'items',
+  'stories',
   {
     stats: stats,
     channel: channel,

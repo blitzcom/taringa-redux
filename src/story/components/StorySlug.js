@@ -2,10 +2,15 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-import { getSlug } from 'src/story/Story.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
 function StorySlug({ storyId, children }) {
-  const slug = useSelector(getSlug(storyId));
+  const slug = useSelector((state) => {
+    const story = selectEntity(state, 'stories', storyId);
+    const channel = selectEntity(state, 'channels', story.channel);
+
+    return `/c/${channel.name}/${story.slug}`;
+  });
 
   return (
     <Link href={slug}>

@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 
+import selectEntity from 'src/selectors/select-entity';
+
 import Channel from 'src/channel/components/Channel';
 import User from 'src/user/components/User';
 import StorySlug from 'src/story/components/StorySlug';
 
-import { getArticle } from 'src/article/Article.selectors';
 import Article from './component';
 
 function ArticleContainer({ articleId }) {
-  const article = useSelector(getArticle(articleId));
+  const article = useSelector((state) =>
+    selectEntity(state, 'stories', articleId),
+  );
 
   return (
     <Article

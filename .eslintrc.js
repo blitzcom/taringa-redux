@@ -25,6 +25,8 @@ module.exports = {
     'amd': true,
     'node': true,
     'jest/globals': true,
+    'def': true,
+    '$': true,
   },
   extends: [
     'eslint:recommended',
