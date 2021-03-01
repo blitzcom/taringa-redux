@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import ArticlesList from 'src/articles/list';
 import selectControl from 'src/selectors/select-control';
+import selectEntity from 'src/selectors/select-entity';
+
+import Feed from 'src/organisms/feed';
+import Article from 'src/components/article';
 
 import thunk from './ArticlesContainer.thunk';
 
@@ -13,15 +16,13 @@ function ArticlesContainer() {
     selectControl(state, 'feeds', 'articles'),
   );
 
+  const feed = useSelector((state) => selectEntity(state, 'feeds', 'articles'));
+
   useEffect(() => {
     dispatch(thunk());
   }, [dispatch]);
 
-  if (control?.status === 'loaded') {
-    return <ArticlesList entityId="articles" />;
-  }
-
-  return null;
+  return <Feed Component={Article} control={control} feed={feed} />;
 }
 
 export default ArticlesContainer;

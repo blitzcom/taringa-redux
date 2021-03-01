@@ -5,9 +5,9 @@ import selectEntity from 'src/selectors/select-entity';
 
 import Article from 'src/molecules/story/article';
 
-function ArticleContainer({ articleId }) {
+function ArticleContainer({ itemId }) {
   const article = useSelector((state) => {
-    const entity = selectEntity(state, 'stories', articleId);
+    const entity = selectEntity(state, 'stories', itemId);
     const channel = selectEntity(state, 'channels', entity.channel);
     const owner = selectEntity(state, 'users', entity.owner);
 
@@ -17,7 +17,7 @@ function ArticleContainer({ articleId }) {
       title: entity.title,
       url: `/c/${channel.name}/${entity.slug}`,
       channel: {
-        name: channel.name,
+        name: channel.title,
         url: `/c/${channel.name}`,
       },
       owner: {
@@ -40,7 +40,7 @@ function ArticleContainer({ articleId }) {
 }
 
 ArticleContainer.propTypes = {
-  articleId: PropTypes.string.isRequired,
+  itemId: PropTypes.string.isRequired,
 };
 
 export default ArticleContainer;

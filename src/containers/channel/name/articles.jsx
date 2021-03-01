@@ -1,30 +1,20 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Card from 'src/common/card';
-import Center from 'src/common/card/center';
-import Spinner from 'src/common/spinner';
-
-import ArticlesList from 'src/articles/list';
-
+import selectEntity from 'src/selectors/select-entity';
 import selectControl from 'src/selectors/select-control';
+
+import Feed from 'src/organisms/feed';
+import Article from 'src/components/article';
 
 function ArticlesContainer({ channelId }) {
   const control = useSelector((state) =>
     selectControl(state, 'feeds', channelId),
   );
 
-  if (control?.status === 'loaded') {
-    return <ArticlesList entityId={channelId} />;
-  }
+  const feed = useSelector((state) => selectEntity(state, 'feeds', channelId));
 
-  return (
-    <Card snap={false}>
-      <Center>
-        <Spinner />
-      </Center>
-    </Card>
-  );
+  return <Feed Component={Article} control={control} feed={feed} />;
 }
 
 ArticlesContainer.propTypes = {
