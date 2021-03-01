@@ -1,0 +1,7 @@
+.paper {
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+  width: 550px;
+}

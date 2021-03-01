@@ -1,0 +1,9 @@
+.text {
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0;
+}
+
+.text a:hover {
+  text-decoration: underline;
+}

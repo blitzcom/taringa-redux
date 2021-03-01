@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import Article from 'src/article/components/article';
+import Article from 'src/components/story/article';
 
 import ArticlesList from './component';
 
