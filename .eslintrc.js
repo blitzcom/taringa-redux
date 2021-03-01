@@ -25,16 +25,20 @@ module.exports = {
     'amd': true,
     'node': true,
     'jest/globals': true,
-    'def': true,
-    '$': true,
+  },
+  globals: {
+    def: 'readonly',
+    $: 'readonly',
+    context: 'readonly',
   },
   extends: [
-    'eslint:recommended',
+    'airbnb',
     'plugin:import/errors',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
+    'prettier/react',
   ],
   rules: {
     'no-alert': ['error'],
