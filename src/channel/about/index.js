@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { getChannel } from 'src/channel/Channel.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
 import Card from 'src/common/card';
 import Paper from 'src/common/card/paper';
@@ -12,7 +12,9 @@ import Stats from 'src/channel/stats';
 import style from './style.module.css';
 
 function ChannelAbout({ channelId }) {
-  const channel = useSelector(getChannel(channelId));
+  const channel = useSelector((state) =>
+    selectEntity(state, 'channels', channelId),
+  );
 
   return (
     <Card>

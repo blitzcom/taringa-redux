@@ -2,6 +2,7 @@ import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
 import { stats } from 'src/stats/Stats.schema';
+import getId from 'src/schemas/utils/get-id';
 
 import { owner } from './user';
 import { formatThubmanil, formatIdentity, formatAvatar } from './utils/knn';
@@ -10,7 +11,7 @@ const state = new schema.Entity(
   'states',
   {},
   {
-    idAttribute: (_, parent) => parent.name,
+    idAttribute: (_, parent) => getId(parent),
     processStrategy: (value, root) => ({ ...value, id: root.id }),
   },
 );
@@ -23,7 +24,7 @@ const channel = new schema.Entity(
     state: state,
   },
   {
-    idAttribute: (value) => value.name,
+    idAttribute: (_, parent) => getId(parent),
     processStrategy(value) {
       const { stories, subscribers, thumbnail, background, ...rest } = value;
 

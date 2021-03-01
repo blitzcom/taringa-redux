@@ -7,12 +7,12 @@ const reply = new schema.Entity('replies', {
 });
 
 const replyFeed = new schema.Entity(
-  'stream-replies',
+  'feeds',
   {
     items: [reply],
   },
   {
-    idAttribute: (_, parent) => parent.id,
+    idAttribute: (_, parent) => `comment-replies-${parent.id}`,
     processStrategy: (value, parent) => ({
       ...value,
       id: parent.id,
@@ -25,10 +25,10 @@ const comment = new schema.Entity('comments', {
   replies: replyFeed,
 });
 
-const feed = new schema.Entity('stream-comments', {
+const feed = new schema.Entity('feeds', {
   items: [comment],
 });
 
 export default function exec(data, storyId) {
-  return normalize({ ...data, id: storyId }, feed);
+  return normalize({ ...data, id: `story-comments-${storyId}` }, feed);
 }

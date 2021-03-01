@@ -6,12 +6,12 @@ import Channel from 'src/channel/components/Channel';
 
 import User from 'src/user/components/User';
 
-import { getStory } from 'src/story/Story.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
 import Story from './component';
 
 function StoryContainer({ storyId }) {
-  const story = useSelector(getStory(storyId));
+  const story = useSelector((state) => selectEntity(state, 'stories', storyId));
 
   return (
     <Story

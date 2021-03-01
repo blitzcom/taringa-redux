@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 
 import Reply from 'src/reply';
 
-import { getReplyStream } from 'src/replies/Replies.selectors';
-
 import Replies from './component';
+import selectEntity from 'src/selectors/select-entity';
 
 function RepliesContainer({ commentId }) {
-  const stream = useSelector(getReplyStream(commentId));
+  const feed = useSelector((state) =>
+    selectEntity(state, 'feeds', `comment-replies-${commentId}`),
+  );
 
-  return <Replies component={Reply} items={stream.items} />;
+  return <Replies component={Reply} items={feed.items} />;
 }
 
 RepliesContainer.propTypes = {

@@ -1,3 +1,7 @@
 import controlsCreator from 'src/reducers/utils/controls-creator';
 
-export default controlsCreator({ name: 'channels' });
+const reducer = controlsCreator({ name: 'channels' });
+
+export const actions = reducer.actions;
+
+export default reducer;

@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux';
 import Commentable from 'src/commentable';
 import Replies from 'src/replies';
 
-import { getComment } from 'src/comment/Comment.selectors';
-
 import Comment from './component';
+import selectEntity from 'src/selectors/select-entity';
 
 function CommentContainer({ commentId }) {
-  const comment = useSelector(getComment(commentId));
+  const comment = useSelector((state) =>
+    selectEntity(state, 'comments', commentId),
+  );
 
   return (
     <Comment

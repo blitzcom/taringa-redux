@@ -47,7 +47,10 @@ function controlsCreator(options = {}) {
       case actions.failure.type: {
         return {
           ...state,
-          [action.payload]: fetching(state[action.payload], action),
+          [action.payload.target]: fetching(
+            state[action.payload.target],
+            action,
+          ),
         };
       }
 

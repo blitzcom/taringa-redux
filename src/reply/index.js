@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 
 import Commentable from 'src/commentable';
 
-import { getReply } from 'src/reply/Reply.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
 import Reply from './component';
 
 function ReplyContainer({ replyId }) {
-  const reply = useSelector(getReply(replyId));
+  const reply = useSelector((state) => selectEntity(state, 'replies', replyId));
 
   return (
     <Reply>

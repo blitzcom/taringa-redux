@@ -1,34 +1,24 @@
-import {
-  all,
-  call,
-  cancelled,
-  put,
-  race,
-  take,
-  select,
-} from 'redux-saga/effects';
+import { call, cancelled, put, race, take, select } from 'redux-saga/effects';
 
 import { get } from 'src/agent';
 
 import { channelNormalize } from 'src/schemas/item';
 import articlesNormalize from 'src/schemas/feed';
 
-import selectControl from 'src/util/selectors/selectControl';
+import selectControl from 'src/selectors/select-control';
+
+import { actions as channelActions } from 'src/reducers/controls/channels';
+import { actions as feedActions } from 'src/reducers/controls/feeds';
 
 function* getArticles(channelId) {
   try {
-    yield take([
-      'control/channel/about/success',
-      'control/channel/about/ready',
-    ]);
+    const control = yield select(selectControl, 'feeds', channelId);
 
-    const control = yield select(selectControl, 'channel/articles', channelId);
-
-    if (control?.status === 'fetched') {
+    if (control?.status === 'loaded') {
       return;
     }
 
-    yield put({ type: 'control/channel/articles/fetch', payload: channelId });
+    yield put(feedActions.load({ target: channelId }));
 
     const { body } = yield call(get, `c/${channelId}/feed`, {
       count: 20,
@@ -38,66 +28,49 @@ function* getArticles(channelId) {
 
     const payload = yield call(articlesNormalize, body, channelId);
 
-    yield put({
-      type: 'control/channel/articles/success',
-      payload: { ...payload, target: channelId },
-    });
+    yield put(feedActions.success({ ...payload, target: channelId }));
   } catch (e) {
-    yield put({
-      type: 'control/channel/articles/failure',
-      payload: { target: channelId, message: e.message },
-    });
+    yield put(feedActions.failure({ target: channelId }, e.message));
   } finally {
     if (yield cancelled()) {
-      yield put({
-        type: 'control/channel/articles/reset',
-        payload: channelId,
-      });
+      // TODO: Handle cancel.
     }
   }
 }
 
 function* getAbout(channelId) {
   try {
-    const control = yield select(selectControl, 'channel/about', channelId);
+    const control = yield select(selectControl, 'channels', channelId);
 
-    if (control?.status === 'fetched') {
-      yield put({ type: 'control/channel/about/ready', payload: channelId });
+    if (control?.status === 'loaded') {
       return;
     }
 
-    yield put({ type: 'control/channel/about/fetch', payload: channelId });
+    yield put(channelActions.load({ target: channelId }));
 
     const { body } = yield call(get, `c/${channelId}/about`);
 
     const payload = yield call(channelNormalize, body);
 
-    yield put({
-      type: 'control/channel/about/success',
-      payload: { ...payload, target: channelId },
-    });
+    yield put(channelActions.success({ ...payload, target: channelId }));
   } catch (e) {
-    yield put({
-      type: 'control/channel/about/failure',
-      payload: { target: channelId, message: e.message },
-    });
+    yield put(channelActions.failure({ target: channelId }, e.message));
   } finally {
     if (yield cancelled()) {
-      yield put({
-        type: 'control/channel/about/reset',
-        payload: channelId,
-      });
+      // TODO: Handle cancel.
     }
   }
+}
+
+function* runFlow(channelId) {
+  yield call(getAbout, channelId);
+  yield call(getArticles, channelId);
 }
 
 export default function* channelName() {
   while (true) {
     const { payload: channelId } = yield take('LOAD_CHANNEL_PAGE');
 
-    yield race([
-      all([call(getArticles, channelId), call(getAbout, channelId)]),
-      take('CANCEL_CHANNEL_PAGE'),
-    ]);
+    yield race([call(runFlow, channelId), take('CANCEL_CHANNEL_PAGE')]);
   }
 }

@@ -1,3 +1,7 @@
 import controlsCreator from 'src/reducers/utils/controls-creator';
 
-export default controlsCreator({ name: 'feeds' });
+const reducer = controlsCreator({ name: 'feeds' });
+
+export const actions = reducer.actions;
+
+export default reducer;

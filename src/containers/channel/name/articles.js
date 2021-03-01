@@ -7,15 +7,15 @@ import Spinner from 'src/common/spinner';
 
 import ArticlesList from 'src/articles/list';
 
-import selectControl from 'src/util/selectors/selectControl';
+import selectControl from 'src/selectors/select-control';
 
 function ArticlesContainer({ channelId }) {
   const control = useSelector((state) =>
-    selectControl(state, 'channel/articles', channelId),
+    selectControl(state, 'feeds', channelId),
   );
 
-  if (control?.status === 'fetched') {
-    return <ArticlesList streamName="containers" entityId={channelId} />;
+  if (control?.status === 'loaded') {
+    return <ArticlesList entityId={channelId} />;
   }
 
   return (
