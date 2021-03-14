@@ -61,5 +61,11 @@ module.exports = {
         'no-undef': 0,
       },
     },
+    {
+      files: ['src/pages/_app.jsx'],
+      rules: {
+        'react/jsx-props-no-spreading': 'off',
+      },
+    },
   ],
 };
