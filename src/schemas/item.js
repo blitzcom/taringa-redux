@@ -1,11 +1,11 @@
 import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
-import { stats } from 'src/stats/Stats.schema';
 import getId from 'src/schemas/utils/get-id';
 
-import { owner } from './user';
 import { formatThubmanil, formatIdentity, formatAvatar } from './utils/knn';
+import { owner } from './user';
+import { stats } from './stats';
 
 const state = new schema.Entity(
   'states',
@@ -19,9 +19,9 @@ const state = new schema.Entity(
 const channel = new schema.Entity(
   'channels',
   {
-    stats: stats,
-    owner: owner,
-    state: state,
+    stats,
+    owner,
+    state,
   },
   {
     idAttribute: (_, parent) => getId(parent),
@@ -48,10 +48,10 @@ export function channelNormalize(data) {
 export const item = new schema.Entity(
   'stories',
   {
-    stats: stats,
-    channel: channel,
-    owner: owner,
-    state: state,
+    stats,
+    channel,
+    owner,
+    state,
   },
   {
     processStrategy(value) {

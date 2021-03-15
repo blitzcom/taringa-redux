@@ -1,8 +1,9 @@
 import { normalize, schema } from 'normalizr';
 
-import { stats } from 'src/stats/Stats.schema';
+import { stats } from './stats';
 
 import { formatAvatar } from './utils/knn';
+import getId from './utils/get-id';
 
 export const owner = new schema.Entity(
   'users',
@@ -10,6 +11,7 @@ export const owner = new schema.Entity(
     stats,
   },
   {
+    idAttribute: (value) => getId(value),
     processStrategy(value) {
       const {
         avatar,
@@ -21,9 +23,10 @@ export const owner = new schema.Entity(
         ...rest
       } = value;
 
-      const entity = Object.assign({}, rest, {
+      const entity = {
+        ...rest,
         avatar: formatAvatar(avatar, '/channel_avatar.svg'),
-      });
+      };
 
       if (value.type === 'user:summary') {
         return entity;

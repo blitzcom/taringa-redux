@@ -1,3 +1,9 @@
 import controlsCreator from 'src/reducers/utils/controls-creator';
 
-export default controlsCreator({ name: 'users' });
+const reducer = controlsCreator({ name: 'users' });
+
+const { actions } = reducer;
+
+export { actions };
+
+export default reducer;

@@ -4,8 +4,11 @@ import { useRouter } from 'next/router';
 
 import styles from 'src/styles/Home.module.css';
 
-import AboutContainer from 'src/containers/user/username/about/AboutContainer';
-import AboutArticles from 'src/containers/user/username/articles/ArticlesContainer';
+import Navbar from 'src/common/navbar';
+
+import UsernameAbout from 'src/containers/user/username/about';
+import UsernameArticles from 'src/containers/user/username/articles';
+import UsernameLoader from 'src/containers/user/username/loader';
 
 export default function Username({ username }) {
   const { query } = useRouter();
@@ -17,14 +20,17 @@ export default function Username({ username }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AboutContainer username={query.username} />
-      <AboutArticles username={query.username} />
+      <Navbar />
+
+      <UsernameLoader username={query.username} />
+      <UsernameAbout username={query.username} />
+      <UsernameArticles username={query.username} />
     </div>
   );
 }
 
 Username.propTypes = {
-  username: PropTypes.string,
+  username: PropTypes.string.isRequired,
 };
 
 export async function getStaticPaths() {
