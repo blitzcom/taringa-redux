@@ -6,7 +6,7 @@ import Paper from 'src/atoms/paper';
 import Box from 'src/atoms/box';
 import Spinner from 'src/atoms/spinner';
 
-function Feed({ Component, control, feed }) {
+function FeedStory({ Component, control, feed }) {
   if (control?.status === 'loaded') {
     return (
       <Paper>
@@ -24,15 +24,15 @@ function Feed({ Component, control, feed }) {
   );
 }
 
-Feed.propTypes = {
+FeedStory.propTypes = {
   Component: PropTypes.elementType.isRequired,
   control: Types.control,
   feed: Types.feed,
 };
 
-Feed.defaultProps = {
+FeedStory.defaultProps = {
   control: null,
   feed: null,
 };
 
-export default Feed;
+export default FeedStory;

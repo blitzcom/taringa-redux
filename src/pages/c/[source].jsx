@@ -7,8 +7,9 @@ import Content from 'src/common/content';
 import Navbar from 'src/common/navbar';
 
 import AboutContainer from 'src/containers/channel/name/about';
-import ArticlesContainer from 'src/containers/channel/name/articles';
 import Loader from 'src/containers/channel/name/loader';
+
+import FeedStory from 'src/organisms/feed-story/container';
 
 export default function Home({ title }) {
   const { query } = useRouter();
@@ -26,14 +27,14 @@ export default function Home({ title }) {
       <Content>
         <Loader channelId={source} />
         <AboutContainer channelId={source} />
-        <ArticlesContainer channelId={source} />
+        <FeedStory uniqueID={source} />
       </Content>
     </App>
   );
 }
 
 Home.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export async function getStaticPaths() {

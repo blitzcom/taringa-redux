@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Feed from 'src/organisms/feed';
+import FeedStory from 'src/organisms/feed-story';
 import Article from 'src/components/article';
 
 import thunk from './ArticlesContainer.thunk';
@@ -22,7 +22,7 @@ function ArticlesContainer() {
     dispatch(thunk());
   }, [dispatch]);
 
-  return <Feed Component={Article} control={control} feed={feed} />;
+  return <FeedStory Component={Article} control={control} feed={feed} />;
 }
 
 export default ArticlesContainer;
