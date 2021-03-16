@@ -16,8 +16,12 @@ function Story({ title, meta, children }) {
 
 Story.propTypes = {
   title: PropTypes.string,
-  meta: PropTypes.node,
-  children: PropTypes.node,
+  meta: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+Story.defaultProps = {
+  title: null,
 };
 
 export default Story;

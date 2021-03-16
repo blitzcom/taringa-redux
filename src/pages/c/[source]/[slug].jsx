@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import CommentsContainer from 'src/containers/channel/slug/comments/CommentsContainer';
-import StoryContainer from 'src/containers/channel/slug/story/StoryContainer';
-
 import App from 'src/common/app';
 import Content from 'src/common/content';
 import Navbar from 'src/common/navbar';
+
+import Story from 'src/organisms/story/container';
+
+import Loader from 'src/containers/channel/slug/loader';
 
 export default function Home() {
   const router = useRouter();
@@ -23,8 +24,8 @@ export default function Home() {
       <Navbar />
 
       <Content>
-        {storyId && <StoryContainer storyId={storyId} />}
-        {storyId && <CommentsContainer storyId={storyId} />}
+        {storyId && <Loader payload={storyId} />}
+        {storyId && <Story storyId={storyId} />}
       </Content>
     </App>
   );
