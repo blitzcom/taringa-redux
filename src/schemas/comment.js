@@ -6,13 +6,13 @@ const reply = new schema.Entity('replies', {
   owner,
 });
 
-const replyFeed = new schema.Entity(
-  'feeds',
+const thread = new schema.Entity(
+  'threads',
   {
     items: [reply],
   },
   {
-    idAttribute: (_, parent) => `comment-replies-${parent.id}`,
+    idAttribute: (_, parent) => parent.id,
     processStrategy: (value, parent) => ({
       ...value,
       id: parent.id,
@@ -20,15 +20,24 @@ const replyFeed = new schema.Entity(
   },
 );
 
-const comment = new schema.Entity('comments', {
-  owner,
-  replies: replyFeed,
-});
+const comment = new schema.Entity(
+  'comments',
+  {
+    owner,
+    thread,
+  },
+  {
+    processStrategy: ({ replies, ...rest }) => ({
+      ...rest,
+      thread: replies,
+    }),
+  },
+);
 
-const feed = new schema.Entity('feeds', {
+const conversation = new schema.Entity('conversations', {
   items: [comment],
 });
 
 export default function exec(data, storyId) {
-  return normalize({ ...data, id: `story-comments-${storyId}` }, feed);
+  return normalize({ ...data, id: storyId }, conversation);
 }

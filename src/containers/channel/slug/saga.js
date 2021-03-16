@@ -6,6 +6,8 @@ import normalize from 'src/schemas/item';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
+import getConversation from 'src/sagas/get-conversation';
+
 function* getStory(target) {
   try {
     const control = yield select(selectControl, 'stories', target);
@@ -32,6 +34,7 @@ function* getStory(target) {
 
 function* run(storyId) {
   yield call(getStory, storyId);
+  yield call(getConversation, storyId);
 }
 
 export default function* channelSlugPage() {

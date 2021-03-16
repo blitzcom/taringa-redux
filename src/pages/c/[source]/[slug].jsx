@@ -6,6 +6,7 @@ import Content from 'src/common/content';
 import Navbar from 'src/common/navbar';
 
 import Story from 'src/organisms/story/container';
+import Conversation from 'src/organisms/conversation';
 
 import Loader from 'src/containers/channel/slug/loader';
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Content>
         {storyId && <Loader payload={storyId} />}
         {storyId && <Story storyId={storyId} />}
+        {storyId && <Conversation storyId={storyId} />}
       </Content>
     </App>
   );
