@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { getStats } from 'src/stats/Stats.selectors';
+import selectEntity from 'src/selectors/select-entity';
 
-function UserStats({ userId }) {
-  const stats = useSelector(getStats(userId));
+function UserStats({ username }) {
+  const stats = useSelector((state) => selectEntity(state, 'stats', username));
 
   if (stats) {
     return (
@@ -36,7 +36,7 @@ function UserStats({ userId }) {
 }
 
 UserStats.propTypes = {
-  userId: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 };
 
 export default UserStats;
