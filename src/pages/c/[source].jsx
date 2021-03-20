@@ -9,7 +9,7 @@ import Navbar from 'src/common/navbar';
 import AboutContainer from 'src/containers/channel/name/about';
 import Loader from 'src/containers/channel/name/loader';
 
-import FeedStory from 'src/organisms/feed-story/container';
+import FeedStories from 'src/organisms/feed-stories';
 
 export default function Home({ title }) {
   const { query } = useRouter();
@@ -27,7 +27,7 @@ export default function Home({ title }) {
       <Content>
         <Loader channelId={source} />
         <AboutContainer channelId={source} />
-        <FeedStory uniqueID={source} />
+        <FeedStories feedId={source} />
       </Content>
     </App>
   );

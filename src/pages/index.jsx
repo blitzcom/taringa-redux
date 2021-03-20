@@ -6,7 +6,7 @@ import Navbar from 'src/common/navbar';
 
 import Loader from 'src/containers/home/loader';
 
-import FeedStory from 'src/organisms/feed-story/container';
+import FeedStories from 'src/organisms/feed-stories';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
 
       <Content>
         <Loader />
-        <FeedStory uniqueID="articles" />
+        <FeedStories feedId="articles" />
       </Content>
     </App>
   );

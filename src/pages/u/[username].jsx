@@ -9,7 +9,7 @@ import Navbar from 'src/common/navbar';
 import UsernameAbout from 'src/containers/user/username/about';
 import UsernameLoader from 'src/containers/user/username/loader';
 
-import FeedStory from 'src/organisms/feed-story/container';
+import FeedStories from 'src/organisms/feed-stories';
 
 export default function Username({ username }) {
   const { query } = useRouter();
@@ -25,7 +25,7 @@ export default function Username({ username }) {
 
       <UsernameLoader username={query.username} />
       <UsernameAbout username={query.username} />
-      <FeedStory uniqueID={query.username} />
+      <FeedStories feedId={query.username} />
     </div>
   );
 }
