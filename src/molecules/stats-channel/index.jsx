@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-function ChannelStats({ channelId }) {
+function StatsChannel({ channelId }) {
   const stats = useSelector((state) => selectEntity(state, 'stats', channelId));
 
   return (
@@ -15,8 +15,8 @@ function ChannelStats({ channelId }) {
   );
 }
 
-ChannelStats.propTypes = {
+StatsChannel.propTypes = {
   channelId: PropTypes.string.isRequired,
 };
 
-export default ChannelStats;
+export default StatsChannel;

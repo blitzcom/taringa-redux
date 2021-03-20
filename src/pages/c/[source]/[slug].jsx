@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import App from 'src/common/app';
-import Content from 'src/common/content';
-import Navbar from 'src/common/navbar';
+import App from 'src/atoms/app';
+import Content from 'src/atoms/content';
+import Navbar from 'src/organisms/navbar';
 
 import Story from 'src/organisms/story/container';
 import Conversation from 'src/organisms/conversation';

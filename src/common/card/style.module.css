@@ -1,8 +1,0 @@
-.card {
-  width: 550px;
-  overflow: hidden;
-}
-
-.card[data-snap='false'] {
-  margin-top: 24px;
-}

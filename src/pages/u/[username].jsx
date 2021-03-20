@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import styles from 'src/styles/Home.module.css';
 
-import Navbar from 'src/common/navbar';
+import Navbar from 'src/organisms/navbar';
 
 import UsernameAbout from 'src/containers/user/username/about';
 import UsernameLoader from 'src/containers/user/username/loader';

@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import App from 'src/common/app';
-import Content from 'src/common/content';
-import Navbar from 'src/common/navbar';
+import App from 'src/atoms/app';
+import Content from 'src/atoms/content';
+import Navbar from 'src/organisms/navbar';
 
 import Loader from 'src/containers/home/loader';
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 
@@ -14,6 +15,10 @@ function Markdown({ children }) {
 
 Markdown.propTypes = {
   children: PropTypes.string,
+};
+
+Markdown.defaultProps = {
+  children: '',
 };
 
 export default memo(Markdown);

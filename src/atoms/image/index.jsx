@@ -34,7 +34,7 @@ Image.propTypes = {
   }).isRequired,
   paddingStyle: PropTypes.shape({
     paddingStyle: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 Image.defaultProps = {

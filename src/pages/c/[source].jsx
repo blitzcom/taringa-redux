@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import App from 'src/common/app';
-import Content from 'src/common/content';
-import Navbar from 'src/common/navbar';
+import App from 'src/atoms/app';
+import Content from 'src/atoms/content';
+import Navbar from 'src/organisms/navbar';
 
-import AboutContainer from 'src/containers/channel/name/about';
+import AboutChannel from 'src/organisms/about-channel';
 import Loader from 'src/containers/channel/name/loader';
 
 import FeedStories from 'src/organisms/feed-stories';
@@ -26,7 +26,7 @@ export default function Home({ title }) {
 
       <Content>
         <Loader channelId={source} />
-        <AboutContainer channelId={source} />
+        <AboutChannel channelId={source} />
         <FeedStories feedId={source} />
       </Content>
     </App>

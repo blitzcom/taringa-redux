@@ -1,23 +1,27 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
+import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Card from 'src/common/card';
-import Paper from 'src/common/card/paper';
+import Spinner from 'src/atoms/spinner';
+import Paper from 'src/atoms/paper';
 
-import Description from 'src/channel/description';
-import Stats from 'src/channel/stats';
+import Stats from 'src/molecules/stats-channel';
 
 import style from './style.module.css';
 
-function ChannelAbout({ channelId }) {
+function AboutChannel({ channelId }) {
+  const control = useSelector((state) =>
+    selectControl(state, 'channels', channelId),
+  );
+
   const channel = useSelector((state) =>
     selectEntity(state, 'channels', channelId),
   );
 
-  return (
-    <Card>
+  if (control?.status === 'loaded') {
+    return (
       <Paper>
         <img
           className={style.background}
@@ -46,15 +50,17 @@ function ChannelAbout({ channelId }) {
               </button>
             </div>
           </div>
-          <Description value={channel.description} />
+          <p>{channel.description}</p>
         </div>
       </Paper>
-    </Card>
-  );
+    );
+  }
+
+  return <Spinner />;
 }
 
-ChannelAbout.propTypes = {
+AboutChannel.propTypes = {
   channelId: PropTypes.string.isRequired,
 };
 
-export default ChannelAbout;
+export default AboutChannel;

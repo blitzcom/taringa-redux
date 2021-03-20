@@ -7,7 +7,7 @@ function Content({ children }) {
 }
 
 Content.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
 };
 
 export default Content;
