@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Article from 'src/components/article';
+import RowArticle from 'src/molecules/row-article';
 
 import selectEntity from 'src/selectors/select-entity';
 import selectControl from 'src/selectors/select-control';
@@ -18,7 +18,7 @@ function FeedStory({ feedId }) {
     return (
       <Paper>
         {feed.items.map((id) => (
-          <Article key={id} itemId={id} />
+          <RowArticle key={id} itemId={id} />
         ))}
       </Paper>
     );

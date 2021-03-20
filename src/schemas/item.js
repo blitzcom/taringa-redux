@@ -65,7 +65,8 @@ export const item = new schema.Entity(
         ...rest
       } = value;
 
-      const entity = Object.assign({}, rest, {
+      const entity = {
+        ...rest,
         stats: {
           bookmarks,
           comments,
@@ -74,11 +75,13 @@ export const item = new schema.Entity(
           upvotes,
           visits,
         },
-      });
+      };
 
       if (rest.content) {
         Object.assign(entity, {
-          content: rest.content.map((block) => {
+          content: rest.content.map((originalBlock) => {
+            const block = { ...originalBlock };
+
             if (block.type === 'markdown') {
               block.body = marked(block.body, { headerIds: false });
             }
@@ -108,7 +111,7 @@ export const item = new schema.Entity(
       const [thumbnail] = rest.summary.images.slice;
 
       Object.assign(entity, {
-        thumbnail: formatThubmanil(thumbnail?.url),
+        thumbnail: formatThubmanil(thumbnail?.url, '/article_background.svg'),
       });
 
       return entity;
