@@ -1,16 +1,25 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import entitiesCreator from './utils/entities-creator';
+import channels from './entities/channels';
+import comments from './entities/comments';
+import conversations from './entities/conversations';
+import feeds from './entities/feeds';
+import replies from './entities/replies';
+import states from './entities/states';
+import stats from './entities/stats';
+import stories from './entities/stories';
+import threads from './entities/threads';
+import users from './entities/users';
 
 export default combineReducers({
-  channels: entitiesCreator({ name: 'channels' }),
-  comments: entitiesCreator({ name: 'comments' }),
-  conversations: entitiesCreator({ name: 'conversations' }),
-  feeds: entitiesCreator({ name: 'feeds' }),
-  replies: entitiesCreator({ name: 'replies' }),
-  threads: entitiesCreator({ name: 'threads' }),
-  states: entitiesCreator({ name: 'states' }),
-  stats: entitiesCreator({ name: 'stats' }),
-  stories: entitiesCreator({ name: 'stories' }),
-  users: entitiesCreator({ name: 'users' }),
+  channels,
+  comments,
+  conversations,
+  feeds,
+  replies,
+  states,
+  stats,
+  stories,
+  threads,
+  users,
 });

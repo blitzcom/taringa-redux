@@ -1,24 +1,27 @@
-import invariant from 'invariant';
-import merge from 'lodash.merge';
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const DEFAULT_STATE = {};
+const initialState = {};
 
-function entitiesCreator(options = {}) {
-  const { name } = options;
+function createEntities(name, reducers = {}) {
+  const slice = createSlice({
+    name: `entities/${name}`,
+    initialState,
+    reducers,
+    extraReducers: (builder) => {
+      builder.addDefaultCase((state, action) => {
+        const entities = action.payload?.entities?.[name];
 
-  invariant(!!name, 'reducer.entitiesCreator: must provide a valid name');
+        if (entities) {
+          Object.entries(entities).forEach(([key, value]) => {
+            state[key] = value;
+          });
+        }
+      });
+    },
+  });
 
-  function entities(state = DEFAULT_STATE, action) {
-    const entities = action.payload?.entities?.[name];
-
-    if (entities) {
-      return merge({}, state, entities);
-    }
-
-    return state;
-  }
-
-  return entities;
+  return slice;
 }
 
-export default entitiesCreator;
+export default createEntities;
