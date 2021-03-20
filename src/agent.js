@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import superagent from 'superagent';
 
 const API_URL = 'https://api-user.taringa.net';

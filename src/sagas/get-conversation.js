@@ -13,7 +13,7 @@ function* getConversation(target) {
       return;
     }
 
-    yield put(actions.load({ target }));
+    yield put(actions.load(target));
 
     const { body } = yield call(get, `story/${target}/comments`, {
       sort: 'created-desc',
@@ -24,9 +24,9 @@ function* getConversation(target) {
 
     const payload = yield call(normalize, body, target);
 
-    yield put(actions.success({ ...payload, target }));
+    yield put(actions.success(target, payload));
   } catch (e) {
-    yield put(actions.failure({ target }, e.message));
+    yield put(actions.failure(target, e.message));
   }
 }
 

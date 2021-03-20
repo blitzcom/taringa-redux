@@ -1,5 +1,6 @@
 import { call, race, take } from 'redux-saga/effects';
-import getStories from 'src/sagas/getStories';
+
+import getStories from 'src/sagas/get-stories';
 
 function* run() {
   yield call(getStories, 'articles', 'feed/list/globalHome', {

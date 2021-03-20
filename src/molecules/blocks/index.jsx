@@ -7,12 +7,12 @@ import Image from 'src/atoms/image';
 function Blocks({ blocks }) {
   return (
     <div>
-      {blocks.map((block, index) => {
+      {blocks.map((block) => {
         switch (block.type) {
           case 'image':
             return (
               <Image
-                key={index}
+                key={block.id}
                 src={block.url}
                 width={block.width}
                 height={block.height}
@@ -21,7 +21,7 @@ function Blocks({ blocks }) {
               />
             );
           case 'markdown':
-            return <Markdown key={index}>{block.body}</Markdown>;
+            return <Markdown key={block.id}>{block.body}</Markdown>;
           default:
             return null;
         }
@@ -31,7 +31,7 @@ function Blocks({ blocks }) {
 }
 
 Blocks.propTypes = {
-  blocks: PropTypes.array.isRequired,
+  blocks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Blocks;

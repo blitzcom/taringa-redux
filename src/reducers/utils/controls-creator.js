@@ -1,78 +1,57 @@
-const DEFAULT_STATE = {};
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-export const DEFAULT_CONTROL_STATE = { status: 'loading', error: null };
+const initialState = {};
 
-function actionCreator(target, space, name) {
-  const type = `controls/${space}/${name}`;
+export const DEFAULT_STATE = { status: 'loading', error: null };
 
-  target[name] = function (payload, error) {
-    const action = { type, payload };
-
-    if (error) {
-      Object.assign(action, { error });
-    }
-
-    return action;
-  };
-
-  target[name].type = type;
-}
-
-function controlsCreator(options = {}) {
-  const name = options.name ?? DEFAULT_ENTITY_NAME;
-
-  const actions = {};
-
-  actionCreator(actions, name, 'load');
-  actionCreator(actions, name, 'success');
-  actionCreator(actions, name, 'failure');
-
-  function fetching(state = DEFAULT_CONTROL_STATE, action) {
-    switch (action.type) {
-      case actions.load.type:
-        return { ...state, status: 'loading', error: null };
-      case actions.success.type:
-        return { ...state, status: 'loaded' };
-      case actions.failure.type:
-        return { ...state, status: 'failure', error: action.error };
-      default:
-        return state;
-    }
-  }
-
-  function reducer(state = DEFAULT_STATE, action) {
-    switch (action.type) {
-      case actions.load.type:
-      case actions.success.type:
-      case actions.failure.type: {
-        return {
-          ...state,
-          [action.payload.target]: fetching(
-            state[action.payload.target],
-            action,
-          ),
-        };
-      }
-
-      default: {
+function createControl(name) {
+  const slice = createSlice({
+    name: `controls/${name}`,
+    initialState,
+    reducers: {
+      load: {
+        reducer(state, action) {
+          state[action.meta] = DEFAULT_STATE;
+        },
+        prepare(meta) {
+          return { meta };
+        },
+      },
+      success: {
+        reducer(state, action) {
+          state[action.meta].status = 'loaded';
+        },
+        prepare(meta, payload) {
+          return { meta, payload };
+        },
+      },
+      failure: {
+        reducer(state, action) {
+          state[action.meta].status = 'failure';
+          state[action.meta].error = action.error;
+        },
+        prepare(meta, error) {
+          return { meta, error };
+        },
+      },
+    },
+    extraReducers: (builder) => {
+      builder.addDefaultCase((state, action) => {
         const entities = action.payload?.entities?.[name];
 
         if (entities) {
-          return Object.keys(entities).reduce((prev, current) => {
-            if (current in state) {
-              return prev;
-            }
+          Object.keys(entities).forEach((key) => {
+            if (key in state) return;
 
-            return { ...prev, [current]: { status: 'loaded', error: null } };
-          }, state);
+            state[key] = { status: 'loaded', error: null };
+          });
         }
+      });
+    },
+  });
 
-        return state;
-      }
-    }
-  }
-
-  return { actions, reducer };
+  return slice;
 }
 
-export default controlsCreator;
+export default createControl;

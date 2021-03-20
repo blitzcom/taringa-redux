@@ -30,6 +30,7 @@
     "invariant": "^2.2.4",
     "lodash.merge": "^4.6.2",
     "marked": "^1.2.7",
+    "nanoid": "^3.1.22",
     "next": "10.0.5",
     "normalizr": "^3.6.1",
     "prop-types": "^15.7.2",

@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { normalize, schema } from 'normalizr';
 import marked from 'marked';
 
@@ -80,7 +81,7 @@ export const item = new schema.Entity(
       if (rest.content) {
         Object.assign(entity, {
           content: rest.content.map((originalBlock) => {
-            const block = { ...originalBlock };
+            const block = { ...originalBlock, id: nanoid() };
 
             if (block.type === 'markdown') {
               block.body = marked(block.body, { headerIds: false });

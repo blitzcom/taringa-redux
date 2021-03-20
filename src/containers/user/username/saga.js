@@ -1,14 +1,10 @@
 import { call, cancelled, put, race, select, take } from 'redux-saga/effects';
 
-import { get } from 'src/agent';
-
-import getStories from 'src/sagas/getStories';
-
-import normalize from 'src/schemas/user';
-
-import selectControl from 'src/selectors/select-control';
-
 import { actions } from 'src/reducers/controls/users';
+import { get } from 'src/agent';
+import getStories from 'src/sagas/get-stories';
+import normalize from 'src/schemas/user';
+import selectControl from 'src/selectors/select-control';
 
 function* getUserAbout(username) {
   try {
@@ -18,14 +14,14 @@ function* getUserAbout(username) {
       return;
     }
 
-    yield put(actions.load({ target: username }));
+    yield put(actions.load(username));
 
     const { body } = yield call(get, `user/${username}/about`);
     const payload = yield call(normalize, body);
 
-    yield put(actions.success({ ...payload, target: username }));
+    yield put(actions.success(username, payload));
   } catch (e) {
-    yield put(actions.failure({ target: username }), e.message);
+    yield put(actions.failure(username, e.message));
   } finally {
     if (yield cancelled()) {
       // TODO: Handle cancel.

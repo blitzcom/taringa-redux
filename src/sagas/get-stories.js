@@ -1,12 +1,9 @@
 import { call, cancelled, put, select } from 'redux-saga/effects';
 
 import { get } from 'src/agent';
-
 import normalize from 'src/schemas/feed';
-
 import selectControl from 'src/selectors/select-control';
-
-import { actions as feedActions } from 'src/reducers/controls/feeds';
+import { actions } from 'src/reducers/controls/feeds';
 
 function* getStories(uniqueId, url, query = {}) {
   try {
@@ -16,7 +13,7 @@ function* getStories(uniqueId, url, query = {}) {
       return;
     }
 
-    yield put(feedActions.load({ target: uniqueId }));
+    yield put(actions.load(uniqueId));
 
     const { body } = yield call(get, url, {
       count: 20,
@@ -27,9 +24,9 @@ function* getStories(uniqueId, url, query = {}) {
 
     const payload = yield call(normalize, body, uniqueId);
 
-    yield put(feedActions.success({ ...payload, target: uniqueId }));
+    yield put(actions.success(uniqueId, payload));
   } catch (e) {
-    yield put(feedActions.failure({ target: uniqueId }, e.message));
+    yield put(actions.failure(uniqueId, e.message));
   } finally {
     if (yield cancelled()) {
       // TODO: Handle cancel.

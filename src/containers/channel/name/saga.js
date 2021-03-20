@@ -3,7 +3,7 @@ import { call, cancelled, put, race, take, select } from 'redux-saga/effects';
 import { actions } from 'src/reducers/controls/channels';
 import { channelNormalize } from 'src/schemas/item';
 import { get } from 'src/agent';
-import getStories from 'src/sagas/getStories';
+import getStories from 'src/sagas/get-stories';
 import selectControl from 'src/selectors/select-control';
 
 function* getAbout(channelId) {
@@ -14,15 +14,15 @@ function* getAbout(channelId) {
       return;
     }
 
-    yield put(actions.load({ target: channelId }));
+    yield put(actions.load(channelId));
 
     const { body } = yield call(get, `c/${channelId}/about`);
 
     const payload = yield call(channelNormalize, body);
 
-    yield put(actions.success({ ...payload, target: channelId }));
+    yield put(actions.success(channelId, payload));
   } catch (e) {
-    yield put(actions.failure({ target: channelId }, e.message));
+    yield put(actions.failure(channelId, e.message));
   } finally {
     if (yield cancelled()) {
       // TODO: Handle cancel.

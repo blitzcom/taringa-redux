@@ -7,9 +7,9 @@ import stories from './controls/stories';
 import users from './controls/users';
 
 export default combineReducers({
-  channels: channels.reducer,
-  conversations: conversations.reducer,
-  feeds: feeds.reducer,
-  stories: stories.reducer,
-  users: users.reducer,
+  channels,
+  conversations,
+  feeds,
+  stories,
+  users,
 });

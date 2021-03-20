@@ -1,9 +1,7 @@
-import controlsCreator from 'src/reducers/utils/controls-creator';
+import createControl from 'src/reducers/utils/controls-creator';
 
-const reducer = controlsCreator({ name: 'stories' });
+const control = createControl('stories');
 
-const { actions } = reducer;
+export const { actions } = control;
 
-export { actions };
-
-export default reducer;
+export default control.reducer;
