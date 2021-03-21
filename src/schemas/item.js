@@ -33,6 +33,7 @@ const channel = new schema.Entity(
         ...rest,
         thumbnail: formatAvatar(thumbnail),
         background: formatIdentity(background),
+        url: `/c/${value.name}`,
         stats: {
           stories,
           subscribers,
@@ -68,6 +69,7 @@ export const item = new schema.Entity(
 
       const entity = {
         ...rest,
+        url: `/c/${value.channel.name}/${value.slug}`,
         stats: {
           bookmarks,
           comments,

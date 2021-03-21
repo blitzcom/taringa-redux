@@ -25,6 +25,7 @@ export const owner = new schema.Entity(
 
       const entity = {
         ...rest,
+        url: `/u/${value.username}`,
         avatar: formatAvatar(avatar, '/channel_avatar.svg'),
       };
 

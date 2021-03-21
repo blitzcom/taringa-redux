@@ -1,31 +1,60 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import Avatar from 'src/atoms/avatar';
 
 import selectEntity from 'src/selectors/select-entity';
-import LinkUser from '../link-user';
 
-import style from './style.module.css';
+import AvatarContainer from 'src/atoms/avatar';
+import Link from 'src/atoms/link';
 
-function Comment({ entityId, source }) {
-  const comment = useSelector((state) => selectEntity(state, source, entityId));
+import style from './style.module.scss';
 
+export function Comment({ avatar, user, body }) {
   return (
     <article className={style.commentable}>
-      <Avatar entityId={comment.owner} source="users" />
+      {avatar}
 
       <div className={style.details}>
-        <LinkUser username={comment.owner} />
+        {user}
 
-        <p className={style.body}>{comment.body || 'Unavailable comment'}</p>
+        <p className={style.body}>{body || 'Unavailable comment'}</p>
       </div>
     </article>
   );
 }
 
 Comment.propTypes = {
+  avatar: PropTypes.node.isRequired,
+  user: PropTypes.node.isRequired,
+  body: PropTypes.string,
+};
+
+Comment.defaultProps = {
+  body: null,
+};
+
+function CommentContainer({ entityId, source }) {
+  const comment = useSelector((state) => selectEntity(state, source, entityId));
+
+  const owner = useSelector((state) =>
+    selectEntity(state, 'users', comment.owner),
+  );
+
+  return (
+    <Comment
+      body={comment.body}
+      avatar={<AvatarContainer entityId={comment.owner} source="users" />}
+      user={
+        <Link href={`/u/${owner.username}`}>
+          <b>{owner.username}</b>
+        </Link>
+      }
+    />
+  );
+}
+
+CommentContainer.propTypes = {
   entityId: PropTypes.string.isRequired,
   source: PropTypes.string.isRequired,
 };
 
-export default Comment;
+export default CommentContainer;
