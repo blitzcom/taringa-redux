@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import Head from 'next/head';
 
-import 'src/styles/globals.css';
+import 'normalize.css';
+import 'src/sass/taringa.scss';
 
 import store from 'src/store';
 

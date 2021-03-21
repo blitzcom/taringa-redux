@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import styles from 'src/styles/Home.module.css';
-
 import Navbar from 'src/organisms/navbar';
 
 import UsernameAbout from 'src/containers/user/username/about';
@@ -15,7 +13,7 @@ export default function Username({ username }) {
   const { query } = useRouter();
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>{username} | Taringa!</title>
         <link rel="icon" href="/favicon.ico" />

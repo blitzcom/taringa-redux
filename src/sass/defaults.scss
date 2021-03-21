@@ -1,12 +1,15 @@
+@import 'mixins/theme';
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #f1f3f5;
-  font-size: 15px;
-  color: #343a40;
+  font-size: 14px;
+
+  @include theme('color', 'text-primary');
+  @include theme('background-color', 'background-primary');
 }
 
 a {

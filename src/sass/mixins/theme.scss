@@ -1,0 +1,16 @@
+@import 'theme/default-theme';
+
+@mixin theme($property, $name, $prefix: null) {
+  @if (map-has-key($map: $default-theme, $key: $name)) {
+    #{$property}: #{$prefix} map-get($default-theme, $name);
+    #{$property}: #{$prefix} var(--#{$name});
+  } @else {
+    @error "Theme var #{$name} does not exist.";
+  }
+}
+
+@mixin generate-theme($theme) {
+  @each $key, $value in $theme {
+    --#{$key}: #{$value};
+  }
+}

@@ -1,0 +1,6 @@
+@import 'mixins/theme';
+@import 'defaults';
+
+:root {
+  @include generate-theme($default-theme);
+}
