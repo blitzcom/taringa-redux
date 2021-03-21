@@ -3,3 +3,8 @@
   line-height: 16px;
   margin: 0;
 }
+
+.truncate {
+  text-overflow: ellipsis;
+  word-break: break-word;
+}

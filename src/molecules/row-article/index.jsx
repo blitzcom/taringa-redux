@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import selectEntity from 'src/selectors/select-entity';
 
 import Box from 'src/atoms/box';
+import Clamp from 'src/atoms/clamp';
 import Link from 'src/atoms/link';
 import Row from 'src/atoms/row';
 import Text from 'src/atoms/text';
 import Thumbnail from 'src/atoms/thumbnail';
 import Title from 'src/atoms/title';
-import Clamp from 'src/atoms/clamp';
 
 export function RowArticle({
   articleSubtitle,
@@ -46,9 +46,9 @@ export function RowArticle({
             </Title>
 
             <Box margin="4px 0 0">
-              <Text>
-                <Clamp>{articleSubtitle}</Clamp>
-              </Text>
+              <Clamp>
+                <Text truncate>{articleSubtitle}</Text>
+              </Clamp>
             </Box>
           </Box>
 
