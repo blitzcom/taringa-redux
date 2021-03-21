@@ -16,7 +16,7 @@ function FeedStory({ feedId }) {
 
   if (control?.status === 'loaded') {
     return (
-      <Paper>
+      <Paper flat>
         {feed.items.map((id) => (
           <RowArticle key={id} itemId={id} />
         ))}

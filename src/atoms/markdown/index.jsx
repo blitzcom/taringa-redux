@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 
 function Markdown({ children }) {
   return (

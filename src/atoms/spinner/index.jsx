@@ -1,5 +1,7 @@
 // By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
 
+import style from './style.module.scss';
+
 function Spinner() {
   return (
     <svg
@@ -7,12 +9,13 @@ function Spinner() {
       height="38"
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
+      className={style.spinner}
     >
       <defs>
         <linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
-          <stop stopColor="#000000" stopOpacity="0" offset="0%" />
-          <stop stopColor="#000000" stopOpacity=".631" offset="63.146%" />
-          <stop stopColor="#000000" offset="100%" />
+          <stop stopColor="currentColor" stopOpacity="0" offset="0%" />
+          <stop stopColor="currentColor" stopOpacity=".631" offset="63.146%" />
+          <stop stopColor="currentColor" offset="100%" />
         </linearGradient>
       </defs>
       <g fill="none" fillRule="evenodd">
@@ -32,7 +35,7 @@ function Spinner() {
               repeatCount="indefinite"
             />
           </path>
-          <circle fill="#000000" cx="36" cy="18" r="1">
+          <circle fill="currentColor" cx="36" cy="18" r="1">
             <animateTransform
               attributeName="transform"
               type="rotate"

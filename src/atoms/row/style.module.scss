@@ -1,0 +1,11 @@
+@import 'mixins/theme';
+
+.row {
+  padding: 10px 16px 16px;
+
+  @include theme('border-top', 'row-border', '1px solid');
+}
+
+.row:first-child {
+  border: none;
+}

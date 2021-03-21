@@ -1,3 +1,5 @@
+@import 'mixins/theme';
+
 .markdown p,
 .markdown h1,
 .markdown h2,
@@ -8,8 +10,9 @@
 
 .markdown blockquote {
   font-style: italic;
-  border-left: 4px solid #eaeaea;
   padding-left: 8px;
+
+  @include theme('border-left', 'markdown-blockquote-decorator', '4px solid');
 }
 
 .markdown pre {

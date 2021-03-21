@@ -1,3 +1,5 @@
+@import 'mixins/theme';
+
 .figure {
   margin: 1em auto 0;
 }
@@ -18,4 +20,6 @@
   position: absolute;
   top: 0;
   width: 100%;
+
+  @include theme('background-color', 'img-background');
 }

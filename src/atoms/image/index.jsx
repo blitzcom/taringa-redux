@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 
 function Image({ src, width, height, alt, widthStyle, paddingStyle }) {
   return (

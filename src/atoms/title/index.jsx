@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 
 function Title({ children, variant }) {
   const classes = classNames(style.title, {
@@ -13,11 +13,7 @@ function Title({ children, variant }) {
 
 Title.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['article']),
-};
-
-Title.defaultProps = {
-  variant: null,
+  variant: PropTypes.oneOf(['story', 'row']).isRequired,
 };
 
 export default Title;

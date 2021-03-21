@@ -56,7 +56,7 @@ function RowArticle({ itemId }) {
 
         <Box display="flex" margin="8px 0 0">
           <Box width="100%" padding="0 16px 0 0">
-            <Title variant="article">
+            <Title variant="row">
               <Link href={article.url}>
                 <a>{article.title}</a>
               </Link>

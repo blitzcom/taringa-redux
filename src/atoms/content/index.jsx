@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import style from './style.module.css';
+import style from './style.module.scss';
 
 function Content({ children }) {
   return <div className={style.content}>{children}</div>;

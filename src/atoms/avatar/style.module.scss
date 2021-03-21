@@ -1,0 +1,9 @@
+@import 'mixins/theme';
+
+.avatar {
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: block;
+
+  @include theme('background-color', 'img-background');
+}

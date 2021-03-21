@@ -1,0 +1,5 @@
+@import 'mixins/theme';
+
+.spinner {
+  @include theme('color', 'spinner');
+}

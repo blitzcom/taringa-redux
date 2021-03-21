@@ -22,7 +22,7 @@ function AboutChannel({ channelId }) {
 
   if (control?.status === 'loaded') {
     return (
-      <Paper>
+      <Paper flat>
         <img
           className={style.background}
           src={channel.background}
