@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-import styles from './style.module.css';
+import styles from './style.module.scss';
 
-function Nav() {
+function Navbar() {
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.navbar}>
       <Link href="/">
         <a className={styles.anchor}>
           <img
@@ -19,4 +19,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Navbar;

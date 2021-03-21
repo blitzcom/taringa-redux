@@ -1,11 +1,14 @@
-.nav {
+@import 'mixins/theme';
+
+.navbar {
   align-items: center;
-  background-color: #005dab;
   display: flex;
   padding: 6px 16px;
   position: sticky;
   top: 0;
   z-index: 4000;
+
+  @include theme('background-color', 'navbar');
 }
 
 .anchor {

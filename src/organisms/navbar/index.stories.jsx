@@ -1,10 +1,10 @@
-import Nav from '.';
+import Navbar from '.';
 
 export default {
-  title: 'Common',
-  component: Nav,
+  title: 'organisms/navbar',
+  component: Navbar,
 };
 
-const Template = (args) => <Nav {...args} />;
+const Template = (args) => <Navbar {...args} />;
 
-export const Navbar = Template.bind({});
+export const Default = Template.bind({});

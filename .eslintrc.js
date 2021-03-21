@@ -62,7 +62,7 @@ module.exports = {
       },
     },
     {
-      files: ['src/pages/_app.jsx'],
+      files: ['src/pages/_app.jsx', '*.stories.jsx'],
       rules: {
         'react/jsx-props-no-spreading': 'off',
       },
