@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
 
+import style from './style.module.scss';
+
 function Link({ children, href }) {
   return (
     <NextLink href={href}>
-      <a>{children}</a>
+      <a className={style.link}>{children}</a>
     </NextLink>
   );
 }
