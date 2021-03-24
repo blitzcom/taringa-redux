@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $default-theme: (
   background-primary: #f1f3f5,
   img-background: #f1f3f5,
@@ -8,4 +10,19 @@ $default-theme: (
   row-border: #dee2e6,
   spinner: #005dab,
   text-primary: #495057,
+  // Button Primary
+  button-primary: #098dff,
+  button-primary-active: color.adjust(#098dff, $lightness: 20%),
+  button-primary-focus: color.adjust(#098dff, $blackness: 40%),
+  button-primary-color: #ffffff,
+  // Button Secondary
+  button-secondary: #868e96,
+  button-secondary-active: color.adjust(#868e96, $lightness: 20%),
+  button-secondary-focus: color.adjust(#868e96, $blackness: 60%),
+  button-secondary-color: #ffffff,
+  // Button Success
+  button-success: #16c465,
+  button-success-active: color.adjust(#16c465, $lightness: 5%),
+  button-success-focus: color.adjust(#16c465, $blackness: 40%),
+  button-success-color: #ffffff,
 );

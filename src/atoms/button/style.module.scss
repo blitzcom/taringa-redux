@@ -1,0 +1,41 @@
+@import 'mixins/theme';
+
+@mixin create-button($name) {
+  .#{$name} {
+    @include theme('background-color', 'button-#{$name}');
+    @include theme('color', 'button-#{$name}-color');
+    @include theme('border-color', 'button-#{$name}');
+
+    &:focus {
+      @include theme('border-color', 'button-#{$name}-focus');
+    }
+
+    &:active {
+      @include theme('background-color', 'button-#{$name}-active');
+      @include theme('border-color', 'button-#{$name}-active');
+    }
+  }
+}
+
+.button {
+  border-radius: 5px;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 32px;
+  outline: none;
+  padding: 0 20px;
+
+  background-color: transparent;
+  border-color: transparent;
+
+  &[disabled] {
+    cursor: default;
+    opacity: 0.3;
+  }
+}
+
+@include create-button('primary');
+@include create-button('secondary');
+@include create-button('success');
