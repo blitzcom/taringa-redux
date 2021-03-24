@@ -1,0 +1,17 @@
+@import 'mixins/theme';
+
+.figure {
+  border-radius: 5px 5px 0 0;
+  flex-shrink: 0;
+  height: 120px;
+  margin: 0;
+  overflow: hidden;
+  width: 550px;
+}
+
+.img {
+  display: block;
+  object-fit: cover;
+
+  @include theme('background-color', 'img-background');
+}
