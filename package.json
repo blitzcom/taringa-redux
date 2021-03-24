@@ -34,6 +34,7 @@
     "next": "10.0.5",
     "normalize.css": "^8.0.1",
     "normalizr": "^3.6.1",
+    "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
