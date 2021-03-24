@@ -4,14 +4,51 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
+import AvatarLarge from 'src/atoms/avatar-large';
+import Box from 'src/atoms/box';
+import Button from 'src/atoms/button';
 import Spinner from 'src/atoms/spinner';
-import Paper from 'src/atoms/paper';
+import Text from 'src/atoms/text';
+import Title from 'src/atoms/title';
 
-import Stats from 'src/molecules/stats-channel';
+import About from 'src/molecules/about';
 
-import style from './style.module.css';
+export function AboutChannel({
+  background,
+  category,
+  description,
+  thumbnail,
+  title,
+}) {
+  return (
+    <About background={background} avatar={<AvatarLarge src={thumbnail} />}>
+      <Box display="flex" margin="16px 0 0" justify="space-between">
+        <div>
+          <Title size="large">{title}</Title>
+          <Text variant="secondary">{category}</Text>
+        </div>
 
-function AboutChannel({ channelId }) {
+        <div>
+          <Button onClick={() => {}}>Join</Button>
+        </div>
+      </Box>
+
+      <Box margin="16px 0 0">
+        <Text>{description}</Text>
+      </Box>
+    </About>
+  );
+}
+
+AboutChannel.propTypes = {
+  background: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+function AboutChannelContainer({ channelId }) {
   const control = useSelector((state) =>
     selectControl(state, 'channels', channelId),
   );
@@ -22,45 +59,21 @@ function AboutChannel({ channelId }) {
 
   if (control?.status === 'loaded') {
     return (
-      <Paper flat>
-        <img
-          className={style.background}
-          src={channel.background}
-          alt={channel.title}
-        />
-
-        <div className={style.about}>
-          <img
-            className={style.thumbnail}
-            src={channel.thumbnail}
-            alt={channel.title}
-            width={60}
-            height={60}
-          />
-          <div className={style.meta}>
-            <div>
-              <h1 className={style.title}>{channel.title}</h1>
-              <p className={style.category}>{channel.category}</p>
-              <Stats channelId={channelId} />
-            </div>
-
-            <div className={style.actions}>
-              <button className={style.join} type="button">
-                Join
-              </button>
-            </div>
-          </div>
-          <p>{channel.description}</p>
-        </div>
-      </Paper>
+      <AboutChannel
+        background={channel.background}
+        category={channel.category}
+        description={channel.description}
+        thumbnail={channel.thumbnail}
+        title={channel.title}
+      />
     );
   }
 
   return <Spinner />;
 }
 
-AboutChannel.propTypes = {
+AboutChannelContainer.propTypes = {
   channelId: PropTypes.string.isRequired,
 };
 
-export default AboutChannel;
+export default AboutChannelContainer;
