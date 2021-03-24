@@ -3,7 +3,7 @@ import { call, cancelled, put, race, take, select } from 'redux-saga/effects';
 import { actions } from 'src/reducers/controls/channels';
 import { channelNormalize } from 'src/schemas/item';
 import { get } from 'src/agent';
-import getStories from 'src/sagas/get-stories';
+import getStories from 'src/sagas/common/get-stories';
 import selectControl from 'src/selectors/select-control';
 
 function* getAbout(channelId) {

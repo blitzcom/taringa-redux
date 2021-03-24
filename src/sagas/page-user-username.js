@@ -2,7 +2,7 @@ import { call, cancelled, put, race, select, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/users';
 import { get } from 'src/agent';
-import getStories from 'src/sagas/get-stories';
+import getStories from 'src/sagas/common/get-stories';
 import normalize from 'src/schemas/user';
 import selectControl from 'src/selectors/select-control';
 

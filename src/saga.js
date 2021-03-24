@@ -1,10 +1,15 @@
 import { all } from 'redux-saga/effects';
 
-import channelName from 'src/containers/channel/name/saga';
-import channelSlugPage from 'src/containers/channel/slug/saga';
-import homePage from 'src/containers/home/saga';
-import usernamePage from 'src/containers/user/username/saga';
+import PageChannelName from 'src/sagas/page-channel-name';
+import PageChannelSlug from 'src/sagas/page-channel-slug';
+import PageHome from 'src/sagas/page-home';
+import PageUserUsername from 'src/sagas/page-user-username';
 
 export default function* rootSaga() {
-  yield all([channelName(), usernamePage(), homePage(), channelSlugPage()]);
+  yield all([
+    PageChannelName(),
+    PageChannelSlug(),
+    PageHome(),
+    PageUserUsername(),
+  ]);
 }

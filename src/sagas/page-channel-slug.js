@@ -2,11 +2,10 @@ import { call, put, race, select, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/stories';
 import { get } from 'src/agent';
+import getConversation from 'src/sagas/common/get-conversation';
 import normalize from 'src/schemas/item';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
-
-import getConversation from 'src/sagas/get-conversation';
 
 function* getStory(target) {
   try {
