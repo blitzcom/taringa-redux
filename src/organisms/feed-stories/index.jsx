@@ -1,38 +1,58 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import RowArticle from 'src/molecules/row-article';
-
-import selectEntity from 'src/selectors/select-entity';
 import selectControl from 'src/selectors/select-control';
+import selectEntity from 'src/selectors/select-entity';
 
-import Paper from 'src/atoms/paper';
 import Box from 'src/atoms/box';
+import Paper from 'src/atoms/paper';
 import Spinner from 'src/atoms/spinner';
+import Spot from 'src/atoms/spot';
 
-function FeedStory({ feedId }) {
+import RowArticleContainer from 'src/molecules/row-article';
+
+function FeedStory({ items, component: Component }) {
+  return (
+    <Paper flat>
+      {items.map((id) => (
+        <Component key={id} itemId={id} />
+      ))}
+    </Paper>
+  );
+}
+
+FeedStory.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  component: PropTypes.elementType,
+};
+
+FeedStory.defaultProps = {
+  component: RowArticleContainer,
+};
+
+function FeedStoryContainer({ feedId }) {
   const control = useSelector((state) => selectControl(state, 'feeds', feedId));
   const feed = useSelector((state) => selectEntity(state, 'feeds', feedId));
 
   if (control?.status === 'loaded') {
     return (
-      <Paper flat>
-        {feed.items.map((id) => (
-          <RowArticle key={id} itemId={id} />
-        ))}
-      </Paper>
+      <Spot>
+        <FeedStory items={feed.items} />
+      </Spot>
     );
   }
 
   return (
-    <Box display="flex" justify="center">
-      <Spinner />
-    </Box>
+    <Spot>
+      <Box display="flex" justify="center">
+        <Spinner />
+      </Box>
+    </Spot>
   );
 }
 
-FeedStory.propTypes = {
+FeedStoryContainer.propTypes = {
   feedId: PropTypes.string.isRequired,
 };
 
-export default FeedStory;
+export default FeedStoryContainer;
