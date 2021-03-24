@@ -9,7 +9,9 @@ $default-theme: (
   paper: white,
   row-border: #dee2e6,
   spinner: #005dab,
+  // Text
   text-primary: #495057,
+  text-secondary: #868e96,
   // Button Primary
   button-primary: #098dff,
   button-primary-active: color.adjust(#098dff, $lightness: 20%),
