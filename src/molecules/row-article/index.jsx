@@ -89,7 +89,7 @@ function RowArticleContainer({ itemId }) {
       articleThumbnail={article.thumbnail}
       articleTitle={article.title}
       articleUrl={article.url}
-      channelName={channel.name}
+      channelName={channel.title}
       channelUrl={channel.url}
       ownerUrl={owner.url}
       ownerUsername={owner.username}
