@@ -8,7 +8,6 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
 
-  @include theme('color', 'text-primary');
   @include theme('background-color', 'background-primary');
 }
 
@@ -19,4 +18,5 @@ a {
 
 * {
   box-sizing: border-box;
+  @include theme('color', 'text-primary');
 }
