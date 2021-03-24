@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import App from 'src/atoms/app';
+import Content from 'src/atoms/content';
 import Navbar from 'src/organisms/navbar';
 
 import UsernameAbout from 'src/containers/user/username/about';
@@ -13,7 +15,7 @@ export default function Username({ username }) {
   const { query } = useRouter();
 
   return (
-    <div>
+    <App>
       <Head>
         <title>{username} | Taringa!</title>
         <link rel="icon" href="/favicon.ico" />
@@ -21,10 +23,12 @@ export default function Username({ username }) {
 
       <Navbar />
 
-      <UsernameLoader username={query.username} />
-      <UsernameAbout username={query.username} />
-      <FeedStories feedId={query.username} />
-    </div>
+      <Content>
+        <UsernameLoader username={query.username} />
+        <UsernameAbout username={query.username} />
+        <FeedStories feedId={query.username} />
+      </Content>
+    </App>
   );
 }
 
