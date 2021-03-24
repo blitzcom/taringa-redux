@@ -41,7 +41,7 @@ export function RowArticle({
 
         <Box display="flex" margin="8px 0 0">
           <Box width="100%" padding="0 16px 0 0">
-            <Title variant="row">
+            <Title>
               <Link href={articleUrl}>{articleTitle}</Link>
             </Title>
 

@@ -11,5 +11,4 @@ export const Default = Template.bind({});
 
 Default.args = {
   children: 'Inteligencia Colectiva',
-  variant: 'story',
 };
