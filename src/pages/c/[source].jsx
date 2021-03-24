@@ -7,7 +7,7 @@ import Content from 'src/atoms/content';
 import Navbar from 'src/organisms/navbar';
 
 import AboutChannel from 'src/organisms/about-channel';
-import Loader from 'src/containers/channel/name/loader';
+import Loader from 'src/molecules/loader';
 
 import FeedStories from 'src/organisms/feed-stories';
 
@@ -25,7 +25,7 @@ export default function Home({ title }) {
       <Navbar />
 
       <Content>
-        <Loader channelId={source} />
+        <Loader payload={source} action="CHANNEL_PAGE" cancellable />
         <AboutChannel channelId={source} />
         <FeedStories feedId={source} />
       </Content>

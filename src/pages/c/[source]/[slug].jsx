@@ -8,7 +8,7 @@ import Navbar from 'src/organisms/navbar';
 import Story from 'src/organisms/story/container';
 import Conversation from 'src/organisms/conversation';
 
-import Loader from 'src/containers/channel/slug/loader';
+import Loader from 'src/molecules/loader';
 
 export default function Home() {
   const router = useRouter();
@@ -25,7 +25,9 @@ export default function Home() {
       <Navbar />
 
       <Content>
-        {storyId && <Loader payload={storyId} />}
+        {storyId && (
+          <Loader payload={storyId} action="CHANNEL_SLUG_PAGE" cancellable />
+        )}
         {storyId && <Story storyId={storyId} />}
         {storyId && <Conversation storyId={storyId} />}
       </Content>
