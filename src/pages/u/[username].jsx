@@ -6,7 +6,7 @@ import App from 'src/atoms/app';
 import Content from 'src/atoms/content';
 import Navbar from 'src/organisms/navbar';
 
-import UsernameAbout from 'src/containers/user/username/about';
+import AboutUserContainer from 'src/organisms/about-user';
 import Loader from 'src/molecules/loader';
 
 import FeedStories from 'src/organisms/feed-stories';
@@ -25,7 +25,7 @@ export default function Username({ username }) {
 
       <Content>
         <Loader payload={query.username} action="USERNAME_PAGE" cancellable />
-        <UsernameAbout username={query.username} />
+        <AboutUserContainer username={query.username} />
         <FeedStories feedId={query.username} />
       </Content>
     </App>
