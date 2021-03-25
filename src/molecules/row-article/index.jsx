@@ -108,7 +108,7 @@ function RowArticleContainer({ itemId }) {
       ownerUsername={owner.username}
     >
       <StoryActions
-        comments={stats.comment}
+        comments={stats.comments}
         shares={stats.shares}
         bookmarks={stats.bookmarks}
       />
