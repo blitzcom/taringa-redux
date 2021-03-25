@@ -1,0 +1,45 @@
+@import 'mixins/theme';
+
+.button {
+  background: transparent;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  outline: none;
+
+  & + .button {
+    margin-left: 16px;
+  }
+
+  &:first-child {
+    margin-left: -6px;
+  }
+
+  .counter {
+    margin-right: 4px;
+  }
+
+  &:hover {
+    @include theme('background-color', 'button-action');
+  }
+
+  &.active {
+    @include theme('background-color', 'button-action-active');
+    @include theme('color', 'button-action-active-color');
+
+    .counter {
+      @include theme('color', 'button-action-active-color');
+    }
+  }
+
+  &.active:hover {
+    @include theme('background-color', 'button-action-active-hover');
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}

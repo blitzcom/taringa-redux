@@ -11,6 +11,8 @@ import Text from 'src/atoms/text';
 import Thumbnail from 'src/atoms/thumbnail';
 import Title from 'src/atoms/title';
 
+import StoryActions from 'src/molecules/story-actions';
+
 export function RowArticle({
   articleSubtitle,
   articleThumbnail,
@@ -18,26 +20,25 @@ export function RowArticle({
   articleUrl,
   channelName,
   channelUrl,
+  children,
   ownerUrl,
   ownerUsername,
 }) {
   return (
     <Row>
       <article>
-        <div>
-          <Text>
-            <Link href={channelUrl}>
-              <b>{channelName}</b>
-            </Link>
+        <Text size="small">
+          <Link href={channelUrl}>
+            <b>{channelName}</b>
+          </Link>
 
-            <span> • </span>
-            <span>Posted by </span>
+          <span> • </span>
+          <span>Posted by </span>
 
-            <Link href={ownerUrl}>
-              <b>{ownerUsername}</b>
-            </Link>
-          </Text>
-        </div>
+          <Link href={ownerUrl}>
+            <b>{ownerUsername}</b>
+          </Link>
+        </Text>
 
         <Box display="flex" margin="8px 0 0">
           <Box width="100%" padding="0 16px 0 0">
@@ -47,13 +48,16 @@ export function RowArticle({
 
             <Box margin="4px 0 0">
               <Clamp>
-                <Text truncate>{articleSubtitle}</Text>
+                <Text truncate variant="secondary">
+                  {articleSubtitle}
+                </Text>
               </Clamp>
             </Box>
           </Box>
 
           <Thumbnail src={articleThumbnail} />
         </Box>
+        {children}
       </article>
     </Row>
   );
@@ -66,8 +70,13 @@ RowArticle.propTypes = {
   articleUrl: PropTypes.string.isRequired,
   channelName: PropTypes.string.isRequired,
   channelUrl: PropTypes.string.isRequired,
+  children: PropTypes.node,
   ownerUrl: PropTypes.string.isRequired,
   ownerUsername: PropTypes.string.isRequired,
+};
+
+RowArticle.defaultProps = {
+  children: null,
 };
 
 function RowArticleContainer({ itemId }) {
@@ -83,6 +92,10 @@ function RowArticleContainer({ itemId }) {
     selectEntity(state, 'users', article.owner),
   );
 
+  const stats = useSelector((state) =>
+    selectEntity(state, 'stats', article.id),
+  );
+
   return (
     <RowArticle
       articleSubtitle={article.summary.excerpt}
@@ -93,7 +106,13 @@ function RowArticleContainer({ itemId }) {
       channelUrl={channel.url}
       ownerUrl={owner.url}
       ownerUsername={owner.username}
-    />
+    >
+      <StoryActions
+        comments={stats.comment}
+        shares={stats.shares}
+        bookmarks={stats.bookmarks}
+      />
+    </RowArticle>
   );
 }
 

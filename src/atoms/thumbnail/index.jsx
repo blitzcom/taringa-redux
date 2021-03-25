@@ -8,10 +8,10 @@ function Thumbnail({ src }) {
       <img
         alt=""
         className={style.img}
-        height={90}
+        height={80}
         loading="lazy"
         src={src}
-        width={90}
+        width={120}
       />
     </figure>
   );

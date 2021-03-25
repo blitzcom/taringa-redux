@@ -27,4 +27,9 @@ $default-theme: (
   button-success-active: color.adjust(#16c465, $lightness: 5%),
   button-success-focus: color.adjust(#16c465, $blackness: 40%),
   button-success-color: #ffffff,
+  // Button Action
+  button-action: #ced4da,
+  button-action-active: color.adjust(#005dab, $lightness: 54%),
+  button-action-active-color: color.adjust(#005dab, $blackness: 20%),
+  button-action-active-hover: color.adjust(#005dab, $lightness: 45%),
 );
