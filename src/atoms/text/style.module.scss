@@ -1,8 +1,20 @@
 @import 'mixins/theme';
 
+@mixin create-size($name, $font, $line) {
+  .#{$name} {
+    font-size: $font;
+    line-height: $line;
+
+    & span,
+    & b,
+    & a {
+      font-size: $font;
+      line-height: $line;
+    }
+  }
+}
+
 .text {
-  font-size: 14px;
-  line-height: 18px;
   margin: 0;
 }
 
@@ -18,3 +30,7 @@
 .secondary {
   @include theme('color', 'text-secondary');
 }
+
+@include create-size('large', 16px, 21px);
+@include create-size('medium', 14px, 18px);
+@include create-size('small', 12px, 15px);
