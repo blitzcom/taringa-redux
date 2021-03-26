@@ -32,4 +32,14 @@ $default-theme: (
   button-action-active: color.adjust(#005dab, $lightness: 54%),
   button-action-active-color: color.adjust(#005dab, $blackness: 20%),
   button-action-active-hover: color.adjust(#005dab, $lightness: 45%),
+  // Button Voting
+  button-voting-border: #ced4da,
+  button-voting-up: transparent,
+  button-voting-up-color: #02a24b,
+  button-voting-up-hover: #02a24b,
+  button-voting-up-color-hover: #ffffff,
+  button-voting-down: transparent,
+  button-voting-down-color: #db4242,
+  button-voting-down-hover: #db4242,
+  button-voting-down-color-hover: #ffffff,
 );

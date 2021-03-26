@@ -14,8 +14,9 @@ const Template = (args) => (
 export const Default = Template.bind({});
 
 Default.args = {
-  votes: '10.2k',
-  comments: '594',
-  shares: '855',
-  bookmarks: '1.2k',
+  bookmarks: 45,
+  comments: 345,
+  downvotes: 45,
+  shares: 346,
+  upvotes: 999,
 };

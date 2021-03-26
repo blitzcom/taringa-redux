@@ -8,14 +8,11 @@
   font-size: 12px;
   font-weight: bold;
   line-height: 20px;
+  margin-left: 16px;
   outline: none;
 
   & + .button {
-    margin-left: 16px;
-  }
-
-  &:first-child {
-    margin-left: -6px;
+    margin-left: 4px;
   }
 
   .counter {

@@ -1,0 +1,75 @@
+@import 'mixins/theme';
+
+.voting {
+  display: inline-flex;
+}
+
+.button {
+  align-items: center;
+  background: transparent;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: bold;
+  height: 22px;
+  line-height: 20px;
+  outline: none;
+  font-size: 12px;
+
+  @include theme('border-color', 'button-voting-border');
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.up {
+  border-width: 1px 0 1px 1px;
+  border-radius: 5px 0 0 5px;
+
+  @include theme('color', 'button-voting-up-color');
+  @include theme('background-color', 'button-voting-up');
+
+  .icon {
+    path {
+      @include theme('color', 'button-voting-up-color');
+    }
+  }
+
+  &:hover,
+  &.active {
+    @include theme('background-color', 'button-voting-up-hover');
+    @include theme('border-color', 'button-voting-up-hover');
+    @include theme('color', 'button-voting-up-color-hover');
+
+    .icon path {
+      @include theme('color', 'button-voting-up-color-hover');
+    }
+  }
+}
+
+.down {
+  border-width: 1px;
+  border-radius: 0 5px 5px 0;
+
+  @include theme('color', 'button-voting-down-color');
+  @include theme('background-color', 'button-voting-down');
+
+  .icon {
+    path {
+      @include theme('color', 'button-voting-down-color');
+    }
+  }
+
+  &:hover,
+  &.active {
+    @include theme('background-color', 'button-voting-down-hover');
+    @include theme('border-color', 'button-voting-down-hover');
+    @include theme('color', 'button-voting-down-color-hover');
+
+    .icon path {
+      @include theme('color', 'button-voting-down-color-hover');
+    }
+  }
+}
