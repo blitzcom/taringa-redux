@@ -1,9 +1,12 @@
+@import 'mixins/gen-hash';
 @import 'theme/default-theme';
 
 @mixin theme($property, $name, $prefix: null) {
-  @if (map-has-key($map: $default-theme, $key: $name)) {
+  @if (map-has-key($default-theme, $name)) {
+    $final-name: if($production, gen-hash($name), $name);
+
     #{$property}: #{$prefix} map-get($default-theme, $name);
-    #{$property}: #{$prefix} var(--#{$name});
+    #{$property}: #{$prefix} var(--#{$final-name});
   } @else {
     @error "Theme var #{$name} does not exist.";
   }
@@ -11,6 +14,8 @@
 
 @mixin generate-theme($theme) {
   @each $key, $value in $theme {
-    --#{$key}: #{$value};
+    $final-name: if($production, gen-hash($key), $key);
+
+    --#{$final-name}: #{$value};
   }
 }
