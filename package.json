@@ -28,6 +28,7 @@
     "@mdi/js": "^5.9.55",
     "@mdi/react": "^1.4.0",
     "@reduxjs/toolkit": "^1.5.0",
+    "abortcontroller-polyfill": "^1.7.1",
     "classnames": "^2.2.6",
     "invariant": "^2.2.4",
     "lodash.merge": "^4.6.2",

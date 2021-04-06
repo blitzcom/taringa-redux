@@ -1,9 +1,9 @@
 import { call, cancelled, put, select } from 'redux-saga/effects';
 
-import { get } from 'src/agent';
+import { actions } from 'src/reducers/controls/feeds';
+import agent from 'src/agent';
 import normalize from 'src/schemas/feed';
 import selectControl from 'src/selectors/select-control';
-import { actions } from 'src/reducers/controls/feeds';
 
 function* getStories(uniqueId, url, query = {}) {
   try {
@@ -15,7 +15,7 @@ function* getStories(uniqueId, url, query = {}) {
 
     yield put(actions.load(uniqueId));
 
-    const { body } = yield call(get, url, {
+    const [body] = yield call(agent.get, url, {
       count: 20,
       sort: 'created-desc',
       filter: 'article',

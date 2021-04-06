@@ -3,7 +3,7 @@ import { call, race, take } from 'redux-saga/effects';
 import getStories from 'src/sagas/common/get-stories';
 
 function* run() {
-  yield call(getStories, 'articles', 'feed/list/globalHome', {
+  yield call(getStories, 'articles', '/feed/list/globalHome', {
     count: 35,
     filter: 'article',
     sort: 'bigbang1d',

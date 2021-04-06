@@ -1,7 +1,7 @@
 import { call, put, select } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/conversations';
-import { get } from 'src/agent';
+import agent from 'src/agent';
 import normalize from 'src/schemas/comment';
 import selectControl from 'src/selectors/select-control';
 
@@ -15,7 +15,7 @@ function* getConversation(target) {
 
     yield put(actions.load(target));
 
-    const { body } = yield call(get, `story/${target}/comments`, {
+    const [body] = yield call(agent.get, `/story/${target}/comments`, {
       sort: 'created-desc',
       count: 50,
       repliesCount: 20,

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import agent from 'src/agent';
+
 import App from 'src/atoms/app';
 import Content from 'src/atoms/content';
 import Navbar from 'src/organisms/navbar';
@@ -42,17 +44,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const response = await fetch(
-    `https://api-user.taringa.net/c/${params.source}/about`,
-  );
+  const [channel, status] = await agent.get(`/c/${params.source}/about`);
 
-  if (response.status !== 200) {
+  if (status !== 200) {
     return {
       notFound: true,
     };
   }
-
-  const channel = await response.json();
 
   return {
     props: {

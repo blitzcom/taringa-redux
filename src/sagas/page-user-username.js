@@ -1,7 +1,7 @@
 import { call, cancelled, put, race, select, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/users';
-import { get } from 'src/agent';
+import agent from 'src/agent';
 import getStories from 'src/sagas/common/get-stories';
 import normalize from 'src/schemas/user';
 import selectControl from 'src/selectors/select-control';
@@ -16,7 +16,7 @@ function* getUserAbout(username) {
 
     yield put(actions.load(username));
 
-    const { body } = yield call(get, `user/${username}/about`);
+    const [body] = yield call(agent.get, `/user/${username}/about`);
     const payload = yield call(normalize, body);
 
     yield put(actions.success(username, payload));
@@ -31,7 +31,7 @@ function* getUserAbout(username) {
 
 function* run(username) {
   yield call(getUserAbout, username);
-  yield call(getStories, username, `user/${username}/feed`);
+  yield call(getStories, username, `/user/${username}/feed`);
 }
 
 export default function* usernamePage() {

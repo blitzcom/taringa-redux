@@ -1,7 +1,7 @@
 import { call, put, race, select, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/stories';
-import { get } from 'src/agent';
+import agent from 'src/agent';
 import getConversation from 'src/sagas/common/get-conversation';
 import normalize from 'src/schemas/item';
 import selectControl from 'src/selectors/select-control';
@@ -21,7 +21,7 @@ function* getStory(target) {
 
     yield put(actions.load(target));
 
-    const { body } = yield call(get, `story/${target}`);
+    const [body] = yield call(agent.get, `/story/${target}`);
 
     const payload = yield call(normalize, body);
 

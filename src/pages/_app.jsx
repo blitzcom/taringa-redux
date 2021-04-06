@@ -4,6 +4,8 @@ import Head from 'next/head';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 
+import 'abortcontroller-polyfill';
+
 import 'normalize.css';
 import 'src/sass/taringa.scss';
 

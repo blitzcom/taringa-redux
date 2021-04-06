@@ -2,7 +2,7 @@ import { call, cancelled, put, race, take, select } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/channels';
 import { channelNormalize } from 'src/schemas/item';
-import { get } from 'src/agent';
+import agent from 'src/agent';
 import getStories from 'src/sagas/common/get-stories';
 import selectControl from 'src/selectors/select-control';
 
@@ -16,7 +16,7 @@ function* getAbout(channelId) {
 
     yield put(actions.load(channelId));
 
-    const { body } = yield call(get, `c/${channelId}/about`);
+    const [body] = yield call(agent.get, `/c/${channelId}/about`);
 
     const payload = yield call(channelNormalize, body);
 
@@ -32,7 +32,7 @@ function* getAbout(channelId) {
 
 function* runFlow(channelId) {
   yield call(getAbout, channelId);
-  yield call(getStories, channelId, `c/${channelId}/feed`, {
+  yield call(getStories, channelId, `/c/${channelId}/feed`, {
     sort: 'bigbang1d',
   });
 }
