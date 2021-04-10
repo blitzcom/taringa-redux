@@ -5,7 +5,7 @@ import App from 'src/atoms/app';
 import Content from 'src/atoms/content';
 import Navbar from 'src/organisms/navbar';
 
-import Story from 'src/organisms/story/container';
+import Story from 'src/organisms/story';
 import Conversation from 'src/organisms/conversation';
 
 import Loader from 'src/molecules/loader';
