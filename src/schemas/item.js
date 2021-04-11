@@ -3,24 +3,17 @@ import { normalize, schema } from 'normalizr';
 import getId from 'src/schemas/utils/get-id';
 
 import { formatIdentity, formatAvatar } from './utils/knn';
-import { owner } from './user';
-import { stats } from './stats';
 
-const state = new schema.Entity(
-  'states',
-  {},
-  {
-    idAttribute: (_, parent) => getId(parent),
-    processStrategy: (value, root) => ({ ...value, id: root.id }),
-  },
-);
+import { owner } from './user';
+import { state } from './state';
+import { stats } from './stats';
 
 const channel = new schema.Entity(
   'channels',
   {
-    stats,
     owner,
     state,
+    stats,
   },
   {
     idAttribute: (_, parent) => getId(parent),
@@ -48,10 +41,10 @@ export function channelNormalize(data) {
 export const item = new schema.Entity(
   'stories',
   {
-    stats,
     channel,
     owner,
     state,
+    stats,
   },
   {
     processStrategy(value) {
