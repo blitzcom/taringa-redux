@@ -1,10 +1,8 @@
-import { nanoid } from 'nanoid';
 import { normalize, schema } from 'normalizr';
-import marked from 'marked';
 
 import getId from 'src/schemas/utils/get-id';
 
-import { formatThubmanil, formatIdentity, formatAvatar } from './utils/knn';
+import { formatIdentity, formatAvatar } from './utils/knn';
 import { owner } from './user';
 import { stats } from './stats';
 
@@ -79,43 +77,6 @@ export const item = new schema.Entity(
           visits,
         },
       };
-
-      if (rest.content) {
-        Object.assign(entity, {
-          content: rest.content.map((originalBlock) => {
-            const block = { ...originalBlock, id: nanoid() };
-
-            if (block.type === 'markdown') {
-              block.body = marked(block.body, { headerIds: false });
-            }
-
-            if (block.type === 'image') {
-              const { url, width, height } = block;
-              const defaultWith = width || 550;
-              const defaultHeight = height || 500;
-
-              block.url = formatIdentity(url);
-
-              block.widthStyle = { maxWidth: defaultWith };
-
-              block.paddingStyle = {
-                paddingBottom: `${(defaultHeight / defaultWith) * 100}%`,
-              };
-
-              block.width = defaultWith;
-              block.height = defaultHeight;
-            }
-
-            return block;
-          }),
-        });
-      }
-
-      const [thumbnail] = rest.summary.images.slice;
-
-      Object.assign(entity, {
-        thumbnail: formatThubmanil(thumbnail?.url, '/article_background.svg'),
-      });
 
       return entity;
     },
