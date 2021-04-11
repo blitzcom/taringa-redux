@@ -1,9 +1,9 @@
 import { normalize, schema } from 'normalizr';
 
-import { item } from './item';
+import { story } from './story';
 
 const feed = new schema.Entity('feeds', {
-  items: [item],
+  items: [story],
 });
 
 export default function exec(data, id) {

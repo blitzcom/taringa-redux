@@ -3,7 +3,7 @@ import invariant from 'invariant';
 
 import { actions } from 'src/reducers/controls/stories';
 import getConversation from 'src/sagas/common/get-conversation';
-import normalize from 'src/schemas/item';
+import normalize from 'src/schemas/story';
 
 import summary from './common/summary';
 

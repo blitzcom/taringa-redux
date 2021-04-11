@@ -5,7 +5,7 @@ import { owner } from './user';
 import { state } from './state';
 import { stats } from './stats';
 
-export const item = new schema.Entity(
+export const story = new schema.Entity(
   'stories',
   {
     channel,
@@ -44,5 +44,5 @@ export const item = new schema.Entity(
 );
 
 export default function exec(data) {
-  return normalize(data, item);
+  return normalize(data, story);
 }
