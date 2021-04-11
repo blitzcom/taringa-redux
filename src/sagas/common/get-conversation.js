@@ -19,7 +19,7 @@ function* getConversation(target) {
       sort: 'created-desc',
       count: 50,
       repliesCount: 20,
-      repliesSort: 'created-desc',
+      repliesSort: 'created-asc',
     });
 
     const payload = yield call(normalize, body, target);
