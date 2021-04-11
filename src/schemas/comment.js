@@ -1,26 +1,9 @@
 import { normalize, schema } from 'normalizr';
 
 import { owner } from './user';
+import { thread } from './thread';
 
-const reply = new schema.Entity('replies', {
-  owner,
-});
-
-const thread = new schema.Entity(
-  'threads',
-  {
-    items: [reply],
-  },
-  {
-    idAttribute: (_, parent) => parent.id,
-    processStrategy: (value, parent) => ({
-      ...value,
-      id: parent.id,
-    }),
-  },
-);
-
-const comment = new schema.Entity(
+export const comment = new schema.Entity(
   'comments',
   {
     owner,
@@ -34,10 +17,6 @@ const comment = new schema.Entity(
   },
 );
 
-const conversation = new schema.Entity('conversations', {
-  items: [comment],
-});
-
-export default function exec(data, storyId) {
-  return normalize({ ...data, id: storyId }, conversation);
+export default function normalizeComment(data) {
+  return normalize(data, comment);
 }

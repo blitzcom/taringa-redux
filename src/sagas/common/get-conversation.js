@@ -2,7 +2,7 @@ import { call, put, select } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/conversations';
 import agent from 'src/agent';
-import normalize from 'src/schemas/comment';
+import normalize from 'src/schemas/conversation';
 import selectControl from 'src/selectors/select-control';
 
 function* getConversation(target) {
