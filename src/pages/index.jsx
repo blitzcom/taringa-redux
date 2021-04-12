@@ -1,27 +1,32 @@
-import Head from 'next/head';
-
-import App from 'src/atoms/app';
-import Content from 'src/atoms/content';
-import Navbar from 'src/organisms/navbar';
+import LayoutApp from 'src/atoms/layout/layout-app';
+import LayoutContent from 'src/atoms/layout/layout-content';
+import LayoutHead from 'src/atoms/layout/layout-head';
+import LayoutMain from 'src/atoms/layout/layout-main';
+import LayoutMenu from 'src/atoms/layout/layout-menu';
+import LayoutSidebar from 'src/atoms/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 
 import FeedStories from 'src/organisms/feed-stories';
+import Navbar from 'src/organisms/navbar';
 
 export default function Home() {
   return (
-    <App>
-      <Head>
-        <title>Taringa! - Inteligencia Colectiva</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <LayoutApp>
+      <LayoutHead />
 
       <Navbar />
 
-      <Content>
-        <Loader action="HOME_PAGE" cancellable />
-        <FeedStories feedId="articles" />
-      </Content>
-    </App>
+      <LayoutContent>
+        <LayoutMenu />
+
+        <LayoutMain>
+          <Loader action="HOME_PAGE" cancellable />
+          <FeedStories feedId="articles" />
+        </LayoutMain>
+
+        <LayoutSidebar />
+      </LayoutContent>
+    </LayoutApp>
   );
 }

@@ -1,37 +1,45 @@
 import PropTypes from 'prop-types';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import agent from 'src/agent';
 
-import App from 'src/atoms/app';
-import Content from 'src/atoms/content';
-import Navbar from 'src/organisms/navbar';
+import LayoutApp from 'src/atoms/layout/layout-app';
+import LayoutContent from 'src/atoms/layout/layout-content';
+import LayoutHead from 'src/atoms/layout/layout-head';
+import LayoutMain from 'src/atoms/layout/layout-main';
+import LayoutMenu from 'src/atoms/layout/layout-menu';
+import LayoutSidebar from 'src/atoms/layout/layout-sidebar';
 
-import AboutChannel from 'src/organisms/about-channel';
 import Loader from 'src/molecules/loader';
 
+import AboutChannelContainer from 'src/organisms/about-channel';
 import FeedStories from 'src/organisms/feed-stories';
+import Navbar from 'src/organisms/navbar';
 
 export default function Home({ title }) {
   const { query } = useRouter();
   const { source } = query;
 
   return (
-    <App>
-      <Head>
-        <title>{title} | Taringa!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <LayoutApp>
+      <LayoutHead>
+        <title key="title">{title} | Taringa!</title>
+      </LayoutHead>
 
       <Navbar />
 
-      <Content>
-        <Loader payload={source} action="CHANNEL_PAGE" cancellable />
-        <AboutChannel channelId={source} />
-        <FeedStories feedId={source} />
-      </Content>
-    </App>
+      <LayoutContent>
+        <LayoutMenu />
+
+        <LayoutMain>
+          <Loader payload={source} action="CHANNEL_PAGE" cancellable />
+          <AboutChannelContainer channelId={source} />
+          <FeedStories feedId={source} />
+        </LayoutMain>
+
+        <LayoutSidebar />
+      </LayoutContent>
+    </LayoutApp>
   );
 }
 

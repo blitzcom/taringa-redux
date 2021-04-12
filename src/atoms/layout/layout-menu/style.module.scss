@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'mixins/theme';
+
+.menu {
+  width: 240px;
+  min-height: calc(100vh - #{$nav-app-height});
+
+  @include theme('border-right', 'layout-menu-border', '1px solid');
+}

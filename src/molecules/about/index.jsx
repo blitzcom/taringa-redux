@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 
 import Background from 'src/atoms/background';
 import Padding from 'src/atoms/padding';
-import Paper from 'src/atoms/paper';
 import Position from 'src/atoms/position';
 
 function About({ background, avatar, children }) {
   return (
-    <Paper flat>
+    <section>
       <Background src={background} />
 
       <Position to="relative">
@@ -18,7 +17,7 @@ function About({ background, avatar, children }) {
           {children}
         </Padding>
       </Position>
-    </Paper>
+    </section>
   );
 }
 

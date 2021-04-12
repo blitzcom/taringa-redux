@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 
 import style from './style.module.scss';
 
-function App({ children }) {
+function LayoutApp({ children }) {
   return <div className={style.app}>{children}</div>;
 }
 
-App.propTypes = {
+LayoutApp.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default App;
+export default LayoutApp;

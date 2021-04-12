@@ -15,6 +15,9 @@ module.exports = {
           sassOptions: {
             includePaths: [path.join(__dirname, '../src/sass')],
           },
+          additionalData: `
+            $production: false;
+          `,
         },
       },
     },

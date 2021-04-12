@@ -4,21 +4,13 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Box from 'src/atoms/box';
-import Paper from 'src/atoms/paper';
 import Spinner from 'src/atoms/spinner';
-import Spot from 'src/atoms/spot';
 
 import RowArticleContainer from 'src/molecules/row-article';
+import Void from 'src/atoms/void';
 
 function FeedStory({ items, component: Component }) {
-  return (
-    <Paper flat>
-      {items.map((id) => (
-        <Component key={id} itemId={id} />
-      ))}
-    </Paper>
-  );
+  return items.map((id) => <Component key={id} itemId={id} />);
 }
 
 FeedStory.propTypes = {
@@ -35,19 +27,13 @@ function FeedStoryContainer({ feedId }) {
   const feed = useSelector((state) => selectEntity(state, 'feeds', feedId));
 
   if (control?.status === 'loaded') {
-    return (
-      <Spot>
-        <FeedStory items={feed.items} />
-      </Spot>
-    );
+    return <FeedStory items={feed.items} />;
   }
 
   return (
-    <Spot>
-      <Box display="flex" justify="center">
-        <Spinner />
-      </Box>
-    </Spot>
+    <Void display="flex" justify="center">
+      <Spinner />
+    </Void>
   );
 }
 

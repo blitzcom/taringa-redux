@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 function Navbar() {
   return (
-    <nav className={styles.navbar}>
+    <nav aria-label="App Navigation" className={styles.navbar}>
       <Link href="/">
         <a className={styles.anchor}>
           <img

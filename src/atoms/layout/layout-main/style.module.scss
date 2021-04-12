@@ -1,0 +1,6 @@
+@import 'mixins/theme';
+
+.main {
+  width: 550px;
+  @include theme('background-color', 'layout-main');
+}

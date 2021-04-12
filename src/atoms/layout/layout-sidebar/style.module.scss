@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'mixins/theme';
+
+.sidebar {
+  width: 320px;
+  min-height: calc(100vh - #{$nav-app-height});
+
+  @include theme('border-left', 'layout-sidebar-border', '1px solid');
+}
