@@ -16,6 +16,7 @@ function createFormat(preset) {
   return format;
 }
 
+export const formatGifThumbnail = createFormat('thumbGif:crop:150x115');
 export const formatThubmanil = createFormat('crop:150x115');
 export const formatIdentity = createFormat('identity');
 export const formatAvatar = createFormat('crop:90x90');

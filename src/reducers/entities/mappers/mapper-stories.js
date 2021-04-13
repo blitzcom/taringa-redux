@@ -1,7 +1,11 @@
 import { nanoid } from 'nanoid';
 import marked from 'marked';
 
-import { formatThubmanil, formatIdentity } from 'src/schemas/utils/knn';
+import {
+  formatGifThumbnail,
+  formatIdentity,
+  formatThubmanil,
+} from 'src/schemas/utils/knn';
 
 function contentMapper(content) {
   if (typeof content === 'undefined') {
@@ -36,6 +40,18 @@ function contentMapper(content) {
   });
 }
 
+function thumbnailMapper(thumbnail, firstImage) {
+  const src = thumbnail ?? firstImage?.url;
+
+  if (src && typeof src === 'string') {
+    return thumbnail.endsWith('.gif')
+      ? formatGifThumbnail(src)
+      : formatThubmanil(src);
+  }
+
+  return '/article_background.svg';
+}
+
 export default function storiesMapper(current, value) {
   const { content, thumbnail, stats, state: _, ...rest } = value;
   const [firstImage] = value.summary.images.slice;
@@ -43,10 +59,7 @@ export default function storiesMapper(current, value) {
   const state = {
     ...current,
     ...rest,
-    thumbnail: formatThubmanil(
-      thumbnail ?? firstImage?.url,
-      '/article_background.svg',
-    ),
+    thumbnail: thumbnailMapper(thumbnail, firstImage),
   };
 
   if (content) {
