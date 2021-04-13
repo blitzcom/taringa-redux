@@ -33,8 +33,9 @@ export default function Home({ title }) {
 
         <LayoutMain>
           <Loader payload={source} action="CHANNEL_PAGE" cancellable />
-          <AboutChannelContainer channelId={source} />
-          <FeedStories feedId={source} />
+          <AboutChannelContainer channelId={source}>
+            <FeedStories feedId={source} />
+          </AboutChannelContainer>
         </LayoutMain>
 
         <LayoutSidebar />

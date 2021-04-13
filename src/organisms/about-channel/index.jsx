@@ -4,51 +4,13 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import AvatarLarge from 'src/atoms/avatar-large';
-import Box from 'src/atoms/box';
-import Button from 'src/atoms/button';
+import Line from 'src/atoms/line';
 import Spinner from 'src/atoms/spinner';
-import Text from 'src/atoms/text';
-import Title from 'src/atoms/title';
+import Void from 'src/atoms/void';
 
-import About from 'src/molecules/about';
+import AboutChannel from './component';
 
-export function AboutChannel({
-  background,
-  category,
-  description,
-  thumbnail,
-  title,
-}) {
-  return (
-    <About background={background} avatar={<AvatarLarge src={thumbnail} />}>
-      <Box display="flex" margin="16px 0 0" justify="space-between">
-        <div>
-          <Title size="large">{title}</Title>
-          <Text variant="secondary">{category}</Text>
-        </div>
-
-        <div>
-          <Button onClick={() => {}}>Join</Button>
-        </div>
-      </Box>
-
-      <Box margin="16px 0 0">
-        <Text>{description}</Text>
-      </Box>
-    </About>
-  );
-}
-
-AboutChannel.propTypes = {
-  background: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-function AboutChannelContainer({ channelId }) {
+function AboutChannelContainer({ channelId, children }) {
   const control = useSelector((state) =>
     selectControl(state, 'channels', channelId),
   );
@@ -59,21 +21,34 @@ function AboutChannelContainer({ channelId }) {
 
   if (control?.status === 'loaded') {
     return (
-      <AboutChannel
-        background={channel.background}
-        category={channel.category}
-        description={channel.description}
-        thumbnail={channel.thumbnail}
-        title={channel.title}
-      />
+      <>
+        <AboutChannel
+          background={channel.background}
+          category={channel.category}
+          description={channel.description}
+          thumbnail={channel.thumbnail}
+          title={channel.title}
+        />
+        <Line />
+        {children}
+      </>
     );
   }
 
-  return <Spinner />;
+  return (
+    <Void>
+      <Spinner />
+    </Void>
+  );
 }
 
 AboutChannelContainer.propTypes = {
   channelId: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+AboutChannelContainer.defaultProps = {
+  children: null,
 };
 
 export default AboutChannelContainer;

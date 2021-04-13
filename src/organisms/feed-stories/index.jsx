@@ -31,7 +31,7 @@ function FeedStoryContainer({ feedId }) {
   }
 
   return (
-    <Void display="flex" justify="center">
+    <Void>
       <Spinner />
     </Void>
   );
