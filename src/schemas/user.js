@@ -1,9 +1,8 @@
 import { normalize, schema } from 'normalizr';
 
-import { stats } from './stats';
-
-import { formatAvatar } from './utils/knn';
 import getId from './utils/get-id';
+
+import { stats } from './stats';
 
 export const owner = new schema.Entity(
   'users',
@@ -23,11 +22,7 @@ export const owner = new schema.Entity(
         ...rest
       } = value;
 
-      const entity = {
-        ...rest,
-        url: `/u/${value.username}`,
-        avatar: formatAvatar(avatar, '/channel_avatar.svg'),
-      };
+      const entity = { ...rest };
 
       if (value.type === 'user:summary') {
         return entity;

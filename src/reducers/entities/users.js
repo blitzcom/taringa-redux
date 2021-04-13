@@ -1,6 +1,8 @@
 import createEntities from 'src/reducers/utils/entities-creator';
 
-const entities = createEntities('users');
+import usersMapper from './mappers/mapper-users';
+
+const entities = createEntities('users', usersMapper);
 
 export const { actions } = entities;
 
