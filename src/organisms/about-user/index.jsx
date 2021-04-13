@@ -4,25 +4,13 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-export function UserAbout({ username, message }) {
-  return (
-    <div>
-      <h1>{username}</h1>
-      <p>{message}</p>
-    </div>
-  );
-}
+import Line from 'src/atoms/line';
+import Spinner from 'src/atoms/spinner';
+import Void from 'src/atoms/void';
 
-UserAbout.propTypes = {
-  username: PropTypes.string.isRequired,
-  message: PropTypes.string,
-};
+import AboutUser from './component';
 
-UserAbout.defaultProps = {
-  message: '',
-};
-
-function UserAboutContainer({ username }) {
+function UserAboutContainer({ children, username }) {
   const control = useSelector((state) =>
     selectControl(state, 'users', username),
   );
@@ -30,14 +18,29 @@ function UserAboutContainer({ username }) {
   const user = useSelector((state) => selectEntity(state, 'users', username));
 
   if (control?.status === 'loaded') {
-    return <UserAbout username={user.username} message={user.message} />;
+    return (
+      <>
+        <AboutUser username={user.username} message={user.message} />
+        <Line />
+        {children}
+      </>
+    );
   }
 
-  return null;
+  return (
+    <Void>
+      <Spinner />
+    </Void>
+  );
 }
 
 UserAboutContainer.propTypes = {
   username: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+UserAboutContainer.defaultProps = {
+  children: null,
 };
 
 export default UserAboutContainer;

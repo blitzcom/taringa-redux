@@ -32,8 +32,9 @@ export default function Username({ username }) {
 
         <LayoutMain>
           <Loader payload={query.username} action="USERNAME_PAGE" cancellable />
-          <AboutUserContainer username={query.username} />
-          <FeedStories feedId={query.username} />
+          <AboutUserContainer username={query.username}>
+            <FeedStories feedId={query.username} />
+          </AboutUserContainer>
         </LayoutMain>
 
         <LayoutSidebar />
