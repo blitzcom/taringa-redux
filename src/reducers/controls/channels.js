@@ -1,7 +1,7 @@
-import createControl from 'src/reducers/utils/controls-creator';
+import createSummaryControl from 'src/reducers/utils/summary-control-creator';
 
-const control = createControl('channels');
+const summaryControl = createSummaryControl('channels');
 
-export const { actions } = control;
+export const { actions } = summaryControl;
 
-export default control.reducer;
+export default summaryControl.reducer;

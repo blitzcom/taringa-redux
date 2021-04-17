@@ -8,18 +8,23 @@ import Line from 'src/atoms/line';
 import Spinner from 'src/atoms/spinner';
 import Void from 'src/atoms/void';
 
+import summaryControlStatus from 'src/reducers/constants/summary-control-status';
+
 import AboutChannel from './component';
 
 function AboutChannelContainer({ channelId, children }) {
-  const control = useSelector((state) =>
-    selectControl(state, 'channels', channelId),
-  );
-
   const channel = useSelector((state) =>
     selectEntity(state, 'channels', channelId),
   );
 
-  if (control?.status === 'loaded') {
+  const control = useSelector((state) =>
+    selectControl(state, 'channels', channelId),
+  );
+
+  if (
+    control?.status === summaryControlStatus.Upgraded ||
+    control?.status === summaryControlStatus.Upgrading
+  ) {
     return (
       <>
         <AboutChannel

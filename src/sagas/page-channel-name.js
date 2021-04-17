@@ -1,37 +1,20 @@
-import { call, cancelled, put, race, take, select } from 'redux-saga/effects';
+import { call, race, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/channels';
-import agent from 'src/agent';
 import getStories from 'src/sagas/common/get-stories';
 import normalize from 'src/schemas/channel';
-import selectControl from 'src/selectors/select-control';
 
-function* getAbout(channelId) {
-  try {
-    const control = yield select(selectControl, 'channels', channelId);
-
-    if (control?.status === 'loaded') {
-      return;
-    }
-
-    yield put(actions.load(channelId));
-
-    const [body] = yield call(agent.get, `/c/${channelId}/about`);
-
-    const payload = yield call(normalize, body);
-
-    yield put(actions.success(channelId, payload));
-  } catch (e) {
-    yield put(actions.failure(channelId, e.message));
-  } finally {
-    if (yield cancelled()) {
-      // TODO: Handle cancel.
-    }
-  }
-}
+import summary from './common/summary';
 
 function* runFlow(channelId) {
-  yield call(getAbout, channelId);
+  yield call(summary, {
+    actions,
+    normalize,
+    pathname: `/c/${channelId}/about`,
+    source: 'channels',
+    target: channelId,
+  });
+
   yield call(getStories, channelId, `/c/${channelId}/feed`, {
     sort: 'bigbang1d',
   });
