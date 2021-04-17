@@ -1,4 +1,4 @@
-import AvatarLarge from 'src/atoms/avatar-large';
+import Avatar from 'src/atoms/avatar';
 
 import About from '.';
 
@@ -17,7 +17,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   avatar: (
-    <AvatarLarge src="https://media.taringa.net/knn/crop:90x90/aHR0cHM6Ly9rNjIua24zLm5ldC90YXJpbmdhL0YvRi85LzgvMy8wL05hY2hvbmUvQUIwLnBuZw" />
+    <Avatar src="https://media.taringa.net/knn/crop:90x90/aHR0cHM6Ly9rNjIua24zLm5ldC90YXJpbmdhL0YvRi85LzgvMy8wL05hY2hvbmUvQUIwLnBuZw" />
   ),
   background:
     'https://media.taringa.net/knn/identity/aHR0cHM6Ly9rNjAua24zLm5ldC90YXJpbmdhL0MvQi9CLzMvQy9BL0RGRC5qcGc',

@@ -1,9 +1,28 @@
+@import 'variables';
 @import 'mixins/theme';
 
 .avatar {
-  border-radius: 5px;
-  flex-shrink: 0;
   display: block;
+  border-radius: 5px;
 
-  @include theme('background-color', 'img-background');
+  @include theme('background-color', 'avatar');
+}
+
+.rounded {
+  border-radius: 100%;
+}
+
+// Sizes
+
+.regular {
+  height: 28px;
+  width: 28px;
+}
+
+.extra-large {
+  box-shadow: $shadow;
+  height: 90px;
+  width: 90px;
+
+  @include theme('border', 'avatar-border', '2px solid');
 }

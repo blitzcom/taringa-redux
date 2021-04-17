@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import AvatarContainer from 'src/atoms/avatar';
+import Avatar from 'src/atoms/avatar';
 import Link from 'src/atoms/link';
 
 import style from './style.module.scss';
@@ -41,8 +41,8 @@ function CommentContainer({ entityId, source }) {
 
   return (
     <Comment
+      avatar={<Avatar src={owner.avatar} rounded />}
       body={comment.body}
-      avatar={<AvatarContainer entityId={comment.owner} source="users" />}
       user={
         <Link href={`/u/${owner.username}`}>
           <b>{owner.username}</b>

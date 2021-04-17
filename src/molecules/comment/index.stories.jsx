@@ -1,4 +1,4 @@
-import { Avatar } from 'src/atoms/avatar';
+import Avatar from 'src/atoms/avatar';
 import Link from 'src/atoms/link';
 
 import { Comment } from '.';
@@ -18,7 +18,10 @@ export const Default = Template.bind({});
 
 Default.args = {
   avatar: (
-    <Avatar src="https://media.taringa.net/knn/crop:90x90/aHR0cHM6Ly9hMTEudDI2Lm5ldC90YXJpbmdhL2F2YXRhcmVzLzMvNy85L0IvOS9FL2hlcm44NC8xMjB4MTIwX0I4MC5qcGc" />
+    <Avatar
+      rounded
+      src="https://media.taringa.net/knn/crop:90x90/aHR0cHM6Ly9hMTEudDI2Lm5ldC90YXJpbmdhL2F2YXRhcmVzLzMvNy85L0IvOS9FL2hlcm44NC8xMjB4MTIwX0I4MC5qcGc"
+    />
   ),
   user: (
     <Link href="/u/taringa">

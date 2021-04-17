@@ -1,35 +1,38 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import classNames from 'classnames';
 
-import selectEntity from 'src/selectors/select-entity';
+import { AvatarSize, AvatarSizeMapper, AvatarSizeValues } from './constants';
 
 import style from './style.module.scss';
 
-export function Avatar({ src }) {
+function Avatar({ rounded, size, src }) {
+  const numberSize = AvatarSizeMapper[size];
+
   return (
     <img
       alt=""
-      className={style.avatar}
-      height={28}
+      className={classNames(
+        style.avatar,
+        style[size],
+        rounded && style.rounded,
+      )}
+      height={numberSize}
       loading="lazy"
       src={src}
-      width={28}
+      width={numberSize}
     />
   );
 }
 
 Avatar.propTypes = {
+  rounded: PropTypes.bool,
+  size: PropTypes.oneOf(AvatarSizeValues),
   src: PropTypes.string.isRequired,
 };
 
-function AvatarContainer({ entityId, source }) {
-  const user = useSelector((state) => selectEntity(state, source, entityId));
-  return <Avatar src={user.avatar} />;
-}
-
-AvatarContainer.propTypes = {
-  entityId: PropTypes.string.isRequired,
-  source: PropTypes.string.isRequired,
+Avatar.defaultProps = {
+  rounded: false,
+  size: AvatarSize.Regular,
 };
 
-export default AvatarContainer;
+export default Avatar;

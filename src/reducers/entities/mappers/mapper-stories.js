@@ -44,7 +44,7 @@ function thumbnailMapper(thumbnail, firstImage) {
   const src = thumbnail ?? firstImage?.url;
 
   if (src && typeof src === 'string') {
-    return thumbnail.endsWith('.gif')
+    return src.endsWith('.gif')
       ? formatGifThumbnail(src)
       : formatThubmanil(src);
   }

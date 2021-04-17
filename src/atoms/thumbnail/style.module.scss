@@ -1,9 +1,10 @@
+@import 'variables';
 @import 'mixins/theme';
 
 .figure {
   align-self: flex-start;
   border-radius: 5px;
-  box-shadow: 0 6px 8px rgb(102 119 136 / 3%), 0 1px 2px rgb(102 119 136 / 30%);
+  box-shadow: $shadow;
   flex-shrink: 0;
   height: 77px;
   margin: 0;

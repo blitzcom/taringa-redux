@@ -1,4 +1,4 @@
-import { AboutChannel } from '.';
+import AboutChannel from './component';
 
 export default {
   title: 'organisms/AboutChannel',

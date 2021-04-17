@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
 
-export function UserAbout({ username, message }) {
+import About from 'src/molecules/about';
+
+export function UserAbout({ avatar, background, username, message }) {
   return (
-    <div>
+    <About background={background} avatar={avatar}>
       <h1>{username}</h1>
       <p>{message}</p>
-    </div>
+    </About>
   );
 }
 
 UserAbout.propTypes = {
-  username: PropTypes.string.isRequired,
+  avatar: PropTypes.node.isRequired,
+  background: PropTypes.string.isRequired,
   message: PropTypes.string,
+  username: PropTypes.string.isRequired,
 };
 
 UserAbout.defaultProps = {

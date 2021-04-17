@@ -1,11 +1,12 @@
-import { formatAvatar } from 'src/schemas/utils/knn';
+import { formatAvatar, formatFit550 } from 'src/schemas/utils/knn';
 
 export default function usersMapper(current, value) {
-  const { avatar, ...rest } = value;
+  const { avatar, background, ...rest } = value;
 
   return {
     ...current,
     ...rest,
+    background: formatFit550(background, '/user_background.svg'),
     avatar:
       avatar && avatar !== '/channel_avatar.svg'
         ? formatAvatar(value.avatar)

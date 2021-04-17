@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
-import AvatarLarge from 'src/atoms/avatar-large';
+import { AvatarSize } from 'src/atoms/avatar/constants';
+import Avatar from 'src/atoms/avatar';
+
 import Box from 'src/atoms/box';
 import Button from 'src/atoms/button';
 import Text from 'src/atoms/text';
@@ -10,7 +12,10 @@ import About from 'src/molecules/about';
 
 function AboutChannel({ background, category, description, thumbnail, title }) {
   return (
-    <About background={background} avatar={<AvatarLarge src={thumbnail} />}>
+    <About
+      background={background}
+      avatar={<Avatar src={thumbnail} size={AvatarSize.ExtraLarge} />}
+    >
       <Box display="flex" margin="16px 0 0" justify="space-between">
         <div>
           <Title size="large">{title}</Title>

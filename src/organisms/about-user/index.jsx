@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
+import { AvatarSize } from 'src/atoms/avatar/constants';
+import Avatar from 'src/atoms/avatar';
+
 import Line from 'src/atoms/line';
 import Spinner from 'src/atoms/spinner';
 import Void from 'src/atoms/void';
@@ -20,7 +23,14 @@ function UserAboutContainer({ children, username }) {
   if (control?.status === 'loaded') {
     return (
       <>
-        <AboutUser username={user.username} message={user.message} />
+        <AboutUser
+          avatar={
+            <Avatar src={user.avatar} size={AvatarSize.ExtraLarge} rounded />
+          }
+          background={user.background}
+          message={user.message}
+          username={user.username}
+        />
         <Line />
         {children}
       </>

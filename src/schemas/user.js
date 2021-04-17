@@ -13,7 +13,6 @@ export const owner = new schema.Entity(
     idAttribute: (value) => getId(value),
     processStrategy(value) {
       const {
-        avatar,
         comments,
         followers,
         following,
