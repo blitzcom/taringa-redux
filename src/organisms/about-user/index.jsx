@@ -11,16 +11,21 @@ import Line from 'src/atoms/line';
 import Spinner from 'src/atoms/spinner';
 import Void from 'src/atoms/void';
 
+import summaryControlStatus from 'src/reducers/constants/summary-control-status';
+
 import AboutUser from './component';
 
 function UserAboutContainer({ children, username }) {
+  const user = useSelector((state) => selectEntity(state, 'users', username));
+
   const control = useSelector((state) =>
     selectControl(state, 'users', username),
   );
 
-  const user = useSelector((state) => selectEntity(state, 'users', username));
-
-  if (control?.status === 'loaded') {
+  if (
+    control?.status === summaryControlStatus.Upgraded ||
+    control?.status === summaryControlStatus.Upgrading
+  ) {
     return (
       <>
         <AboutUser

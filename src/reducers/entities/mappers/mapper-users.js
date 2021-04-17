@@ -1,7 +1,7 @@
 import { formatAvatar, formatFit550 } from 'src/schemas/utils/knn';
 
 export default function usersMapper(current, value) {
-  const { avatar, background, ...rest } = value;
+  const { avatar, background, stats, ...rest } = value;
 
   return {
     ...current,

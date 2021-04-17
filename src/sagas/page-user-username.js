@@ -1,36 +1,20 @@
-import { call, cancelled, put, race, select, take } from 'redux-saga/effects';
+import { call, race, take } from 'redux-saga/effects';
 
 import { actions } from 'src/reducers/controls/users';
-import agent from 'src/agent';
 import getStories from 'src/sagas/common/get-stories';
 import normalize from 'src/schemas/user';
-import selectControl from 'src/selectors/select-control';
 
-function* getUserAbout(username) {
-  try {
-    const control = yield select(selectControl, 'users', username);
-
-    if (control?.status === 'loaded') {
-      return;
-    }
-
-    yield put(actions.load(username));
-
-    const [body] = yield call(agent.get, `/user/${username}/about`);
-    const payload = yield call(normalize, body);
-
-    yield put(actions.success(username, payload));
-  } catch (e) {
-    yield put(actions.failure(username, e.message));
-  } finally {
-    if (yield cancelled()) {
-      // TODO: Handle cancel.
-    }
-  }
-}
+import summary from './common/summary';
 
 function* run(username) {
-  yield call(getUserAbout, username);
+  yield call(summary, {
+    actions,
+    normalize,
+    pathname: `/user/${username}/about`,
+    source: 'users',
+    target: username,
+  });
+
   yield call(getStories, username, `/user/${username}/feed`);
 }
 
