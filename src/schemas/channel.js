@@ -1,7 +1,5 @@
 import { normalize, schema } from 'normalizr';
 
-import getId from 'src/schemas/utils/get-id';
-
 import { formatIdentity, formatAvatar } from './utils/knn';
 
 import { owner } from './user';
@@ -16,7 +14,7 @@ export const channel = new schema.Entity(
     stats,
   },
   {
-    idAttribute: (_, parent) => getId(parent),
+    idAttribute: 'name',
     processStrategy(value) {
       const { stories, subscribers, thumbnail, background, ...rest } = value;
 
