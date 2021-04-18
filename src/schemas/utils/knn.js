@@ -4,20 +4,22 @@ function toBase64(url) {
   return btoa(url).replace(/=/g, '').replace(/\//g, '_');
 }
 
-function createFormat(preset) {
+function createFormat(preset, withGif = false) {
   function format(url, fallback) {
-    if (!url) {
+    if (typeof url !== 'string' || url === '') {
       return fallback;
     }
 
-    return `${KNN_URL}/${preset}/${toBase64(url)}`;
+    const finalPreset =
+      withGif && url.endsWith('.gif') ? `thumbGif:${preset}` : preset;
+
+    return `${KNN_URL}/${finalPreset}/${toBase64(url)}`;
   }
 
   return format;
 }
 
-export const formatAvatar = createFormat('crop:90x90');
-export const formatFit550 = createFormat('fit:550');
-export const formatGifThumbnail = createFormat('thumbGif:crop:150x115');
+export const formatAvatar = createFormat('crop:90x90', true);
+export const formatThumbnail = createFormat('crop:150x115', true);
+export const formatBackground = createFormat('fit:550', true);
 export const formatIdentity = createFormat('identity');
-export const formatThubmanil = createFormat('crop:150x115');

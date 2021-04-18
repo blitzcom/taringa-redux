@@ -1,4 +1,4 @@
-import { formatAvatar, formatIdentity } from 'src/schemas/utils/knn';
+import { formatAvatar, formatBackground } from 'src/schemas/utils/knn';
 
 export default function channelsMapper(current, value) {
   const { thumbnail, background, ...rest } = value;
@@ -6,8 +6,8 @@ export default function channelsMapper(current, value) {
   return {
     ...current,
     ...rest,
-    thumbnail: formatAvatar(thumbnail),
-    background: formatIdentity(background),
+    background: formatBackground(background, '/user_background.svg'),
+    thumbnail: formatAvatar(thumbnail, '/channel_avatar.svg'),
     url: `/c/${value.name}`,
   };
 }
