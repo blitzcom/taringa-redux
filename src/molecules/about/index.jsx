@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import Background from 'src/atoms/background';
 import Line from 'src/atoms/line';
+import Margin, { MarginSize } from 'src/atoms/margin';
 import Padding from 'src/atoms/padding';
 import Position from 'src/atoms/position';
 
@@ -17,6 +18,9 @@ function About({ background, avatar, children }) {
           <Position to="absolute" top={-65}>
             {avatar}
           </Position>
+
+          <Margin top={MarginSize.Regular} />
+
           {children}
         </Padding>
       </Position>

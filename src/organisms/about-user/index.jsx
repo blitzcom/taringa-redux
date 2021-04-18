@@ -11,6 +11,8 @@ import Line from 'src/atoms/line';
 import Spinner from 'src/atoms/spinner';
 import Void from 'src/atoms/void';
 
+import Stats from 'src/molecules/stats';
+
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
 import AboutUser from './component';
@@ -33,9 +35,13 @@ function UserAboutContainer({ children, username }) {
             <Avatar src={user.avatar} size={AvatarSize.ExtraLarge} rounded />
           }
           background={user.background}
+          fullname={user.fullname}
+          joinedAt={user.joinedAt}
           message={user.message}
           username={user.username}
-        />
+        >
+          <Stats username={user.username} />
+        </AboutUser>
         <Line />
         {children}
       </>
