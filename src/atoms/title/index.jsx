@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { TitleSize, TitleSizeValues } from './constants';
 import style from './style.module.scss';
 
 function Title({ children, size }) {
@@ -11,11 +12,11 @@ function Title({ children, size }) {
 
 Title.propTypes = {
   children: PropTypes.node.isRequired,
-  size: PropTypes.oneOf(['medium', 'large', 'extra-large']),
+  size: PropTypes.oneOf(TitleSizeValues),
 };
 
 Title.defaultProps = {
-  size: 'medium',
+  size: TitleSize.Regular,
 };
 
 export default Title;

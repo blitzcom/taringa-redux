@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
+import { TitleSize } from 'src/atoms/title/constants';
+
 import { AvatarSize } from 'src/atoms/avatar/constants';
 import Avatar from 'src/atoms/avatar';
-
 import Box from 'src/atoms/box';
 import Button from 'src/atoms/button';
 import Text from 'src/atoms/text';
@@ -18,7 +19,7 @@ function AboutChannel({ background, category, description, thumbnail, title }) {
     >
       <Box display="flex" margin="16px 0 0" justify="space-between">
         <div>
-          <Title size="large">{title}</Title>
+          <Title size={TitleSize.Large}>{title}</Title>
           <Text variant="secondary">{category}</Text>
         </div>
 
