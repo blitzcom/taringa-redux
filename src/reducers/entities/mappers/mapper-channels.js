@@ -1,7 +1,7 @@
 import { formatAvatar, formatBackground } from 'src/helpers/image/knn';
 
 export default function channelsMapper(current, value) {
-  const { thumbnail, background, ...rest } = value;
+  const { thumbnail, background, state, stats, ...rest } = value;
 
   return {
     ...current,
