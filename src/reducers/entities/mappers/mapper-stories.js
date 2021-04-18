@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import marked from 'marked';
 
-import { formatIdentity, formatThumbnail } from 'src/helpers/image/knn';
+import { formatStoryImage, formatThumbnail } from 'src/helpers/image/knn';
 
 function contentMapper(content) {
   if (typeof content === 'undefined') {
@@ -20,7 +20,7 @@ function contentMapper(content) {
       const defaultWith = width || 550;
       const defaultHeight = height || 500;
 
-      block.url = formatIdentity(url);
+      block.url = formatStoryImage(url);
 
       block.widthStyle = { maxWidth: defaultWith };
 

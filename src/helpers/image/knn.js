@@ -53,3 +53,8 @@ export const formatIdentity = createFormat({
   fallback: DEFAULT_THUMBNAIL,
   preset: 'identity',
 });
+
+export const formatStoryImage = createFormat({
+  fallback: DEFAULT_THUMBNAIL,
+  preset: 'fit:550',
+});
