@@ -1,4 +1,5 @@
-import { formatAvatar, formatBackground } from 'src/schemas/utils/knn';
+import { formatAvatar, formatBackground } from 'src/helpers/image/knn';
+import { DEFAULT_AVATAR } from 'src/helpers/image/constants';
 
 export default function usersMapper(current, value) {
   const { avatar, background, stats, ...rest } = value;
@@ -6,11 +7,11 @@ export default function usersMapper(current, value) {
   return {
     ...current,
     ...rest,
-    background: formatBackground(background, '/user_background.svg'),
+    background: formatBackground(background),
     avatar:
-      avatar && avatar !== '/channel_avatar.svg'
+      avatar && avatar !== DEFAULT_AVATAR
         ? formatAvatar(value.avatar)
-        : '/channel_avatar.svg',
+        : DEFAULT_AVATAR,
     url: `/u/${value.username}`,
   };
 }

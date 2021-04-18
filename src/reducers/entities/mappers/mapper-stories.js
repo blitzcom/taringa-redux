@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import marked from 'marked';
 
-import { formatIdentity, formatThumbnail } from 'src/schemas/utils/knn';
+import { formatIdentity, formatThumbnail } from 'src/helpers/image/knn';
 
 function contentMapper(content) {
   if (typeof content === 'undefined') {
@@ -43,10 +43,7 @@ export default function storiesMapper(current, value) {
   const state = {
     ...current,
     ...rest,
-    thumbnail: formatThumbnail(
-      thumbnail ?? firstImage?.url,
-      '/article_background.svg',
-    ),
+    thumbnail: formatThumbnail(thumbnail ?? firstImage?.url),
   };
 
   if (content) {
