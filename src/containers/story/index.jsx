@@ -13,7 +13,7 @@ import selectEntity from 'src/selectors/select-entity';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
-import Story from './component';
+import Story from 'src/components/story';
 
 function StoryContainer({ storyId }) {
   const story = useSelector((state) => selectEntity(state, 'stories', storyId));

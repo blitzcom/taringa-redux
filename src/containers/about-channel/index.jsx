@@ -10,7 +10,7 @@ import Void from 'src/atoms/void';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
-import AboutChannel from './component';
+import AboutChannel from 'src/components/about-channel';
 
 function AboutChannelContainer({ channelId, children }) {
   const channel = useSelector((state) =>

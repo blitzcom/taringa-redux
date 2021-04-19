@@ -12,9 +12,9 @@ import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 
-import AboutChannelContainer from 'src/organisms/about-channel';
-import FeedStories from 'src/organisms/feed-stories';
-import Navbar from 'src/organisms/navbar';
+import AboutChannel from 'src/containers/about-channel';
+import FeedStories from 'src/containers/feed-stories';
+import Navbar from 'src/containers/navbar';
 
 export default function Home({ title }) {
   const { query } = useRouter();
@@ -33,9 +33,9 @@ export default function Home({ title }) {
 
         <LayoutMain>
           <Loader payload={source} action="CHANNEL_PAGE" cancellable />
-          <AboutChannelContainer channelId={source}>
+          <AboutChannel channelId={source}>
             <FeedStories feedId={source} />
-          </AboutChannelContainer>
+          </AboutChannel>
         </LayoutMain>
 
         <LayoutSidebar />

@@ -15,7 +15,7 @@ import Stats from 'src/molecules/stats';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
-import AboutUser from './component';
+import AboutUser from 'src/components/about-user';
 
 function UserAboutContainer({ children, username }) {
   const user = useSelector((state) => selectEntity(state, 'users', username));

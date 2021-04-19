@@ -7,8 +7,8 @@ import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 
-import FeedStories from 'src/organisms/feed-stories';
-import Navbar from 'src/organisms/navbar';
+import FeedStories from 'src/containers/feed-stories';
+import Navbar from 'src/containers/navbar';
 
 export default function Home() {
   return (

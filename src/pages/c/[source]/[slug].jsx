@@ -9,9 +9,9 @@ import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 
-import Conversation from 'src/organisms/conversation';
-import Navbar from 'src/organisms/navbar';
-import Story from 'src/organisms/story';
+import Conversation from 'src/containers/conversation';
+import Navbar from 'src/containers/navbar';
+import Story from 'src/containers/story';
 
 export default function Home() {
   const router = useRouter();

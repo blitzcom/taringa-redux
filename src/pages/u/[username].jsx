@@ -12,9 +12,9 @@ import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 
-import AboutUserContainer from 'src/organisms/about-user';
-import FeedStories from 'src/organisms/feed-stories';
-import Navbar from 'src/organisms/navbar';
+import AboutUser from 'src/containers/about-user';
+import FeedStories from 'src/containers/feed-stories';
+import Navbar from 'src/containers/navbar';
 
 export default function Username({ username }) {
   const { query } = useRouter();
@@ -32,9 +32,9 @@ export default function Username({ username }) {
 
         <LayoutMain>
           <Loader payload={query.username} action="USERNAME_PAGE" cancellable />
-          <AboutUserContainer username={query.username}>
+          <AboutUser username={query.username}>
             <FeedStories feedId={query.username} />
-          </AboutUserContainer>
+          </AboutUser>
         </LayoutMain>
 
         <LayoutSidebar />
