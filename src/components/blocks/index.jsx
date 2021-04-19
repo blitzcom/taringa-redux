@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Markdown from 'src/components/markdown';
-import Image from 'src/components/image';
+import Markdown from 'src/components/content-md';
+import Image from 'src/components/image-responsive';
 
 function Blocks({ blocks }) {
   return (
