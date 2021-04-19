@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import Background from 'src/components/atoms/background';
-import Line from 'src/components/atoms/line';
+import Background from 'src/components/background';
+import Line from 'src/components/line';
 import Margin, { MarginSize } from 'src/components/margin';
 import Padding from 'src/components/padding';
 import Position from 'src/components/position';

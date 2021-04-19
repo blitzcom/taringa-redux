@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 import Box from 'src/components/box';
-import ButtonAction from 'src/components/atoms/button-action';
-import ButtonVoting from 'src/components/atoms/button-voting';
+import ButtonAction from 'src/components/button-action';
+import ButtonVoting from 'src/components/button-voting';
 
 function StoryActions({ upvotes, downvotes, comments, shares, bookmarks }) {
   return (

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Spinner from 'src/components/atoms/spinner';
+import Spinner from 'src/components/spinner';
 import Void from 'src/components/void';
 
 import Blocks from 'src/components/blocks';

@@ -7,9 +7,9 @@ import Box from 'src/components/box';
 import Clamp from 'src/components/clamp';
 import Link from 'src/components/link';
 import Row from 'src/components/row';
-import Text from 'src/components/atoms/text';
-import Thumbnail from 'src/components/atoms/thumbnail';
-import Title from 'src/components/atoms/title';
+import Text from 'src/components/text';
+import Thumbnail from 'src/components/thumbnail';
+import Title from 'src/components/title';
 
 import StoryActions from 'src/components/story-actions';
 

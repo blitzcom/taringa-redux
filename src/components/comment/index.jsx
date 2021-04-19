@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import Avatar from 'src/components/atoms/avatar';
+import Avatar from 'src/components/avatar';
 import Link from 'src/components/link';
 
 import style from './style.module.scss';
