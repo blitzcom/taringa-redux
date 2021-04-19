@@ -1,5 +1,5 @@
 import Avatar from 'src/atoms/avatar';
-import Link from 'src/atoms/link';
+import Link from 'src/components/link';
 
 import { Comment } from '.';
 

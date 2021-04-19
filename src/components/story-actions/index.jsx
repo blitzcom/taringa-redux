@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Box from 'src/atoms/box';
+import Box from 'src/components/box';
 import ButtonAction from 'src/components/atoms/button-action';
 import ButtonVoting from 'src/components/atoms/button-voting';
 

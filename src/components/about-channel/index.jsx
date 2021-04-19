@@ -4,7 +4,7 @@ import { TitleSize } from 'src/components/atoms/title/constants';
 
 import { AvatarSize } from 'src/components/atoms/avatar/constants';
 import Avatar from 'src/components/atoms/avatar';
-import Box from 'src/atoms/box';
+import Box from 'src/components/box';
 import Button from 'src/components/atoms/button';
 import Text from 'src/components/atoms/text';
 import Title from 'src/components/atoms/title';

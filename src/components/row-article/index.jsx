@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import Box from 'src/atoms/box';
-import Clamp from 'src/atoms/clamp';
-import Link from 'src/atoms/link';
-import Row from 'src/atoms/row';
+import Box from 'src/components/box';
+import Clamp from 'src/components/clamp';
+import Link from 'src/components/link';
+import Row from 'src/components/row';
 import Text from 'src/components/atoms/text';
 import Thumbnail from 'src/components/atoms/thumbnail';
 import Title from 'src/components/atoms/title';

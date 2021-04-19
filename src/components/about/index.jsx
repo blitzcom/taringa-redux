@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 import Background from 'src/components/atoms/background';
 import Line from 'src/components/atoms/line';
-import Margin, { MarginSize } from 'src/atoms/margin';
-import Padding from 'src/atoms/padding';
-import Position from 'src/atoms/position';
+import Margin, { MarginSize } from 'src/components/margin';
+import Padding from 'src/components/padding';
+import Position from 'src/components/position';
 
 function About({ background, avatar, children }) {
   return (

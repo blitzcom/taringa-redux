@@ -9,7 +9,7 @@ import Avatar from 'src/components/atoms/avatar';
 
 import Line from 'src/components/atoms/line';
 import Spinner from 'src/components/atoms/spinner';
-import Void from 'src/atoms/void';
+import Void from 'src/components/void';
 
 import Stats from 'src/components/stats';
 

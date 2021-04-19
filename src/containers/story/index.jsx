@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import Spinner from 'src/components/atoms/spinner';
-import Void from 'src/atoms/void';
+import Void from 'src/components/void';
 
 import Blocks from 'src/components/blocks';
 import LinkUser from 'src/components/link-user';

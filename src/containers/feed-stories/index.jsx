@@ -7,7 +7,7 @@ import selectEntity from 'src/selectors/select-entity';
 import Spinner from 'src/components/atoms/spinner';
 
 import RowArticleContainer from 'src/components/row-article';
-import Void from 'src/atoms/void';
+import Void from 'src/components/void';
 
 function FeedStory({ items, component: Component }) {
   return items.map((id) => <Component key={id} itemId={id} />);
