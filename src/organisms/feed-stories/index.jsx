@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Spinner from 'src/atoms/spinner';
+import Spinner from 'src/components/atoms/spinner';
 
 import RowArticleContainer from 'src/molecules/row-article';
 import Void from 'src/atoms/void';

@@ -7,9 +7,9 @@ import Box from 'src/atoms/box';
 import Clamp from 'src/atoms/clamp';
 import Link from 'src/atoms/link';
 import Row from 'src/atoms/row';
-import Text from 'src/atoms/text';
-import Thumbnail from 'src/atoms/thumbnail';
-import Title from 'src/atoms/title';
+import Text from 'src/components/atoms/text';
+import Thumbnail from 'src/components/atoms/thumbnail';
+import Title from 'src/components/atoms/title';
 
 import StoryActions from 'src/molecules/story-actions';
 

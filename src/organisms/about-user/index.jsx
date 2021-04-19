@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import { AvatarSize } from 'src/atoms/avatar/constants';
-import Avatar from 'src/atoms/avatar';
+import { AvatarSize } from 'src/components/atoms/avatar/constants';
+import Avatar from 'src/components/atoms/avatar';
 
-import Line from 'src/atoms/line';
-import Spinner from 'src/atoms/spinner';
+import Line from 'src/components/atoms/line';
+import Spinner from 'src/components/atoms/spinner';
 import Void from 'src/atoms/void';
 
 import Stats from 'src/molecules/stats';

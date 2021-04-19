@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 
-import LayoutApp from 'src/atoms/layout/layout-app';
-import LayoutContent from 'src/atoms/layout/layout-content';
-import LayoutHead from 'src/atoms/layout/layout-head';
-import LayoutMain from 'src/atoms/layout/layout-main';
-import LayoutMenu from 'src/atoms/layout/layout-menu';
-import LayoutSidebar from 'src/atoms/layout/layout-sidebar';
+import LayoutApp from 'src/components/layout/layout-app';
+import LayoutContent from 'src/components/layout/layout-content';
+import LayoutHead from 'src/components/layout/layout-head';
+import LayoutMain from 'src/components/layout/layout-main';
+import LayoutMenu from 'src/components/layout/layout-menu';
+import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
 import Loader from 'src/molecules/loader';
 

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-import { TitleSize } from 'src/atoms/title/constants';
+import { TitleSize } from 'src/components/atoms/title/constants';
 
-import Emoji from 'src/atoms/emoji';
-import Title from 'src/atoms/title';
-import Text from 'src/atoms/text';
+import Emoji from 'src/components/atoms/emoji';
+import Title from 'src/components/atoms/title';
+import Text from 'src/components/atoms/text';
 import Margin, { MarginSize } from 'src/atoms/margin';
 
 import About from 'src/molecules/about';

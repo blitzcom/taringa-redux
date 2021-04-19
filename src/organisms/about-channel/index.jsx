@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Line from 'src/atoms/line';
-import Spinner from 'src/atoms/spinner';
+import Line from 'src/components/atoms/line';
+import Spinner from 'src/components/atoms/spinner';
 import Void from 'src/atoms/void';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';

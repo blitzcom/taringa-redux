@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { TitleSize } from 'src/atoms/title/constants';
+import { TitleSize } from 'src/components/atoms/title/constants';
 
-import { AvatarSize } from 'src/atoms/avatar/constants';
-import Avatar from 'src/atoms/avatar';
+import { AvatarSize } from 'src/components/atoms/avatar/constants';
+import Avatar from 'src/components/atoms/avatar';
 import Box from 'src/atoms/box';
-import Button from 'src/atoms/button';
-import Text from 'src/atoms/text';
-import Title from 'src/atoms/title';
+import Button from 'src/components/atoms/button';
+import Text from 'src/components/atoms/text';
+import Title from 'src/components/atoms/title';
 
 import About from 'src/molecules/about';
 
