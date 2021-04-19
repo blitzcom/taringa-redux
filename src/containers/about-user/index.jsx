@@ -11,7 +11,7 @@ import Line from 'src/components/atoms/line';
 import Spinner from 'src/components/atoms/spinner';
 import Void from 'src/atoms/void';
 
-import Stats from 'src/molecules/stats';
+import Stats from 'src/components/stats';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 

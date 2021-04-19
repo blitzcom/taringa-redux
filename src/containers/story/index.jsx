@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import Spinner from 'src/components/atoms/spinner';
 import Void from 'src/atoms/void';
 
-import Blocks from 'src/molecules/blocks';
-import LinkUser from 'src/molecules/link-user';
-import LinkChannel from 'src/molecules/link-channel';
+import Blocks from 'src/components/blocks';
+import LinkUser from 'src/components/link-user';
+import LinkChannel from 'src/components/link-channel';
 
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';

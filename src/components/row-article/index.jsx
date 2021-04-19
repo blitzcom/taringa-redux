@@ -11,7 +11,7 @@ import Text from 'src/components/atoms/text';
 import Thumbnail from 'src/components/atoms/thumbnail';
 import Title from 'src/components/atoms/title';
 
-import StoryActions from 'src/molecules/story-actions';
+import StoryActions from 'src/components/story-actions';
 
 export function RowArticle({
   articleSubtitle,

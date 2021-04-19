@@ -10,7 +10,7 @@ import LayoutMain from 'src/components/layout/layout-main';
 import LayoutMenu from 'src/components/layout/layout-menu';
 import LayoutSidebar from 'src/components/layout/layout-sidebar';
 
-import Loader from 'src/molecules/loader';
+import Loader from 'src/components/loader';
 
 import AboutChannel from 'src/containers/about-channel';
 import FeedStories from 'src/containers/feed-stories';

@@ -9,7 +9,7 @@ import Button from 'src/components/atoms/button';
 import Text from 'src/components/atoms/text';
 import Title from 'src/components/atoms/title';
 
-import About from 'src/molecules/about';
+import About from 'src/components/about';
 
 function AboutChannel({ background, category, description, thumbnail, title }) {
   return (

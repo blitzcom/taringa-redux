@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import Comment from 'src/molecules/comment';
+import CommentContainer from 'src/components/comment';
 
 import style from './style.module.css';
 
@@ -14,11 +14,11 @@ function Thread({ commentId }) {
 
   return (
     <li className={style.li}>
-      <Comment entityId={commentId} source="comments" />
+      <CommentContainer entityId={commentId} source="comments" />
 
       <ul>
         {thread.items.map((replyId) => (
-          <Comment key={replyId} entityId={replyId} source="replies" />
+          <CommentContainer key={replyId} entityId={replyId} source="replies" />
         ))}
       </ul>
     </li>

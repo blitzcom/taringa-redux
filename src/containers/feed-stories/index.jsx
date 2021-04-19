@@ -6,7 +6,7 @@ import selectEntity from 'src/selectors/select-entity';
 
 import Spinner from 'src/components/atoms/spinner';
 
-import RowArticleContainer from 'src/molecules/row-article';
+import RowArticleContainer from 'src/components/row-article';
 import Void from 'src/atoms/void';
 
 function FeedStory({ items, component: Component }) {

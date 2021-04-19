@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import Thread from 'src/molecules/thread';
+import Thread from 'src/components/thread';
 
 import style from './style.module.css';
 

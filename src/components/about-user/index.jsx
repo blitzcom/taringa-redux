@@ -7,7 +7,7 @@ import Title from 'src/components/atoms/title';
 import Text from 'src/components/atoms/text';
 import Margin, { MarginSize } from 'src/atoms/margin';
 
-import About from 'src/molecules/about';
+import About from 'src/components/about';
 
 export function UserAbout({
   avatar,
