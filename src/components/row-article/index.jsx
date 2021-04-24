@@ -11,6 +11,9 @@ import Text from 'src/components/text';
 import Thumbnail from 'src/components/thumbnail';
 import Title from 'src/components/title';
 
+import { Size } from 'src/helpers/css/size';
+import { Color } from 'src/helpers/css/color';
+
 import StoryActions from 'src/components/story-actions';
 
 export function RowArticle({
@@ -27,7 +30,7 @@ export function RowArticle({
   return (
     <Row>
       <article>
-        <Text size="small">
+        <Text size={Size.Small}>
           <Link href={channelUrl}>
             <b>{channelName}</b>
           </Link>
@@ -48,9 +51,7 @@ export function RowArticle({
 
             <Box margin="4px 0 0">
               <Clamp>
-                <Text truncate variant="secondary">
-                  {articleSubtitle}
-                </Text>
+                <Text color={Color.Secondary}>{articleSubtitle}</Text>
               </Clamp>
             </Box>
           </Box>

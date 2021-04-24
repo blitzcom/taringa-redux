@@ -18,5 +18,5 @@ a {
 
 * {
   box-sizing: border-box;
-  @include theme('color', 'text-primary');
+  @include theme('color', 'text-body');
 }

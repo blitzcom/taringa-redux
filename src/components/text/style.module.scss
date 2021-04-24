@@ -1,36 +1,48 @@
 @import 'mixins/theme';
+@import 'variables';
 
-@mixin create-size($name, $font, $line) {
+$colors: (
+  primary: 'text-primary',
+  secondary: 'text-secondary',
+  success: 'text-success',
+  danger: 'text-danger',
+  warning: 'text-warning',
+  muted: 'text-muted',
+  body: 'text-body',
+);
+
+$sizes: (
+  extra-small: (
+    0.75rem,
+    1rem,
+  ),
+  small: (
+    0.875rem,
+    1.25rem,
+  ),
+  base: (
+    1rem,
+    1.25rem,
+  ),
+  large: (
+    1.125rem,
+    1.75rem,
+  ),
+  extra-large: (
+    1.25rem,
+    1.75rem,
+  ),
+);
+
+@each $name, $color in $colors {
   .#{$name} {
-    font-size: $font;
-    line-height: $line;
-
-    & span,
-    & b,
-    & a {
-      font-size: $font;
-      line-height: $line;
-    }
+    @include theme('color', $color);
   }
 }
 
-.text {
-  margin: 0;
+@each $name, $values in $sizes {
+  .#{$name} {
+    font-size: nth($values, 1);
+    line-height: nth($values, 2);
+  }
 }
-
-.truncate {
-  text-overflow: ellipsis;
-  word-break: break-word;
-}
-
-.primary {
-  @include theme('color', 'text-primary');
-}
-
-.secondary {
-  @include theme('color', 'text-secondary');
-}
-
-@include create-size('large', 16px, 21px);
-@include create-size('medium', 14px, 18px);
-@include create-size('small', 12px, 15px);

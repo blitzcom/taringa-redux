@@ -1,31 +1,28 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { ColorType } from 'src/helpers/css/color';
+import { Size, SizeType } from 'src/helpers/css/size';
+
 import style from './style.module.scss';
 
-function Text({ children, truncate, variant, size }) {
+function Text({ children, color, size }) {
   return (
-    <p
-      className={classNames(style.text, style[variant], style[size], {
-        [style.truncate]: truncate,
-      })}
-    >
+    <span className={classNames(style.text, style[color], style[size])}>
       {children}
-    </p>
+    </span>
   );
 }
 
 Text.propTypes = {
   children: PropTypes.node.isRequired,
-  truncate: PropTypes.bool,
-  variant: PropTypes.oneOf(['primary', 'secondary']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  color: ColorType,
+  size: SizeType,
 };
 
 Text.defaultProps = {
-  truncate: false,
-  variant: 'primary',
-  size: 'medium',
+  color: null,
+  size: Size.Base,
 };
 
 export default Text;

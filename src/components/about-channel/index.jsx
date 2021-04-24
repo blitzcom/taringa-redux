@@ -20,7 +20,7 @@ function AboutChannel({ background, category, description, thumbnail, title }) {
       <Box display="flex" margin="16px 0 0" justify="space-between">
         <div>
           <Title size={TitleSize.Large}>{title}</Title>
-          <Text variant="secondary">{category}</Text>
+          <Text>{category}</Text>
         </div>
 
         <div>
