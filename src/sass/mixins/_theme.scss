@@ -1,4 +1,4 @@
-@import 'mixins/gen-hash';
+@import 'utils/gen-hash';
 @import 'theme/default-theme';
 
 @mixin theme($property, $name, $prefix: null) {
