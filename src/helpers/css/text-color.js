@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const Color = {
+export const TextColor = {
   Primary: 'primary',
   Secondary: 'secondary',
   Success: 'success',
@@ -10,4 +10,4 @@ export const Color = {
   Body: 'body',
 };
 
-export const ColorType = PropTypes.oneOf(Object.values(Color));
+export const TextColorType = PropTypes.oneOf(Object.values(TextColor));

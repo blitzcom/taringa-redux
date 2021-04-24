@@ -1,28 +1,36 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { ColorType } from 'src/helpers/css/color';
-import { Size, SizeType } from 'src/helpers/css/size';
+import { TextColorType } from 'src/helpers/css/text-color';
+import { TextElement, TextElementType } from 'src/helpers/css/text-element';
+import { TextLeading, TextLeadingType } from 'src/helpers/css/text-leading';
+import { TextSize, TextSizeType } from 'src/helpers/css/text-size';
 
 import style from './style.module.scss';
 
-function Text({ children, color, size }) {
-  return (
-    <span className={classNames(style.text, style[color], style[size])}>
-      {children}
-    </span>
-  );
+function Text({ children, color, element, leading, size }) {
+  const classes = classNames(style.text, style[`size-${size}`], {
+    [style[`color-${color}`]]: color,
+    [style[`leading-${leading}`]]: leading,
+  });
+
+  return React.createElement(element, { className: classes }, children);
 }
 
 Text.propTypes = {
   children: PropTypes.node.isRequired,
-  color: ColorType,
-  size: SizeType,
+  color: TextColorType,
+  element: TextElementType,
+  leading: TextLeadingType,
+  size: TextSizeType,
 };
 
 Text.defaultProps = {
   color: null,
-  size: Size.Base,
+  element: TextElement.Paragraph,
+  leading: TextLeading.None,
+  size: TextSize.Base,
 };
 
 export default Text;

@@ -7,14 +7,14 @@ import Box from 'src/components/box';
 import Clamp from 'src/components/clamp';
 import Link from 'src/components/link';
 import Row from 'src/components/row';
+import StoryActions from 'src/components/story-actions';
 import Text from 'src/components/text';
 import Thumbnail from 'src/components/thumbnail';
-import Title from 'src/components/title';
 
-import { Size } from 'src/helpers/css/size';
-import { Color } from 'src/helpers/css/color';
-
-import StoryActions from 'src/components/story-actions';
+import { TextColor } from 'src/helpers/css/text-color';
+import { TextElement } from 'src/helpers/css/text-element';
+import { TextLeading } from 'src/helpers/css/text-leading';
+import { TextSize } from 'src/helpers/css/text-size';
 
 export function RowArticle({
   articleSubtitle,
@@ -30,7 +30,7 @@ export function RowArticle({
   return (
     <Row>
       <article>
-        <Text size={Size.Small}>
+        <Text size={TextSize.Small}>
           <Link href={channelUrl}>
             <b>{channelName}</b>
           </Link>
@@ -45,13 +45,23 @@ export function RowArticle({
 
         <Box display="flex" margin="8px 0 0">
           <Box width="100%" padding="0 16px 0 0">
-            <Title>
+            <Text
+              element={TextElement.Title}
+              leading={TextLeading.Tight}
+              size={TextSize.Large}
+            >
               <Link href={articleUrl}>{articleTitle}</Link>
-            </Title>
+            </Text>
 
             <Box margin="4px 0 0">
               <Clamp>
-                <Text color={Color.Secondary}>{articleSubtitle}</Text>
+                <Text
+                  element={TextElement.Paragraph}
+                  color={TextColor.Secondary}
+                  leading={TextLeading.Tight}
+                >
+                  {articleSubtitle}
+                </Text>
               </Clamp>
             </Box>
           </Box>

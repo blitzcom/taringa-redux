@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 
-import { TitleSize } from 'src/components/title/constants';
-
 import Emoji from 'src/components/emoji';
-import Title from 'src/components/title';
 import Text from 'src/components/text';
 import Margin, { MarginSize } from 'src/components/margin';
-
 import About from 'src/components/about';
+
+import { TextElement } from 'src/helpers/css/text-element';
+import { TextSize } from 'src/helpers/css/text-size';
 
 export function UserAbout({
   avatar,
@@ -20,7 +19,9 @@ export function UserAbout({
 }) {
   return (
     <About background={background} avatar={avatar}>
-      <Title size={TitleSize.Large}>{fullname}</Title>
+      <Text element={TextElement.Title} size={TextSize.ExtraLarge}>
+        {fullname}
+      </Text>
       <Margin top={MarginSize.Tiny} />
 
       <Text>@{username}</Text>

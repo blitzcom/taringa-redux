@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const Size = {
+export const TextSize = {
   ExtraSmall: 'extra-small',
   Small: 'small',
   Base: 'base',
@@ -8,4 +8,4 @@ export const Size = {
   ExtraLarge: 'extra-large',
 };
 
-export const SizeType = PropTypes.oneOf(Object.values(Size));
+export const TextSizeType = PropTypes.oneOf(Object.values(TextSize));

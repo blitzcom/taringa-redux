@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { TitleSize } from 'src/components/title/constants';
-
 import { AvatarSize } from 'src/components/avatar/constants';
+import About from 'src/components/about';
 import Avatar from 'src/components/avatar';
 import Box from 'src/components/box';
 import Button from 'src/components/button';
 import Text from 'src/components/text';
-import Title from 'src/components/title';
 
-import About from 'src/components/about';
+import { TextElement } from 'src/helpers/css/text-element';
+import { TextSize } from 'src/helpers/css/text-size';
 
 function AboutChannel({ background, category, description, thumbnail, title }) {
   return (
@@ -19,7 +18,9 @@ function AboutChannel({ background, category, description, thumbnail, title }) {
     >
       <Box display="flex" margin="16px 0 0" justify="space-between">
         <div>
-          <Title size={TitleSize.Large}>{title}</Title>
+          <Text element={TextElement.Title} size={TextSize.Large}>
+            {title}
+          </Text>
           <Text>{category}</Text>
         </div>
 
