@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { AvatarSize } from 'src/components/avatar/constants';
 import About from 'src/components/about';
 import Avatar from 'src/components/avatar';
-import Box from 'src/components/box';
 import Button from 'src/components/button';
 import Text from 'src/components/text';
 
 import { TextElement } from 'src/helpers/css/text-element';
 import { TextSize } from 'src/helpers/css/text-size';
+
+import style from './about-channel.module.scss';
 
 function AboutChannel({ background, category, description, thumbnail, title }) {
   return (
@@ -16,7 +17,7 @@ function AboutChannel({ background, category, description, thumbnail, title }) {
       background={background}
       avatar={<Avatar src={thumbnail} size={AvatarSize.ExtraLarge} />}
     >
-      <Box display="flex" margin="16px 0 0" justify="space-between">
+      <div className={style.information}>
         <div>
           <Text element={TextElement.Title} size={TextSize.Large}>
             {title}
@@ -27,11 +28,11 @@ function AboutChannel({ background, category, description, thumbnail, title }) {
         <div>
           <Button onClick={() => {}}>Join</Button>
         </div>
-      </Box>
+      </div>
 
-      <Box margin="16px 0 0">
+      <div className={style.description}>
         <Text>{description}</Text>
-      </Box>
+      </div>
     </About>
   );
 }

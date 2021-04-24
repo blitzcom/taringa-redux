@@ -1,0 +1,11 @@
+@import 'variables';
+
+.information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information,
+.description {
+  margin: $size-base $size-zero $size-zero;
+}

@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 
-import Box from 'src/components/box';
 import ButtonAction from 'src/components/button-action';
 import ButtonVoting from 'src/components/button-voting';
 
+import style from './story-actions.module.scss';
+
 function StoryActions({ upvotes, downvotes, comments, shares, bookmarks }) {
   return (
-    <Box display="flex" margin="8px 0 0">
+    <div className={style.actions}>
       <ButtonVoting upvotes={upvotes} downvotes={downvotes} />
       <ButtonAction
         count={comments}
@@ -15,7 +16,7 @@ function StoryActions({ upvotes, downvotes, comments, shares, bookmarks }) {
       />
       <ButtonAction count={shares} singular="Compartido" plural="Compartidos" />
       <ButtonAction count={bookmarks} singular="Favorito" plural="Favoritos" />
-    </Box>
+    </div>
   );
 }
 
