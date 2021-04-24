@@ -9,8 +9,8 @@ import { TextSize, TextSizeType } from 'src/helpers/css/text-size';
 
 import style from './style.module.scss';
 
-function Text({ children, color, element, leading, size }) {
-  const classes = classNames(style.text, style[`size-${size}`], {
+function Text({ children, className, color, element, leading, size }) {
+  const classes = classNames(style.text, className, style[`size-${size}`], {
     [style[`color-${color}`]]: color,
     [style[`leading-${leading}`]]: leading,
   });
@@ -20,6 +20,7 @@ function Text({ children, color, element, leading, size }) {
 
 Text.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   color: TextColorType,
   element: TextElementType,
   leading: TextLeadingType,
@@ -27,6 +28,7 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
+  className: null,
   color: null,
   element: TextElement.Paragraph,
   leading: TextLeading.None,

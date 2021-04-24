@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
+import About from 'src/components/about';
 import Emoji from 'src/components/emoji';
 import Text from 'src/components/text';
-import Margin, { MarginSize } from 'src/components/margin';
-import About from 'src/components/about';
 
 import { TextElement } from 'src/helpers/css/text-element';
+import { TextLeading } from 'src/helpers/css/text-leading';
 import { TextSize } from 'src/helpers/css/text-size';
+
+import style from './about-user.module.scss';
 
 export function UserAbout({
   avatar,
@@ -22,33 +24,31 @@ export function UserAbout({
       <Text element={TextElement.Title} size={TextSize.ExtraLarge}>
         {fullname}
       </Text>
-      <Margin top={MarginSize.Tiny} />
+      <div className={style.details}>
+        <Text>@{username}</Text>
 
-      <Text>@{username}</Text>
+        <div className={style.information}>
+          <Emoji symbol="🏠" label="Home" />
+          <Text element={TextElement.Inline} className={style.display}>
+            AR
+          </Text>
 
-      <Margin top={MarginSize.Small} />
+          {joinedAt && (
+            <>
+              <Emoji symbol="📅" label="Calendar" className={style.label} />
+              <Text element={TextElement.Inline} className={style.display}>
+                Se unió en {joinedAt}
+              </Text>
+            </>
+          )}
+        </div>
+      </div>
 
-      <Text>
-        <Emoji symbol="🏠" label="Home" />
-        <Margin inline left={MarginSize.Tiny} />
-        <span>AR</span>
-
-        <Margin inline left={MarginSize.Large} />
-
-        {joinedAt && (
-          <>
-            <Emoji symbol="📅" label="Calendar" />
-            <Margin inline left={MarginSize.Tiny} />
-            <span>Se unió en {joinedAt}</span>
-          </>
-        )}
-      </Text>
-
-      <Margin top={MarginSize.Small} />
-
-      {message}
-
-      <Margin top={MarginSize.Small} />
+      {message && (
+        <Text leading={TextLeading.Snug} className={style.message}>
+          {message}
+        </Text>
+      )}
 
       {children}
     </About>

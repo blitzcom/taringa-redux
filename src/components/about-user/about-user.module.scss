@@ -1,0 +1,22 @@
+@import 'variables';
+
+.details {
+  margin-top: $size-small;
+}
+
+.information {
+  margin-top: $size-small;
+
+  .label {
+    margin-left: $size-extra-large;
+  }
+
+  .display {
+    margin-left: $size-extra-small;
+  }
+}
+
+p.message {
+  margin-top: $size-small;
+  margin-bottom: $size-small;
+}
