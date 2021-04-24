@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 
 import Background from 'src/components/background';
 import Line from 'src/components/line';
-import Margin, { MarginSize } from 'src/components/margin';
-import Padding from 'src/components/padding';
-import Position from 'src/components/position';
+
+import style from './about.module.scss';
 
 function About({ background, avatar, children }) {
   return (
@@ -13,17 +12,11 @@ function About({ background, avatar, children }) {
 
       <Line />
 
-      <Position to="relative">
-        <Padding>
-          <Position to="absolute" top={-65}>
-            {avatar}
-          </Position>
+      <div className={style.details}>
+        <div className={style.avatar}>{avatar}</div>
 
-          <Margin top={MarginSize.Regular} />
-
-          {children}
-        </Padding>
-      </Position>
+        {children}
+      </div>
     </section>
   );
 }

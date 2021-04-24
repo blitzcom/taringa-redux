@@ -1,0 +1,11 @@
+@import 'variables';
+
+.details {
+  position: relative;
+  padding: $size-extra-large $size-base $size-base;
+}
+
+.avatar {
+  position: absolute;
+  top: -65px;
+}
