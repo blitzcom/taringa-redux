@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 
 import selectEntity from 'src/selectors/select-entity';
 
-import Box from 'src/components/box';
-import Clamp from 'src/components/clamp';
 import Link from 'src/components/link';
 import Row from 'src/components/row';
 import StoryActions from 'src/components/story-actions';
@@ -15,6 +13,8 @@ import { TextColor } from 'src/helpers/css/text-color';
 import { TextElement } from 'src/helpers/css/text-element';
 import { TextLeading } from 'src/helpers/css/text-leading';
 import { TextSize } from 'src/helpers/css/text-size';
+
+import style from './row-article.module.scss';
 
 export function RowArticle({
   articleSubtitle,
@@ -43,8 +43,8 @@ export function RowArticle({
           </Link>
         </Text>
 
-        <Box display="flex" margin="8px 0 0">
-          <Box width="100%" padding="0 16px 0 0">
+        <div className={style.information}>
+          <div className={style.details}>
             <Text
               element={TextElement.Title}
               leading={TextLeading.Tight}
@@ -53,21 +53,19 @@ export function RowArticle({
               <Link href={articleUrl}>{articleTitle}</Link>
             </Text>
 
-            <Box margin="4px 0 0">
-              <Clamp>
-                <Text
-                  element={TextElement.Paragraph}
-                  color={TextColor.Secondary}
-                  leading={TextLeading.Tight}
-                >
-                  {articleSubtitle}
-                </Text>
-              </Clamp>
-            </Box>
-          </Box>
+            <div className={style.subtitle}>
+              <Text
+                element={TextElement.Paragraph}
+                color={TextColor.Secondary}
+                leading={TextLeading.Tight}
+              >
+                {articleSubtitle}
+              </Text>
+            </div>
+          </div>
 
           <Thumbnail src={articleThumbnail} />
-        </Box>
+        </div>
         {children}
       </article>
     </Row>

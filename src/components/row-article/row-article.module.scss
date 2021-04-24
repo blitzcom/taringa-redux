@@ -1,0 +1,19 @@
+@import 'variables';
+
+@import 'mixins/text-clamp';
+
+.information {
+  display: flex;
+  margin: $size-small $size-zero $size-zero;
+}
+
+.details {
+  width: 100%;
+  padding: $size-zero $size-base $size-zero $size-zero;
+}
+
+.subtitle {
+  margin: $size-small $size-zero $size-zero;
+
+  @include text-clamp;
+}
