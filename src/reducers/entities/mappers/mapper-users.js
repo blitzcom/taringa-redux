@@ -8,7 +8,7 @@ function fullnameMapper(value) {
 }
 
 export default function usersMapper(current, value) {
-  const { avatar, background, stats, ...rest } = value;
+  const { avatar, background, stats, country, ...rest } = value;
 
   return {
     ...current,
@@ -16,10 +16,11 @@ export default function usersMapper(current, value) {
     background: formatBackground(background),
     avatar:
       avatar && avatar !== DEFAULT_AVATAR
-        ? formatAvatar(value.avatar)
+        ? formatAvatar(avatar)
         : DEFAULT_AVATAR,
     url: `/u/${value.username}`,
     fullname: fullnameMapper(value),
     joinedAt: joinedAtMapper(current, value),
+    country: country || '–',
   };
 }
