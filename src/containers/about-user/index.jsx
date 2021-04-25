@@ -6,12 +6,16 @@ import selectEntity from 'src/selectors/select-entity';
 
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
-import AboutUser from 'src/components/about-user';
+import About from 'src/components/about';
+import Avatar from 'src/components/avatar';
 import Line from 'src/components/line';
 import Spinner from 'src/components/spinner';
 import Void from 'src/components/void';
 
 import StatsUser from 'src/containers/stats-user';
+import InfoUser from 'src/containers/info-user';
+
+import { AvatarSize } from 'src/helpers/css/avatar-size';
 
 function UserAboutContainer({ children, username }) {
   const user = useSelector((state) => selectEntity(state, 'users', username));
@@ -20,25 +24,27 @@ function UserAboutContainer({ children, username }) {
     selectControl(state, 'users', username),
   );
 
-  if (
-    control?.status === summaryControlStatus.Upgraded ||
-    control?.status === summaryControlStatus.Upgrading
-  ) {
+  const upgraded = control?.status === summaryControlStatus.Upgraded;
+
+  if (upgraded || control?.status === summaryControlStatus.Upgrading) {
+    const avatar = (
+      <Avatar src={user.avatar} size={AvatarSize.ExtraLarge} rounded shadow />
+    );
+
     return (
       <>
-        <AboutUser
-          avatar={user.avatar}
+        <About
           background={user.background}
-          fullname={user.fullname}
-          joinedAt={user.joinedAt}
-          message={user.message}
-          username={user.username}
-        >
-          {control?.status === summaryControlStatus.Upgraded && (
-            <StatsUser username={user.username} />
-          )}
-        </AboutUser>
+          bio={user.message}
+          information={upgraded && <InfoUser username={username} />}
+          stats={upgraded && <StatsUser username={username} />}
+          subtitle={`@${user.username}`}
+          thumbnail={avatar}
+          title={user.fullname}
+        />
+
         <Line />
+
         {children}
       </>
     );

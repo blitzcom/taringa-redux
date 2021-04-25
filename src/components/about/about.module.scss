@@ -1,11 +1,28 @@
 @import 'variables';
 
-.details {
+.content {
   position: relative;
   padding: $size-extra-large $size-base $size-base;
 }
 
-.avatar {
+.thumbnail {
   position: absolute;
   top: -65px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+
+  .subtitle {
+    margin-top: $size-extra-small;
+  }
+}
+
+.information {
+  margin-top: $size-extra-small;
+}
+
+.bio {
+  margin: $size-base $size-zero $size-zero;
 }

@@ -1,0 +1,15 @@
+@import 'variables';
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stat {
+  margin-top: $size-extra-small;
+  margin-right: $size-large;
+}
+
+.label {
+  margin-left: $size-extra-small;
+}

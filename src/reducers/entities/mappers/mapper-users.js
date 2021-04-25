@@ -1,19 +1,10 @@
 import { formatAvatar, formatBackground } from 'src/helpers/image/knn';
 import { DEFAULT_AVATAR } from 'src/helpers/image/constants';
 
+import joinedAtMapper from './utils/mapper-joined-at';
+
 function fullnameMapper(value) {
   return [value.firstname, value.lastname].join(' ').trim();
-}
-
-function joinedAtMapper(value) {
-  if (typeof value === 'undefined') {
-    return '';
-  }
-
-  const date = new Date(value);
-
-  // TODO: Update with i18n.
-  return date.toLocaleDateString('es', { year: 'numeric', month: 'long' });
 }
 
 export default function usersMapper(current, value) {
@@ -29,6 +20,6 @@ export default function usersMapper(current, value) {
         : DEFAULT_AVATAR,
     url: `/u/${value.username}`,
     fullname: fullnameMapper(value),
-    joinedAt: joinedAtMapper(current?.created ?? value.created),
+    joinedAt: joinedAtMapper(current, value),
   };
 }

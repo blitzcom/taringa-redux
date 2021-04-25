@@ -4,13 +4,18 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
+import summaryControlStatus from 'src/reducers/constants/summary-control-status';
+
+import About from 'src/components/about';
+import Avatar from 'src/components/avatar';
 import Line from 'src/components/line';
 import Spinner from 'src/components/spinner';
 import Void from 'src/components/void';
 
-import summaryControlStatus from 'src/reducers/constants/summary-control-status';
+import { AvatarSize } from 'src/helpers/css/avatar-size';
 
-import AboutChannel from 'src/components/about-channel';
+import InfoChannel from 'src/containers/info-channel';
+import StatsChannel from 'src/containers/stats-channel';
 
 function AboutChannelContainer({ channelId, children }) {
   const channel = useSelector((state) =>
@@ -21,20 +26,26 @@ function AboutChannelContainer({ channelId, children }) {
     selectControl(state, 'channels', channelId),
   );
 
-  if (
-    control?.status === summaryControlStatus.Upgraded ||
-    control?.status === summaryControlStatus.Upgrading
-  ) {
+  const upgraded = control?.status === summaryControlStatus.Upgraded;
+
+  if (upgraded || control?.status === summaryControlStatus.Upgrading) {
+    const thumbnail = (
+      <Avatar shadow src={channel.thumbnail} size={AvatarSize.ExtraLarge} />
+    );
+
     return (
       <>
-        <AboutChannel
+        <About
           background={channel.background}
-          category={channel.category}
-          description={channel.description}
-          thumbnail={channel.thumbnail}
+          bio={channel.description}
+          information={upgraded && <InfoChannel channelId={channelId} />}
+          stats={upgraded && <StatsChannel channelId={channelId} />}
+          thumbnail={thumbnail}
           title={channel.title}
         />
+
         <Line />
+
         {children}
       </>
     );
