@@ -1,6 +1,22 @@
 @import 'variables';
 @import 'mixins/theme';
 
+$sizes: (
+  base: 28px,
+  extra-large: 90px,
+);
+
+@each $name, $size in $sizes {
+  .size-#{$name} {
+    height: $size;
+    max-height: $size;
+    max-width: $size;
+    min-height: $size;
+    min-width: $size;
+    width: $size;
+  }
+}
+
 .avatar {
   display: block;
   border-radius: 5px;
@@ -12,17 +28,7 @@
   border-radius: 100%;
 }
 
-// Sizes
-
-.regular {
-  height: 28px;
-  width: 28px;
-}
-
-.extra-large {
+.shadow {
   box-shadow: $shadow;
-  height: 90px;
-  width: 90px;
-
   @include theme('border', 'avatar-border', '2px solid');
 }

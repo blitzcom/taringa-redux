@@ -1,21 +1,26 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { AvatarSize, AvatarSizeMapper, AvatarSizeValues } from './constants';
+import {
+  AvatarSize,
+  AvatarSizeMapper,
+  AvatarSizeType,
+} from 'src/helpers/css/avatar-size';
 
 import style from './style.module.scss';
 
-function Avatar({ rounded, size, src }) {
+function Avatar({ alt, className, rounded, shadow, size, src }) {
   const numberSize = AvatarSizeMapper[size];
+
+  const classes = classNames(style.avatar, style[size], className, {
+    [style.shadow]: shadow,
+    [style.rounded]: rounded,
+  });
 
   return (
     <img
-      alt=""
-      className={classNames(
-        style.avatar,
-        style[size],
-        rounded && style.rounded,
-      )}
+      alt={alt}
+      className={classes}
       height={numberSize}
       loading="lazy"
       src={src}
@@ -25,14 +30,20 @@ function Avatar({ rounded, size, src }) {
 }
 
 Avatar.propTypes = {
+  alt: PropTypes.string,
+  className: PropTypes.string,
   rounded: PropTypes.bool,
-  size: PropTypes.oneOf(AvatarSizeValues),
+  shadow: PropTypes.bool,
+  size: AvatarSizeType,
   src: PropTypes.string.isRequired,
 };
 
 Avatar.defaultProps = {
+  alt: '',
+  className: null,
   rounded: false,
-  size: AvatarSize.Regular,
+  shadow: false,
+  size: AvatarSize.Base,
 };
 
 export default Avatar;

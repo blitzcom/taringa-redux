@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
 import About from 'src/components/about';
+import Avatar from 'src/components/avatar';
 import Emoji from 'src/components/emoji';
 import Text from 'src/components/text';
 
+import { AvatarSize } from 'src/helpers/css/avatar-size';
 import { TextElement } from 'src/helpers/css/text-element';
 import { TextLeading } from 'src/helpers/css/text-leading';
 import { TextSize } from 'src/helpers/css/text-size';
@@ -20,7 +22,12 @@ export function UserAbout({
   children,
 }) {
   return (
-    <About background={background} avatar={avatar}>
+    <About
+      background={background}
+      avatar={
+        <Avatar src={avatar} size={AvatarSize.ExtraLarge} rounded shadow />
+      }
+    >
       <Text element={TextElement.Title} size={TextSize.ExtraLarge}>
         {fullname}
       </Text>
@@ -56,7 +63,7 @@ export function UserAbout({
 }
 
 UserAbout.propTypes = {
-  avatar: PropTypes.node.isRequired,
+  avatar: PropTypes.string.isRequired,
   background: PropTypes.string.isRequired,
   children: PropTypes.node,
   fullname: PropTypes.string,

@@ -4,18 +4,13 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import { AvatarSize } from 'src/components/avatar/constants';
-import Avatar from 'src/components/avatar';
-
-import Line from 'src/components/line';
-import Spinner from 'src/components/spinner';
-import Void from 'src/components/void';
-
-import Stats from 'src/components/stats';
-
 import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
 import AboutUser from 'src/components/about-user';
+import Line from 'src/components/line';
+import Spinner from 'src/components/spinner';
+import Stats from 'src/components/stats';
+import Void from 'src/components/void';
 
 function UserAboutContainer({ children, username }) {
   const user = useSelector((state) => selectEntity(state, 'users', username));
@@ -31,9 +26,7 @@ function UserAboutContainer({ children, username }) {
     return (
       <>
         <AboutUser
-          avatar={
-            <Avatar src={user.avatar} size={AvatarSize.ExtraLarge} rounded />
-          }
+          avatar={user.avatar}
           background={user.background}
           fullname={user.fullname}
           joinedAt={user.joinedAt}
