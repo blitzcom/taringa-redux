@@ -9,8 +9,9 @@ import summaryControlStatus from 'src/reducers/constants/summary-control-status'
 import AboutUser from 'src/components/about-user';
 import Line from 'src/components/line';
 import Spinner from 'src/components/spinner';
-import Stats from 'src/components/stats';
 import Void from 'src/components/void';
+
+import StatsUser from 'src/containers/stats-user';
 
 function UserAboutContainer({ children, username }) {
   const user = useSelector((state) => selectEntity(state, 'users', username));
@@ -33,7 +34,9 @@ function UserAboutContainer({ children, username }) {
           message={user.message}
           username={user.username}
         >
-          <Stats username={user.username} />
+          {control?.status === summaryControlStatus.Upgraded && (
+            <StatsUser username={user.username} />
+          )}
         </AboutUser>
         <Line />
         {children}

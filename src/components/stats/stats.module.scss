@@ -1,0 +1,15 @@
+@import 'variables';
+
+.stats {
+  margin-top: $size-base;
+}
+
+.stat {
+  & + .stat {
+    margin-left: $size-base;
+  }
+}
+
+.label {
+  margin-left: $size-extra-small;
+}
