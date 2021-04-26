@@ -31,11 +31,15 @@ export function RowArticle({
     <Row>
       <article>
         <Text size={TextSize.Small}>
-          <Link href={channelUrl}>
-            <b>{channelName}</b>
-          </Link>
+          {channelUrl && (
+            <>
+              <Link href={channelUrl}>
+                <b>{channelName}</b>
+              </Link>
 
-          <span> • </span>
+              <span> • </span>
+            </>
+          )}
           <span>Posted by </span>
 
           <Link href={ownerUrl}>
@@ -78,7 +82,7 @@ RowArticle.propTypes = {
   articleTitle: PropTypes.string.isRequired,
   articleUrl: PropTypes.string.isRequired,
   channelName: PropTypes.string.isRequired,
-  channelUrl: PropTypes.string.isRequired,
+  channelUrl: PropTypes.string,
   children: PropTypes.node,
   ownerUrl: PropTypes.string.isRequired,
   ownerUsername: PropTypes.string.isRequired,
@@ -86,6 +90,7 @@ RowArticle.propTypes = {
 
 RowArticle.defaultProps = {
   children: null,
+  channelUrl: null,
 };
 
 function RowArticleContainer({ itemId }) {

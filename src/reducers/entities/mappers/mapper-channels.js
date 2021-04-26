@@ -10,7 +10,7 @@ export default function channelsMapper(current, value) {
     ...rest,
     background: formatBackground(background),
     thumbnail: formatAvatar(thumbnail),
-    url: `/c/${value.name}`,
+    url: value.name.startsWith('user-') ? null : `/c/${value.name}`,
     joinedAt: joinedAtMapper(current, value),
   };
 }
