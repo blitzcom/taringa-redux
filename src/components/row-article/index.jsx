@@ -24,6 +24,7 @@ export function RowArticle({
   channelName,
   channelUrl,
   children,
+  createdAt,
   ownerUrl,
   ownerUsername,
 }) {
@@ -40,11 +41,21 @@ export function RowArticle({
               <span> • </span>
             </>
           )}
-          <span>Posted by </span>
+          <span>Por </span>
 
           <Link href={ownerUrl}>
             <b>{ownerUsername}</b>
           </Link>
+
+          <span> </span>
+
+          <Text
+            element={TextElement.Inline}
+            color={TextColor.Muted}
+            size={TextSize.Small}
+          >
+            {createdAt}
+          </Text>
         </Text>
 
         <div className={style.information}>
@@ -84,6 +95,7 @@ RowArticle.propTypes = {
   channelName: PropTypes.string.isRequired,
   channelUrl: PropTypes.string,
   children: PropTypes.node,
+  createdAt: PropTypes.string.isRequired,
   ownerUrl: PropTypes.string.isRequired,
   ownerUsername: PropTypes.string.isRequired,
 };
@@ -118,6 +130,7 @@ function RowArticleContainer({ itemId }) {
       articleUrl={article.url}
       channelName={channel.title}
       channelUrl={channel.url}
+      createdAt={article.displayCreated}
       ownerUrl={owner.url}
       ownerUsername={owner.username}
     >

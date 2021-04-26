@@ -15,7 +15,7 @@ function InfoUser({ username }) {
       {
         symbol: '📅',
         label: 'Calendar',
-        value: `Desde ${user.joinedAt}`,
+        value: `Se unió ${user.displayCreated}`,
       },
     ],
     [user],

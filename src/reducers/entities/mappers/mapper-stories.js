@@ -3,6 +3,8 @@ import marked from 'marked';
 
 import { formatStoryImage, formatThumbnail } from 'src/helpers/image/knn';
 
+import timeAgoMapper from './utils/mapper-time-ago';
+
 function contentMapper(content) {
   if (typeof content === 'undefined') {
     return null;
@@ -44,6 +46,7 @@ export default function storiesMapper(current, value) {
     ...current,
     ...rest,
     thumbnail: formatThumbnail(thumbnail ?? firstImage?.url),
+    displayCreated: timeAgoMapper(current, value),
   };
 
   if (content) {

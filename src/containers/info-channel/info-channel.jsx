@@ -17,7 +17,7 @@ function InfoChannel({ channelId }) {
       {
         symbol: '📅',
         label: 'Calendar',
-        value: `Creado en ${channel.joinedAt}`,
+        value: `Creado ${channel.displayCreated}`,
       },
       { symbol: '👤', label: 'Owner', value: channel.owner },
     ],
