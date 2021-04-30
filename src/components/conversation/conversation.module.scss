@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'mixins/theme';
+
+.section {
+  @include theme('border-top', 'border', '3px double');
+}
+
+.header {
+  padding: $size-base;
+  @include theme('border-bottom', 'border', '1px solid');
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

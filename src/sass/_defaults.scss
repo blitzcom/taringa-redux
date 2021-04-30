@@ -9,14 +9,10 @@ body {
   font-size: 14px;
 
   @include theme('background-color', 'background-primary');
+  @include theme('color', 'text-body');
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-  @include theme('color', 'text-body');
 }

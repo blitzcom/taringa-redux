@@ -4,11 +4,10 @@ import { useSelector } from 'react-redux';
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
+import Conversation from 'src/components/conversation';
 import Thread from 'src/components/thread';
 
-import style from './style.module.css';
-
-function Conversation({ storyId }) {
+function ConversationContainer({ storyId }) {
   const conversation = useSelector((state) =>
     selectEntity(state, 'conversations', storyId),
   );
@@ -19,25 +18,19 @@ function Conversation({ storyId }) {
 
   if (control?.status === 'loaded') {
     return (
-      <section className={style.section}>
-        <div className={style.header}>
-          <h2 className={style.title}>Conversation</h2>
-        </div>
-
-        <ul className={style.list}>
-          {conversation.items.map((commentId) => (
-            <Thread key={commentId} commentId={commentId} />
-          ))}
-        </ul>
-      </section>
+      <Conversation count={conversation.totalCount}>
+        {conversation.items.map((commentId) => (
+          <Thread key={commentId} commentId={commentId} />
+        ))}
+      </Conversation>
     );
   }
 
   return null;
 }
 
-Conversation.propTypes = {
+ConversationContainer.propTypes = {
   storyId: PropTypes.string.isRequired,
 };
 
-export default Conversation;
+export default ConversationContainer;
