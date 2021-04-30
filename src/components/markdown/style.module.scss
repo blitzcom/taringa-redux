@@ -18,3 +18,15 @@
 .markdown pre {
   overflow-x: auto;
 }
+
+.markdown p,
+.markdown li {
+  font-family: 'Source Sans Pro';
+  font-size: 1.12rem;
+  line-height: 1.375;
+  word-spacing: 0.1rem;
+}
+
+.markdown p {
+  margin: 2rem 0;
+}

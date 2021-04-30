@@ -1,23 +1,21 @@
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 import selectEntity from 'src/selectors/select-entity';
 
-function LinkChannel({ name }) {
+function LinkChannelContainer({ name }) {
   const channel = useSelector((state) => selectEntity(state, 'channels', name));
 
   return (
-    <Link href={`/c/${channel.name}`}>
-      <a>
-        <b>{channel.title}</b>
-      </a>
+    <Link href={channel.url}>
+      <a>{channel.title}</a>
     </Link>
   );
 }
 
-LinkChannel.propTypes = {
+LinkChannelContainer.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default LinkChannel;
+export default LinkChannelContainer;

@@ -6,6 +6,7 @@ export const TextSize = {
   Base: 'base',
   Large: 'large',
   ExtraLarge: 'extra-large',
+  ExtraLarge2x: 'extra-large-2x',
 };
 
 export const TextSizeType = PropTypes.oneOf(Object.values(TextSize));

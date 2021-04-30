@@ -1,19 +1,17 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Spinner from 'src/components/spinner';
-import Void from 'src/components/void';
-
-import Blocks from 'src/components/blocks';
-import LinkUser from 'src/components/link-user';
-import LinkChannel from 'src/components/link-channel';
-
 import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
-import summaryControlStatus from 'src/reducers/constants/summary-control-status';
-
+import Blocks from 'src/components/blocks';
+import Spinner from 'src/components/spinner';
 import Story from 'src/components/story';
+import Void from 'src/components/void';
+
+import Author from 'src/containers/author';
+
+import summaryControlStatus from 'src/reducers/constants/summary-control-status';
 
 function StoryContainer({ storyId }) {
   const story = useSelector((state) => selectEntity(state, 'stories', storyId));
@@ -26,7 +24,11 @@ function StoryContainer({ storyId }) {
     typeof control === 'undefined' ||
     control.status === summaryControlStatus.PreLoading
   ) {
-    return <Spinner />;
+    return (
+      <Void>
+        <Spinner />
+      </Void>
+    );
   }
 
   if (
@@ -34,16 +36,7 @@ function StoryContainer({ storyId }) {
     control.status === summaryControlStatus.Upgrading
   ) {
     return (
-      <Story
-        title={story.title}
-        meta={
-          <p>
-            Posted by <LinkUser username={story.owner} />
-            <span> in </span>
-            <LinkChannel name={story.channel} />
-          </p>
-        }
-      >
+      <Story title={story.title} meta={<Author storyId={storyId} />}>
         {control.status === summaryControlStatus.Upgrading && (
           <Void>
             <Spinner />

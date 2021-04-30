@@ -1,0 +1,16 @@
+@import 'variables';
+
+.author,
+.information {
+  display: flex;
+}
+
+.information {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: $size-small;
+}
+
+.meta {
+  margin-top: $size-small;
+}

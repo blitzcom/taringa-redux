@@ -1,4 +1,4 @@
-import Markdown from '.';
+import Markdown from './markdown';
 
 export default {
   title: 'atoms/Markdown',

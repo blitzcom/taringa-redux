@@ -1,0 +1,13 @@
+@import 'variables';
+
+.article {
+  padding: $size-base;
+}
+
+.title {
+  margin: $size-zero $size-zero $size-base;
+}
+
+.meta {
+  margin: $size-large $size-zero $size-large;
+}
