@@ -11,7 +11,7 @@ import style from './style.module.scss';
 
 const DEFAULT_COMMENT_BODY = 'El comentario no está disponible';
 
-function Comment({ avatar, created, user, body }) {
+function Comment({ actions, avatar, created, user, body }) {
   return (
     <article className={style.commentable}>
       {avatar}
@@ -30,12 +30,15 @@ function Comment({ avatar, created, user, body }) {
           className={style.body}
           UNSAFE={body || DEFAULT_COMMENT_BODY}
         />
+
+        {actions && <div className={style.actions}>{actions}</div>}
       </div>
     </article>
   );
 }
 
 Comment.propTypes = {
+  actions: PropTypes.node,
   avatar: PropTypes.node.isRequired,
   body: PropTypes.string,
   created: PropTypes.string.isRequired,
@@ -43,6 +46,7 @@ Comment.propTypes = {
 };
 
 Comment.defaultProps = {
+  actions: null,
   body: null,
 };
 

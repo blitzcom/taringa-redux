@@ -1,11 +1,15 @@
 @import 'variables';
 
+.actions {
+  margin-top: $size-small;
+}
+
 .commentable {
   display: flex;
 }
 
 .details {
-  margin-left: 16px;
+  margin-left: $size-base;
 }
 
 p.body {
