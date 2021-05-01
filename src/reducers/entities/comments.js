@@ -1,6 +1,8 @@
 import createEntities from 'src/reducers/utils/entities-creator';
 
-const entities = createEntities('comments');
+import commentsMapper from './mappers/mapper-comments';
+
+const entities = createEntities('comments', commentsMapper);
 
 export const { actions } = entities;
 

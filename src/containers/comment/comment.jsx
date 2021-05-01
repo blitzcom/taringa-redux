@@ -16,6 +16,7 @@ function CommentContainer({ entityId, source }) {
 
   return (
     <Comment
+      created={comment.displayCreated}
       avatar={<Avatar src={owner.avatar} rounded />}
       body={comment.body}
       user={
