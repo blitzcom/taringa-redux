@@ -11,6 +11,8 @@ import 'src/sass/taringa.scss';
 
 import store from 'src/store';
 
+import ObserverLink from 'src/containers/observer-link';
+
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
@@ -30,6 +32,9 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="stylesheet" type="text/css" href="/nprogress.css" />
       </Head>
+
+      <ObserverLink />
+
       <Component {...pageProps} />
     </Provider>
   );

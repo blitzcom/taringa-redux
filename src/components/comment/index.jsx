@@ -9,6 +9,8 @@ import { TextSize } from 'src/helpers/css/text-size';
 
 import style from './style.module.scss';
 
+const DEFAULT_COMMENT_BODY = 'El comentario no está disponible';
+
 function Comment({ avatar, created, user, body }) {
   return (
     <article className={style.commentable}>
@@ -23,9 +25,11 @@ function Comment({ avatar, created, user, body }) {
         >
           {created}
         </Text>
-        <Text leading={TextLeading.Snug} className={style.body}>
-          {body || 'Unavailable comment'}
-        </Text>
+        <Text
+          leading={TextLeading.Snug}
+          className={style.body}
+          UNSAFE={body || DEFAULT_COMMENT_BODY}
+        />
       </div>
     </article>
   );

@@ -9,30 +9,42 @@ import { TextSize, TextSizeType } from 'src/helpers/css/text-size';
 
 import style from './style.module.scss';
 
-function Text({ children, className, color, element, leading, size }) {
+function Text({ children, className, color, element, leading, size, UNSAFE }) {
   const classes = classNames(style.text, className, style[`size-${size}`], {
     [style[`color-${color}`]]: color,
     [style[`leading-${leading}`]]: leading,
   });
 
-  return React.createElement(element, { className: classes }, children);
+  const defaultOptions = { className: classes };
+
+  if (UNSAFE) {
+    return React.createElement(element, {
+      ...defaultOptions,
+      dangerouslySetInnerHTML: { __html: UNSAFE },
+    });
+  }
+
+  return React.createElement(element, defaultOptions, children);
 }
 
 Text.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   color: TextColorType,
   element: TextElementType,
   leading: TextLeadingType,
   size: TextSizeType,
+  UNSAFE: PropTypes.string,
 };
 
 Text.defaultProps = {
+  children: null,
   className: null,
   color: null,
   element: TextElement.Paragraph,
   leading: TextLeading.None,
   size: TextSize.Base,
+  UNSAFE: null,
 };
 
 export default Text;
