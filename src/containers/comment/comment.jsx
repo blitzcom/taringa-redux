@@ -20,7 +20,7 @@ function CommentContainer({ entityId, source }) {
       avatar={<Avatar src={owner.avatar} rounded />}
       body={comment.body}
       user={
-        <Link href={`/u/${owner.username}`}>
+        <Link href={owner.url}>
           <b>{owner.username}</b>
         </Link>
       }
