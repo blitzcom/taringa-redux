@@ -5,7 +5,8 @@ import selectControl from 'src/selectors/select-control';
 import selectEntity from 'src/selectors/select-entity';
 
 import Conversation from 'src/components/conversation';
-import Thread from 'src/components/thread';
+
+import Thread from 'src/containers/thread';
 
 function ConversationContainer({ storyId }) {
   const conversation = useSelector((state) =>

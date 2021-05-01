@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'mixins/theme';
+
+.li {
+  padding: $size-large $size-zero $size-zero
+    ($size-base + $size-large + $size-extra-small);
+}
+
+.li:first-child {
+  border-top: none;
+}

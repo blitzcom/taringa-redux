@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-import style from './style.module.scss';
+import style from './reply.module.scss';
 
-function Thread({ children }) {
+function Reply({ children }) {
   return <li className={style.li}>{children}</li>;
 }
 
-Thread.propTypes = {
+Reply.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Thread;
+export default Reply;
